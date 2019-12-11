@@ -9,11 +9,9 @@ import com.ulatina.proyecto.model.Usuario;
 import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,38 +22,40 @@ public class ControlProcAlmac implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Conector conectorJDBC = Conector.getConector();
 
-    private final static String SP_LISTAR_USUARIO = "{CALL proyectotresdemo.listar_usuario()}";
-    private final static String SP_CREAR_USUARIO = "{CALL proyectotresdemo.crear_usuario()}";
-    private final static String SP_EDITAR_USUARIO = "{CALL proyectotresdemo.editar_usuario()}";
-    private final static String SP_ELIMINAR_USUARIO = "{CALL proyectotresdemo.eliminar_usuario()}";
+    private final static String SP_LISTAR_USUARIO = "{ CALL ProyectoTresDemo.listar_usuario() }";
+    private final static String SP_CREAR_USUARIO = "{CALL ProyectoTresDemo.crear_usuario()}";
+    private final static String SP_EDITAR_USUARIO = "{CALL ProyectoTresDemo.editar_usuario()}";
+    private final static String SP_ELIMINAR_USUARIO = "{CALL ProyectoTresDemo.eliminar_usuario()}";
 
-    public Usuario listar() throws SQLException, ClassNotFoundException {
+    public List<Usuario> listarUsuarios(){
         Connection conn = conectorJDBC.conectar();
-
         CallableStatement stmt = null;
         ResultSet rs = null;
-        Usuario listarUs = null;
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        Usuario usuario = null;
         try {
             stmt = conn.prepareCall(SP_LISTAR_USUARIO);
+            stmt.execute();
             rs = (ResultSet) stmt.getResultSet();
             while (rs.next()) {
-                listarUs = new Usuario();
-                listarUs.setId(rs.getInt("id"));
-                listarUs.setNombre(rs.getString("nombre"));
-                listarUs.setCorreo(rs.getString("correo"));
-                listarUs.setContrasena(rs.getString("contrasena"));
-                listarUs.setTelefono(rs.getString("telefono"));
-                listarUs.setTipo(rs.getString("tipo"));
-                listarUs.setId(rs.getInt("idServicio"));
-                
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setDireccion(rs.getString("direccion"));
+                usuario.setTelefono(rs.getString("telefono"));
+                usuario.setTipo(rs.getString("tipo"));
+                usuario.setId(rs.getInt("idServicio"));
+                usuario.setNombreServicio(rs.getString("SERVICIO"));
+                usuarios.add(usuario);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new SQLException("Error, no se pudo completar la conexion a la Base de Datos");
         } finally {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
-        return listarUs;
+        return usuarios;
     }
 
 }

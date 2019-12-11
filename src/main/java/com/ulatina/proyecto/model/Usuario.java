@@ -29,6 +29,8 @@ public class Usuario {
 
     private Integer idServicio;
 
+    private String nombreServicio;
+
     public Usuario() {
 
     }
@@ -118,6 +120,14 @@ public class Usuario {
 
     public void setIdServicio(Integer idServicio) {
         this.idServicio = idServicio;
+    }
+
+    public String getNombreServicio() {
+        return nombreServicio;
+    }
+
+    public void setNombreServicio(String nombreServicio) {
+        this.nombreServicio = nombreServicio;
     }
 
 }
