@@ -13,17 +13,11 @@ import java.sql.Date;
  */
 public class Receta {
 
-    private Integer id;
-
-    private Farmaco farmaco;
-
-    private Presentacion presentacion;
+    private Integer idReceta;
 
     private Date fechaReceta;
 
     private Integer cantidad;
-
-    private Usuario doctor;
 
     private Integer idFarmaco;
 
@@ -31,41 +25,30 @@ public class Receta {
 
     private Integer idDoctor;
 
+    private String medicamento;
+
+    private String presentacionFarmaco;
+
+    private String nombreDoctor;
+
     public Receta() {
 
     }
 
-    public Receta(Integer id, Farmaco farmaco, Presentacion presentacion, Date fechaReceta, Integer cantidad, Usuario doctor) {
-        this.id = id;
-        this.farmaco = farmaco;
-        this.presentacion = presentacion;
+    public Receta(Date fechaReceta, Integer cantidad, Integer idFarmaco, Integer idPresentacion, Integer idDoctor) {
         this.fechaReceta = fechaReceta;
         this.cantidad = cantidad;
-        this.doctor = doctor;
+        this.idFarmaco = idFarmaco;
+        this.idPresentacion = idPresentacion;
+        this.idDoctor = idDoctor;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReceta() {
+        return idReceta;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Farmaco getFarmaco() {
-        return farmaco;
-    }
-
-    public void setFarmaco(Farmaco farmaco) {
-        this.farmaco = farmaco;
-    }
-
-    public Presentacion getPresentacion() {
-        return presentacion;
-    }
-
-    public void setPresentacion(Presentacion presentacion) {
-        this.presentacion = presentacion;
+    public void setIdReceta(Integer idReceta) {
+        this.idReceta = idReceta;
     }
 
     public Date getFechaReceta() {
@@ -82,14 +65,6 @@ public class Receta {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public Usuario getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Usuario doctor) {
-        this.doctor = doctor;
     }
 
     public Integer getIdFarmaco() {
@@ -114,6 +89,30 @@ public class Receta {
 
     public void setIdDoctor(Integer idDoctor) {
         this.idDoctor = idDoctor;
+    }
+
+    public String getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(String medicamento) {
+        this.medicamento = medicamento;
+    }
+
+    public String getPresentacionFarmaco() {
+        return presentacionFarmaco;
+    }
+
+    public void setPresentacionFarmaco(String presentacionFarmaco) {
+        this.presentacionFarmaco = presentacionFarmaco;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
     }
 
 }

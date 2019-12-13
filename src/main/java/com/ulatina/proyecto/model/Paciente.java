@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Paciente {
 
-    private Integer id;
+    private Integer idPaciente;
 
     private String nombre;
 
@@ -29,8 +29,8 @@ public class Paciente {
 
     }
 
-    public Paciente(Integer id, String nombre, Integer idSeguroSocial, String direccion, Integer telefono, Date fechaNacimiento) {
-        this.id = id;
+    public Paciente(Integer idPaciente, String nombre, Integer idSeguroSocial, String direccion, Integer telefono, Date fechaNacimiento) {
+        this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.idSeguroSocial = idSeguroSocial;
         this.direccion = direccion;
@@ -38,12 +38,12 @@ public class Paciente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPaciente(Integer idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public String getNombre() {

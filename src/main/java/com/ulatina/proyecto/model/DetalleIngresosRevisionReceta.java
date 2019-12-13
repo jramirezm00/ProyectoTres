@@ -11,50 +11,28 @@ package com.ulatina.proyecto.model;
  */
 public class DetalleIngresosRevisionReceta {
 
-    private Ingreso ingreso;
-
-    private Revision revision;
-
-    private Receta receta;
-
     private Integer idIngreso;
 
     private Integer idRevision;
 
     private Integer idReceta;
 
+    private String nombrePaciente;
+
+    private String nombreDoctor;
+
+    private String receta;
+
+    private Integer cantidad;
+
     public DetalleIngresosRevisionReceta() {
 
     }
 
-    public DetalleIngresosRevisionReceta(Ingreso ingreso, Revision revision, Receta receta) {
-        this.ingreso = ingreso;
-        this.revision = revision;
-        this.receta = receta;
-    }
-
-    public Ingreso getIngreso() {
-        return ingreso;
-    }
-
-    public void setIngreso(Ingreso ingreso) {
-        this.ingreso = ingreso;
-    }
-
-    public Revision getRevision() {
-        return revision;
-    }
-
-    public void setRevision(Revision revision) {
-        this.revision = revision;
-    }
-
-    public Receta getReceta() {
-        return receta;
-    }
-
-    public void setReceta(Receta receta) {
-        this.receta = receta;
+    public DetalleIngresosRevisionReceta(Integer idIngreso, Integer idRevision, Integer idReceta) {
+        this.idIngreso = idIngreso;
+        this.idRevision = idRevision;
+        this.idReceta = idReceta;
     }
 
     public Integer getIdIngreso() {
@@ -79,6 +57,38 @@ public class DetalleIngresosRevisionReceta {
 
     public void setIdReceta(Integer idReceta) {
         this.idReceta = idReceta;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public String getReceta() {
+        return receta;
+    }
+
+    public void setReceta(String receta) {
+        this.receta = receta;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
 }

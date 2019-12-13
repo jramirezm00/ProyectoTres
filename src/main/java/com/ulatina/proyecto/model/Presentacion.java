@@ -11,7 +11,7 @@ package com.ulatina.proyecto.model;
  */
 public class Presentacion {
 
-    private Integer id;
+    private Integer idPresentacion;
 
     private String descripcion;
 
@@ -19,17 +19,17 @@ public class Presentacion {
 
     }
 
-    public Presentacion(Integer id, String descripcion) {
-        this.id = id;
+    public Presentacion(Integer idPresentacion, String descripcion) {
+        this.idPresentacion = idPresentacion;
         this.descripcion = descripcion;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPresentacion() {
+        return idPresentacion;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPresentacion(Integer idPresentacion) {
+        this.idPresentacion = idPresentacion;
     }
 
     public String getDescripcion() {

@@ -11,7 +11,7 @@ package com.ulatina.proyecto.model;
  */
 public class Farmaco {
 
-    private Integer id;
+    private Integer idFarmaco;
 
     private String nombreComercial;
 
@@ -27,8 +27,8 @@ public class Farmaco {
 
     }
 
-    public Farmaco(Integer id, String nombreComercial, String nombreClinico, String compuestoClinico, String ubicacion, String codigoProveedor) {
-        this.id = id;
+    public Farmaco(Integer idFarmaco, String nombreComercial, String nombreClinico, String compuestoClinico, String ubicacion, String codigoProveedor) {
+        this.idFarmaco = idFarmaco;
         this.nombreComercial = nombreComercial;
         this.nombreClinico = nombreClinico;
         this.compuestoClinico = compuestoClinico;
@@ -36,12 +36,12 @@ public class Farmaco {
         this.codigoProveedor = codigoProveedor;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdFarmaco() {
+        return idFarmaco;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdFarmaco(Integer idFarmaco) {
+        this.idFarmaco = idFarmaco;
     }
 
     public String getNombreComercial() {

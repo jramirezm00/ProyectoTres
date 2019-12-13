@@ -11,40 +11,24 @@ package com.ulatina.proyecto.model;
  */
 public class FarmacoPresentacion {
 
-    private Farmaco farmaco;
-
-    private Presentacion presentacion;
-
     private Integer idFarmaco;
 
     private Integer idPresentacion;
 
     private Integer precio;
 
+    private String nombreComercial;
+
+    private String nombrePresentacion;
+
     public FarmacoPresentacion() {
 
     }
 
-    public FarmacoPresentacion(Farmaco farmaco, Presentacion presentacion, Integer precio) {
-        this.farmaco = farmaco;
-        this.presentacion = presentacion;
+    public FarmacoPresentacion(Integer idFarmaco, Integer idPresentacion, Integer precio) {
+        this.idFarmaco = idFarmaco;
+        this.idPresentacion = idPresentacion;
         this.precio = precio;
-    }
-
-    public Farmaco getFarmaco() {
-        return farmaco;
-    }
-
-    public void setFarmaco(Farmaco farmaco) {
-        this.farmaco = farmaco;
-    }
-
-    public Presentacion getPresentacion() {
-        return presentacion;
-    }
-
-    public void setPresentacion(Presentacion presentacion) {
-        this.presentacion = presentacion;
     }
 
     public Integer getIdFarmaco() {
@@ -69,6 +53,22 @@ public class FarmacoPresentacion {
 
     public void setPrecio(Integer precio) {
         this.precio = precio;
+    }
+
+    public String getNombreComercial() {
+        return nombreComercial;
+    }
+
+    public void setNombreComercial(String nombreComercial) {
+        this.nombreComercial = nombreComercial;
+    }
+
+    public String getNombrePresentacion() {
+        return nombrePresentacion;
+    }
+
+    public void setNombrePresentacion(String nombrePresentacion) {
+        this.nombrePresentacion = nombrePresentacion;
     }
 
 }

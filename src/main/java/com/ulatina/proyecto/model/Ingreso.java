@@ -13,11 +13,7 @@ import java.sql.Date;
  */
 public class Ingreso {
 
-    private Integer id;
-
-    private Servicio servicio;
-
-    private Paciente paciente;
+    private Integer idIngreso;
 
     private Date fechaIngreso;
 
@@ -27,24 +23,27 @@ public class Ingreso {
 
     private Integer idServicio;
 
+    private String nombrePaciente;
+
+    private String nombreServicio;
+
     public Ingreso() {
 
     }
 
-    public Integer getId() {
-        return id;
+    public Ingreso(Date fechaIngreso, Date fechaSalida, Integer idPaciente, Integer idServicio) {
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
+        this.idPaciente = idPaciente;
+        this.idServicio = idServicio;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getIdIngreso() {
+        return idIngreso;
     }
 
-    public Servicio getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
+    public void setIdIngresos(Integer idIngreso) {
+        this.idIngreso = idIngreso;
     }
 
     public Date getFechaIngreso() {
@@ -79,12 +78,20 @@ public class Ingreso {
         this.idServicio = idServicio;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public String getNombrePaciente() {
+        return nombrePaciente;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getNombreServicio() {
+        return nombreServicio;
+    }
+
+    public void setNombreServicio(String nombreServicio) {
+        this.nombreServicio = nombreServicio;
     }
 
 }

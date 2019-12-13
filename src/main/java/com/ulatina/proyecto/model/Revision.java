@@ -15,26 +15,28 @@ public class Revision {
 
     private Integer id;
 
-    private Usuario doctor;
+    private Integer idDoctor;
 
-    private Ingreso ingreso;
+    private String nombreDoctor;
+
+    private Integer idIngreso;
+
+    private String nombrePaciente;
 
     private Date fechaRevision;
 
     private String informe;
 
-    private Integer idDoctor;
-
-    private Integer idIngreso;
-
     public Revision() {
 
     }
 
-    public Revision(Integer id, Usuario doctor, Ingreso ingreso, Date fechaRevision, String informe) {
+    public Revision(Integer id, Integer idDoctor, String nombreDoctor, Integer idIngreso, String nombrePaciente, Date fechaRevision, String informe) {
         this.id = id;
-        this.doctor = doctor;
-        this.ingreso = ingreso;
+        this.idDoctor = idDoctor;
+        this.nombreDoctor = nombreDoctor;
+        this.idIngreso = idIngreso;
+        this.nombrePaciente = nombrePaciente;
         this.fechaRevision = fechaRevision;
         this.informe = informe;
     }
@@ -45,22 +47,6 @@ public class Revision {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Usuario getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Usuario doctor) {
-        this.doctor = doctor;
-    }
-
-    public Ingreso getIngreso() {
-        return ingreso;
-    }
-
-    public void setIngreso(Ingreso ingreso) {
-        this.ingreso = ingreso;
     }
 
     public Date getFechaRevision() {
@@ -93,6 +79,22 @@ public class Revision {
 
     public void setIdIngreso(Integer idIngreso) {
         this.idIngreso = idIngreso;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
     }
 
 }
