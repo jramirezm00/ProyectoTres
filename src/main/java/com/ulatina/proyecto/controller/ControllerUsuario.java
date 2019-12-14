@@ -46,6 +46,8 @@ public class ControllerUsuario implements Serializable {
 
     private List<Usuario> usuarios = new ArrayList<>();
 
+    private Usuario usuarioConect;
+
     public ControllerUsuario() {
     }
 
@@ -61,7 +63,11 @@ public class ControllerUsuario implements Serializable {
 
     public void editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
+        System.out.println(this.usuarioConect.getId());
+        System.out.println(this.nombre);
+        System.out.println(this.direccion);
+        System.out.println(this.telefono);
+        usu.editarUsuario(this.usuarioConect.getId(), this.nombre, this.direccion, this.telefono);
     }
 
     public void crear_usuario() {
@@ -75,15 +81,15 @@ public class ControllerUsuario implements Serializable {
     }
 
     public String login() {
-        System.out.println("Me estan llamando");
         FacesMessage msg = null;
         ControlProcAlmac usu = new ControlProcAlmac();
-        Usuario userLogin = usu.login(this.usuario, this.contrasena);
-        System.out.println(this.usuario);
-        System.out.println(this.contrasena);
-        if (userLogin != null) {
-            System.out.println("No estoy null");
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", userLogin.getNombre());
+        this.usuarioConect = usu.login(this.usuario, this.contrasena);
+        this.nombre = this.usuarioConect.getNombre();
+        this.direccion = this.usuarioConect.getDireccion();
+        this.telefono = this.usuarioConect.getTelefono();
+        if (this.usuarioConect != null) {
+            System.out.println(this.usuarioConect.getId());
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", this.usuarioConect.getNombre());
             return "userProfile.xhtml?faces-redirect=true";
         } else {
             msg = new FacesMessage("Datos incorrectos,volver a ingresar los datos");
@@ -187,4 +193,11 @@ public class ControllerUsuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public Usuario getUsuarioConect() {
+        return usuarioConect;
+    }
+
+    public void setUsuarioConect(Usuario usuarioConect) {
+        this.usuarioConect = usuarioConect;
+    }
 }

@@ -774,7 +774,7 @@ public class ControlProcAlmac implements Serializable {
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipo(rs.getString("tipo"));
-                usuario.setId(rs.getInt("idServicio"));
+                usuario.setIdServicio(rs.getInt("idServicio"));
             }
         } catch (Exception e) {
             e.printStackTrace();

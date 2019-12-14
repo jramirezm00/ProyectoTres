@@ -11,11 +11,11 @@ public class Conector implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private final String DB_URL = "jdbc:mysql://localhost:3306/ProyectoTresDemo?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/proyectotresdemo?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 
     //Database credentials
     private final String USER = "root";
-    private final String PASS = "101000aj";
+    private final String PASS = "12345";
 
     private static Conector conector;
 
