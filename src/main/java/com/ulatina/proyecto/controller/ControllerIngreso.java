@@ -26,11 +26,14 @@ import java.util.List;
 @SessionScoped
 public class ControllerIngreso {
 
+    private static final long serialVersionUID = 1L;
+
     private List<Ingreso> ingresos = new ArrayList<>();
-    private Paciente idpaciente;
+    private Paciente idPaciente;
     private Servicio idServicio;
     private Date fechaIngreso;
     private Date fechaSalida;
+    private int idIngreso;
 
     public ControllerIngreso() {
     }
@@ -40,13 +43,62 @@ public class ControllerIngreso {
         this.ingresos = usu.listarIngresos();
     }
 
-    public void agregar(Paciente idPaciente, Servicio idServicio, Date fechaIngreso, Date fechaSalida) {
+    public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearIngreso(idPaciente.getIdPaciente(), idServicio.getIdServicio(), fechaIngreso, fechaSalida);
+        usu.crearIngreso(this.idPaciente.getIdPaciente(), this.idServicio.getIdServicio(), this.fechaIngreso, this.fechaSalida);
     }
 
-    public void editar(Integer id, Date fechaSalida) {
+    public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarIngreso(id, fechaSalida);
+        usu.editarIngreso(this.idIngreso, this.fechaSalida);
     }
+
+    public List<Ingreso> getIngresos() {
+        return ingresos;
+    }
+
+    public void setIngresos(List<Ingreso> ingresos) {
+        this.ingresos = ingresos;
+    }
+
+    public Paciente getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(Paciente idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    public Servicio getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(Servicio idServicio) {
+        this.idServicio = idServicio;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public int getIdIngreso() {
+        return idIngreso;
+    }
+
+    public void setIdIngreso(int idIngreso) {
+        this.idIngreso = idIngreso;
+    }
+
 }

@@ -24,6 +24,8 @@ import java.util.List;
 @SessionScoped
 public class ControllerPresentacion {
 
+    private static final long serialVersionUID = 1L;
+
     private List<Presentacion> presentaciones = new ArrayList<>();
     private String nombrePresentacion;
     private int id;
@@ -33,19 +35,42 @@ public class ControllerPresentacion {
         this.presentaciones = usu.listarPresentacion();
     }
 
-    public void agregar(String nombrePresentacion) {
+    public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearPresentacion(nombrePresentacion);
+        usu.crearPresentacion(this.nombrePresentacion);
     }
 
-    public void editar(Integer id, String descripcion) {
+    public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarPresentacion(id, descripcion);
+        usu.editarPresentacion(this.id, this.nombrePresentacion);
     }
 
-    public void eliminar(Integer id) {
+    public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarPresentacion(id);
+        usu.eliminarPresentacion(this.id);
     }
 
+    public List<Presentacion> getPresentaciones() {
+        return presentaciones;
+    }
+
+    public void setPresentaciones(List<Presentacion> presentaciones) {
+        this.presentaciones = presentaciones;
+    }
+
+    public String getNombrePresentacion() {
+        return nombrePresentacion;
+    }
+
+    public void setNombrePresentacion(String nombrePresentacion) {
+        this.nombrePresentacion = nombrePresentacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -27,12 +27,15 @@ import java.util.List;
 @SessionScoped
 public class ControllerReceta {
 
+    private static final long serialVersionUID = 1L;
+
     private List<Receta> recetas = new ArrayList<>();
     private Farmaco idFarmaco;
     private Date fechaReceta;
     private int cantidad;
     private Presentacion idPresentacion;
     private Usuario idDoctor;
+    private int idReceta;
 
     public ControllerReceta() {
 
@@ -43,14 +46,70 @@ public class ControllerReceta {
         this.recetas = usu.listarRecetas();
     }
 
-    public void agregar(Farmaco idFarmaco, Date fechReceta, Integer cantidad, Presentacion idPresentacion, Usuario idDoctor) {
+    public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearReceta(idFarmaco.getIdFarmaco(), fechReceta, cantidad, idPresentacion.getIdPresentacion(), idDoctor.getId());
+        usu.crearReceta(this.idFarmaco.getIdFarmaco(), this.fechaReceta, this.cantidad, this.idPresentacion.getIdPresentacion(), this.idDoctor.getId());
     }
 
-    public void editar(Integer id, Integer cantidad) {
+    public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarReceta(id, cantidad);
+        usu.editarReceta(this.idReceta, this.cantidad);
+    }
+
+    public List<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(List<Receta> recetas) {
+        this.recetas = recetas;
+    }
+
+    public Farmaco getIdFarmaco() {
+        return idFarmaco;
+    }
+
+    public void setIdFarmaco(Farmaco idFarmaco) {
+        this.idFarmaco = idFarmaco;
+    }
+
+    public Date getFechaReceta() {
+        return fechaReceta;
+    }
+
+    public void setFechaReceta(Date fechaReceta) {
+        this.fechaReceta = fechaReceta;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Presentacion getIdPresentacion() {
+        return idPresentacion;
+    }
+
+    public void setIdPresentacion(Presentacion idPresentacion) {
+        this.idPresentacion = idPresentacion;
+    }
+
+    public Usuario getIdDoctor() {
+        return idDoctor;
+    }
+
+    public void setIdDoctor(Usuario idDoctor) {
+        this.idDoctor = idDoctor;
+    }
+
+    public int getIdReceta() {
+        return idReceta;
+    }
+
+    public void setIdReceta(int idReceta) {
+        this.idReceta = idReceta;
     }
 
 }

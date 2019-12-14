@@ -24,13 +24,15 @@ import java.util.List;
 @SessionScoped
 public class ControllerFarmaco {
 
+    private static final long serialVersionUID = 1L;
+
     private List<Farmaco> farmacos = new ArrayList<>();
     private String nombreComercial;
     private String nombreClinico;
     private String compuestoQuimico;
-    private String Ubicacion;
+    private String ubicacion;
     private String codigoProveedor;
-    private int id;
+    private int idRegistro;
 
     public ControllerFarmaco() {
     }
@@ -40,18 +42,75 @@ public class ControllerFarmaco {
         this.farmacos = usu.listarFarmaco();
     }
 
-    public void agregar(String nombreComercial, String nombreClinico, String compuestoQuimico, String ubicacion, String codigoProveedor) {
+    public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearFarmaco(nombreComercial, nombreClinico, compuestoQuimico, ubicacion, codigoProveedor);
+        usu.crearFarmaco(this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
     }
 
-    public void editar(Integer idRegistro, String nombreComercial, String nombreClinico, String compuestoQuimico, String ubicacion, String codigoProveedor) {
+    public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarFarmaco(idRegistro, nombreComercial, nombreClinico, compuestoQuimico, ubicacion, codigoProveedor);
+        usu.editarFarmaco(this.idRegistro, this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
     }
 
-    public void eliminar(Integer id) {
+    public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarFarmaco(id);
+        usu.eliminarFarmaco(this.idRegistro);
     }
+
+    public List<Farmaco> getFarmacos() {
+        return farmacos;
+    }
+
+    public void setFarmacos(List<Farmaco> farmacos) {
+        this.farmacos = farmacos;
+    }
+
+    public String getNombreComercial() {
+        return nombreComercial;
+    }
+
+    public void setNombreComercial(String nombreComercial) {
+        this.nombreComercial = nombreComercial;
+    }
+
+    public String getNombreClinico() {
+        return nombreClinico;
+    }
+
+    public void setNombreClinico(String nombreClinico) {
+        this.nombreClinico = nombreClinico;
+    }
+
+    public String getCompuestoQuimico() {
+        return compuestoQuimico;
+    }
+
+    public void setCompuestoQuimico(String compuestoQuimico) {
+        this.compuestoQuimico = compuestoQuimico;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getCodigoProveedor() {
+        return codigoProveedor;
+    }
+
+    public void setCodigoProveedor(String codigoProveedor) {
+        this.codigoProveedor = codigoProveedor;
+    }
+
+    public int getIdRegistro() {
+        return idRegistro;
+    }
+
+    public void setIdRegistro(int idRegistro) {
+        this.idRegistro = idRegistro;
+    }
+    
 }

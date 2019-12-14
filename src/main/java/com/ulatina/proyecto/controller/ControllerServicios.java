@@ -23,6 +23,8 @@ import java.util.List;
 @SessionScoped
 public class ControllerServicios {
 
+    private static final long serialVersionUID = 1L;
+
     private List<Servicio> servicios = new ArrayList<>();
     private String nombre;
     private int id;
@@ -34,16 +36,43 @@ public class ControllerServicios {
         ControlProcAlmac usu = new ControlProcAlmac();
         this.servicios = usu.listarServicios();
     }
-    public void agregar(String nombre) {
-         ControlProcAlmac usu = new ControlProcAlmac();
-         usu.crearServicio(nombre);
+
+    public void agregar() {
+        ControlProcAlmac usu = new ControlProcAlmac();
+        usu.crearServicio(this.nombre);
     }
-    public void editar(Integer id , String descripcion){
-         ControlProcAlmac usu = new ControlProcAlmac();
-         usu.editarServicio(id, descripcion);
+
+    public void editar() {
+        ControlProcAlmac usu = new ControlProcAlmac();
+        usu.editarServicio(this.id, this.nombre);
     }
-    public void eliminar(Integer id){
-         ControlProcAlmac usu = new ControlProcAlmac();
-         usu.eliminarServicio(id);
+
+    public void eliminar() {
+        ControlProcAlmac usu = new ControlProcAlmac();
+        usu.eliminarServicio(this.id);
+    }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

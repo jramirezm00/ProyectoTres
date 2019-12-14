@@ -27,6 +27,8 @@ import java.util.List;
 @SessionScoped
 public class ControllerDetalleIngresoRevisionReceta {
 
+    private static final long serialVersionUID = 1L;
+
     private List<DetalleIngresosRevisionReceta> detalles = new ArrayList<>();
     private Ingreso idIngreso;
     private Revision idRevision;
@@ -35,13 +37,55 @@ public class ControllerDetalleIngresoRevisionReceta {
 
     public ControllerDetalleIngresoRevisionReceta() {
     }
-       public void listar() {
+
+    public void listar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         this.detalles = usu.listarDetalleIngresosRevisionRecetas();
     }
 
-    public void agregar(Ingreso idIngreso, Revision idRevision, Receta idReceta) {
+    public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevisionReceta(idIngreso.getIdIngreso(), idRevision.getId(), idReceta.getIdReceta());
+        usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getId(), this.idReceta.getIdReceta());
     }
+
+    public List<DetalleIngresosRevisionReceta> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleIngresosRevisionReceta> detalles) {
+        this.detalles = detalles;
+    }
+
+    public Ingreso getIdIngreso() {
+        return idIngreso;
+    }
+
+    public void setIdIngreso(Ingreso idIngreso) {
+        this.idIngreso = idIngreso;
+    }
+
+    public Revision getIdRevision() {
+        return idRevision;
+    }
+
+    public void setIdRevision(Revision idRevision) {
+        this.idRevision = idRevision;
+    }
+
+    public Receta getIdReceta() {
+        return idReceta;
+    }
+
+    public void setIdReceta(Receta idReceta) {
+        this.idReceta = idReceta;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
