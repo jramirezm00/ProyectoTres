@@ -5,11 +5,11 @@
  */
 package com.ulatina.proyecto.controller;
 
+import com.ulatina.proyecto.model.Servicio;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import com.ulatina.proyecto.model.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -28,12 +28,22 @@ public class ControllerUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Integer idUsuario;
+
     private String usuario;
-    private String Contrasena;
-    private int id;
+
+    private String contrasena;
+
+    private Servicio servicio;
+
     private String nombre;
+
     private String direccion;
+
     private String telefono;
+
+    private String tipoUsuario;
+
     private List<Usuario> usuarios = new ArrayList<>();
 
     public ControllerUsuario() {
@@ -44,35 +54,41 @@ public class ControllerUsuario implements Serializable {
         this.usuarios = usu.listarUsuarios();
     }
 
-    public void eliminarUsuario(int id) {
+    public void eliminarUsuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarUsuario(id);
+        usu.eliminarUsuario(this.idUsuario);
     }
 
-    public void editar_usuario(Integer id, String nombre, String direccion, String telefono) {
+    public void editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarUsuario(id, nombre, direccion, telefono);
+        usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
     }
 
-    public void crear_usuario(String nombre, String correo, String contra, String direccion, String telefono, String tipoUsurio, Integer idServicio) {
+    public void crear_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearUsuario(nombre, correo, contra, direccion, telefono, tipoUsurio, idServicio);
-    }
-
-   
-    private boolean login(String usuario, String contra) throws SQLException, ClassNotFoundException {
-        FacesMessage msg;
-        ControlProcAlmac usu = new ControlProcAlmac();
-        Usuario userLogin = usu.login(usuario, contra);
-        if (userLogin != null) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", userLogin.getNombre());
-            this.redirect("landingPage.xhtml");
-            return true;
+        if (this.servicio == null) {
+            usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, 0);
+        } else {
+            usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, this.servicio.getIdServicio());
         }
-        else{
+
+    }
+
+    public String login() {
+        System.out.println("Me estan llamando");
+        FacesMessage msg = null;
+        ControlProcAlmac usu = new ControlProcAlmac();
+        Usuario userLogin = usu.login(this.usuario, this.contrasena);
+        System.out.println(this.usuario);
+        System.out.println(this.contrasena);
+        if (userLogin != null) {
+            System.out.println("No estoy null");
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", userLogin.getNombre());
+            return "userProfile.xhtml?faces-redirect=true";
+        } else {
             msg = new FacesMessage("Datos incorrectos,volver a ingresar los datos");
         }
-        return false;
+        return null;
     }
 
     public void logout() {
@@ -94,7 +110,7 @@ public class ControllerUsuario implements Serializable {
                     .getExternalContext()
                     .redirect(
                             request.getContextPath()
-                            + "/faces/" + url);
+                            + "faces/pages/" + url);
         } catch (IOException e) {
         }
     }
@@ -108,19 +124,11 @@ public class ControllerUsuario implements Serializable {
     }
 
     public String getContrasena() {
-        return Contrasena;
+        return contrasena;
     }
 
-    public void setContrasena(String Contrasena) {
-        this.Contrasena = Contrasena;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getNombre() {
@@ -145,6 +153,38 @@ public class ControllerUsuario implements Serializable {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
 }

@@ -28,10 +28,10 @@ import java.util.List;
  * @author kenne
  */
 public class ControlProcAlmac implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     private final Conector conectorJDBC = Conector.getConector();
-    
+
     private final static String SP_LISTAR_USUARIO = "{ CALL ProyectoTresDemo.listar_usuario() }";
     private final static String SP_LISTAR_SERVICIOS = "{ CALL ProyectoTresDemo.listar_servicios() }";
     private final static String SP_LISTAR_REVISIONES = "{ CALL ProyectoTresDemo.listar_revision() }";
@@ -67,7 +67,7 @@ public class ControlProcAlmac implements Serializable {
     private final static String SP_ELIMINAR_FARMACO_PRESENTACION = "{ CALL ProyectoTresDemo.eliminar_farmaco_presentacion(?,?) }";
     private final static String SP_ELIMINAR_FARMACO = "{ CALL ProyectoTresDemo.eliminar_farmaco(?) }";
     private final static String SP_LOGIN = "{ CALL ProyectoTresDemo.login(?,?) }";
-    
+
     public List<Usuario> listarUsuarios() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -98,7 +98,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return usuarios;
     }
-    
+
     public List<Servicio> listarServicios() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -122,7 +122,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return servicios;
     }
-    
+
     public List<Revision> listarRevisiones() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -151,7 +151,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return revisiones;
     }
-    
+
     public List<Receta> listarRecetas() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -182,7 +182,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return recetas;
     }
-    
+
     public List<Presentacion> listarPresentacion() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -206,7 +206,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return presentaciones;
     }
-    
+
     public List<Paciente> listarPaciente() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -234,7 +234,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return pacientes;
     }
-    
+
     public List<Ingreso> listarIngresos() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -263,7 +263,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return ingresos;
     }
-    
+
     public List<Farmaco> listarFarmaco() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -291,7 +291,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return farmacos;
     }
-    
+
     public List<FarmacoPresentacion> listarFarmacoPresentacion() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -318,7 +318,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return presentacionesFarmaco;
     }
-    
+
     public List<DetalleIngresosRevisionReceta> listarDetalleIngresosRevisionRecetas() {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -346,7 +346,7 @@ public class ControlProcAlmac implements Serializable {
         }
         return detalleIngresosRevisionRecetas;
     }
-    
+
     public void crearUsuario(String nombre, String correo, String contra, String direccion, String telefono, String tipoUsuario, Integer idServicio) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -367,7 +367,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearServicio(String nombreServicio) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -382,7 +382,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearRevisionReceta(Integer idIngreso, Integer idRevision, Integer idReceta) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -399,7 +399,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearRevision(Integer idDoctor, Integer idIngreso, Date fechaRevision, String informe) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -417,7 +417,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearReceta(Integer idFarmaco, Date fechReceta, Integer cantidad, Integer idPresentacion, Integer idDoctor) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -436,7 +436,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearPresentacion(String nombrePresentacion) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -451,7 +451,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearPaciente(String nombre, Integer idSeguroSocial, String direccion, String telefono, Date fechaNacimiento) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -470,7 +470,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearIngreso(Integer idPaciente, Integer idServicio, Date fechaIngreso, Date fechaSalida) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -488,7 +488,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearFarmacoPresentacion(Integer idFarmaco, Integer idPresentacion, Integer precio) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -505,7 +505,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void crearFarmaco(String nombreComercial, String nombreClinico, String compuestoQuimico, String ubicacion, String codigoProveedor) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -524,7 +524,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarUsuario(Integer id, String nombre, String direccion, String telefono) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -542,7 +542,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarServicio(Integer id, String descripcion) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -558,7 +558,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarRevision(Integer id, String informe) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -574,7 +574,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarReceta(Integer id, Integer cantidad) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -590,7 +590,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarPresentacion(Integer id, String descripcion) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -606,7 +606,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarPaciente(Integer id, String nombre, Integer idSeguroSocial, String direccion, String telefono) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -624,7 +624,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarIngreso(Integer id, Date fechaSalida) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -640,7 +640,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarFarmacoPresentacion(Integer idRegistro, Integer idPresentacion, Integer precio) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -657,7 +657,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void editarFarmaco(Integer idRegistro, String nombreComercial, String nombreClinico, String compuestoQuimico, String ubicacion, String codigoProveedor) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -677,7 +677,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void eliminarUsuario(Integer id) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -692,7 +692,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void eliminarServicio(Integer id) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -707,7 +707,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void eliminarPresentacion(Integer id) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -722,7 +722,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void eliminarFarmacoPresentacion(Integer idMedicamento, Integer idPresentacion) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -738,7 +738,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public void eliminarFarmaco(Integer id) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -753,7 +753,7 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
     }
-    
+
     public Usuario login(String correo, String contra) {
         Connection conn = conectorJDBC.conectar();
         CallableStatement stmt = null;
@@ -775,7 +775,6 @@ public class ControlProcAlmac implements Serializable {
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipo(rs.getString("tipo"));
                 usuario.setId(rs.getInt("idServicio"));
-                usuario.setNombreServicio(rs.getString("SERVICIO"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -784,5 +783,5 @@ public class ControlProcAlmac implements Serializable {
         }
         return usuario;
     }
-    
+
 }
