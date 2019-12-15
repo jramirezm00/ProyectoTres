@@ -1,24 +1,24 @@
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerPaciente.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Presentacion.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Farmaco.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Ingreso.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerReceta.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Usuario.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Revision.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerFarmacoPresentacion.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Receta.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\service\Conector.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerUsuario.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerPresentacion.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\service\ControlProcAlmac.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerFarmaco.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\tester\TesterUsuario.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\DetalleIngresosRevisionReceta.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerIngreso.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerRevision.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\FarmacoPresentacion.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Servicio.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerServicios.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\controller\ControllerDetalleIngresoRevisionReceta.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\service\IDao.java
-C:\Users\kenne\Documents\NetBeansProjects\ProyectoTres\src\main\java\com\ulatina\proyecto\model\Paciente.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Receta.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Presentacion.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerReceta.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Servicio.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerRevision.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerUsuario.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerPaciente.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/service/ControlProcAlmac.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/DetalleIngresosRevisionReceta.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerServicios.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/service/Conector.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Usuario.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerDetalleIngresoRevisionReceta.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Revision.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerFarmaco.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Farmaco.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerIngreso.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerFarmacoPresentacion.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/FarmacoPresentacion.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Ingreso.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/controller/ControllerPresentacion.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/tester/TesterUsuario.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/service/IDao.java
+/Users/sebastianvargasr/Desktop/Proyecto III/Ultimo Proyecto Git/ProyectoTres/src/main/java/com/ulatina/proyecto/model/Paciente.java

@@ -97,14 +97,14 @@ public class ControllerUsuario implements Serializable {
         return null;
     }
 
-    public void logout() {
+    public String logout() {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
                     .invalidateSession();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "index.xhtml";
     }
 
     public void redirect(String url) {
