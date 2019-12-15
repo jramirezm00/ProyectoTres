@@ -134,7 +134,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="main-content">
             <!-- Navbar -->
             <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -167,7 +167,7 @@
             </div>
 
             <div class="container-fluid mt--7">
-                
+
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
@@ -180,54 +180,52 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Identification">
-                                    <p:outputLabel value="#{users.id}" />
-                                </p:column>
-
-                                <p:column headerText="Name">
-                                    <h:outputText value="#{users.nombre}" />
-                                </p:column>
-
-                                <p:column headerText="Direction">
-                                    <h:outputText value="#{users.direccion}" />
-                                </p:column>
-
-                                <p:column headerText="Phone">
-                                    <h:outputText value="#{users.telefono}" />
-                                </p:column>
-                                <p:column headerText="Service">
-                                    <h:outputText value="#{users.nombreServicio}" />
-                                </p:column>
-
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information">
+                                    <p:column headerText="Identification">
+                                        <p:outputLabel value="#{users.id}" />
+                                    </p:column>
+                                    <p:column headerText="Name">
+                                        <h:outputText value="#{users.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Direction">
+                                        <h:outputText value="#{users.direccion}" />
+                                    </p:column>
+                                    <p:column headerText="Phone">
+                                        <h:outputText value="#{users.telefono}" />
+                                    </p:column>
+                                    <p:column headerText="Service">
+                                        <h:outputText value="#{users.nombreServicio}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
 
             <!-- Footer -->
             <footer class="footer">
-                    <div class="row align-items-center justify-content-xl-between">
-                        <div class="col-xl-6">
-                            <div class="copyright text-center text-xl-left text-muted">
-                                &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                                <li class="nav-item">
-                                    <span class="nav-link">Proyecto III</span>
-                                </li>
-                                <li class="nav-item">
-                                    <span class="nav-link">Universidad Latina de Costa Rica</span>
-                                </li>
-                            </ul>
+                <div class="row align-items-center justify-content-xl-between">
+                    <div class="col-xl-6">
+                        <div class="copyright text-center text-xl-left text-muted">
+                            &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
                         </div>
                     </div>
-                </footer>
+                    <div class="col-xl-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                            <li class="nav-item">
+                                <span class="nav-link">Proyecto III</span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link">Universidad Latina de Costa Rica</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <script src="/ProyectoTres/assets/js/plugins/jquery/dist/jquery.min.js"></script>
