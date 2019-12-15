@@ -124,9 +124,11 @@
                     <hr class="my-3"/>
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="ni ni-curved-next"></i> Log Out
-                            </a>
+                            <h:form>
+                                <p:commandLink action="#{controllerUsuario.logout}" class="nav-link" ajax="false">
+                                    <i class="ni ni-curved-next"></i> Log Out
+                                </p:commandLink>
+                            </h:form>
                         </li>
                     </ul>
                 </div>
@@ -151,14 +153,14 @@
             </nav>
             <!-- End Navbar -->
 
-            <div class="header pb-6 pt-5 pt-md-6" 
-                 style="background-image: url('https://static5.depositphotos.com/1008594/447/v/950/depositphotos_4478648-stock-illustration-medicine-seamless-pattern.jpg')">
-                <div class="container-fluid">
-                    <div class="header-body" >
-                        <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;z-index: 2;
-                              text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
-                            Add Patients
-                        </span>
+            <div style="background: rgba(0, 0, 0, 0.3) !important;">
+                <div class="header pb-6 pt-5 pt-md-6" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),url('https://static5.depositphotos.com/1008594/447/v/950/depositphotos_4478648-stock-illustration-medicine-seamless-pattern.jpg');">
+                    <div class="container-fluid">
+                        <div class="header-body">
+                            <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;background: transparent;">
+                                Add Patient
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

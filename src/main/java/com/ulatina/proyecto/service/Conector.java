@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Conector implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private final String DB_URL = "jdbc:mysql://localhost:3306/ProyectoTresDemo?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&useSSL=false";
 
     //Database credentials
