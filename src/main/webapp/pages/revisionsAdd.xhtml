@@ -187,19 +187,19 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Doctor</label>
-                                                    <h:selectOneMenu value="#{controllerRevision.doctorSeleccionado}" converter="usuarioConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                    <h:selectOneListbox id="selectDoctor" value="#{controllerRevision.doctorSeleccionado}" converter="usuarioConverter"
+                                                        class="form-control" style="height: 100px;">
                                                         <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
-                                                    </h:selectOneMenu>
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Admission</label>
-                                                    <h:selectOneMenu value="#{controllerRevision.ingresoSeleccionado}" converter="ingresoConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                    <h:selectOneListbox id="selectAdmission" value="#{controllerRevision.ingresoSeleccionado}" converter="ingresoConverter"
+                                                        class="form-control" style="height: 100px;">
                                                         <f:selectItems value="#{controllerIngreso.ingresos}" var="listaIngresos" itemLabel="#{listaIngresos.nombrePaciente}" itemValue="#{listaIngresos}" />
-                                                    </h:selectOneMenu>
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                         </div>

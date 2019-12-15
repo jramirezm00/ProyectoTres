@@ -186,19 +186,19 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Drug</label>
-                                                    <h:selectOneMenu value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                        <f:selectItems value="#{controllerFarmaco.farmacos}" var="listaFarmacos" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
-                                                    </h:selectOneMenu>
+                                                    <h:selectOneListbox id="selectDrug" value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" 
+                                                        class="form-control" style="height: 100px;">
+                                                        <f:selectItems var="listaFarmacos" value="#{controllerFarmaco.farmacos}" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Presentation</label>
-                                                    <h:selectOneMenu value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                    <h:selectOneListbox id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
+                                                        class="form-control" style="height: 100px;">
                                                         <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
-                                                    </h:selectOneMenu>
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,10 +220,10 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Doctor</label>
-                                                    <h:selectOneMenu value="#{controllerReceta.doctorSeleccionado}" converter="usuarioConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                    <h:selectOneListbox id="selectDoctor" value="#{controllerReceta.doctorSeleccionado}" converter="usuarioConverter" 
+                                                        class="form-control" style="height: 100px;">
                                                         <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
-                                                    </h:selectOneMenu>
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                         </div>

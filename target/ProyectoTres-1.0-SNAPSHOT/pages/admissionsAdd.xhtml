@@ -184,19 +184,19 @@
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <label class="form-control-label">Patient</label><br/> 
-                                                <h:selectOneMenu id="selectOne" value="#{controllerIngreso.pacienteSeleccionado}" converter="pacienteConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                    <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                    <f:selectItems value="#{controllerPaciente.pacientes}" var="listaPacientes" itemLabel="#{listaPacientes.nombre}" itemValue="#{listaPacientes}" />
-                                                </h:selectOneMenu>
+                                                <label class="form-control-label">Patient</label><br/>
+                                                <h:selectOneListbox id="selectOnee" value="#{controllerIngreso.pacienteSeleccionado}" converter="pacienteConverter" 
+                                                    class="form-control" style="height: 100px;">
+                                                    <f:selectItems var="listaPacientess" value="#{controllerPaciente.pacientes}" itemLabel="#{listaPacientess.nombre}" itemValue="#{listaPacientess}" />
+                                                </h:selectOneListbox>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Service</label><br/> 
-                                                    <h:selectOneMenu id="selectThree" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue="#{null}" />
-                                                        <f:selectItems value="#{controllerServicios.servicios}" var="listaServicios" itemLabel="#{listaServicios.descripcion}" itemValue="#{listaServicios}" />
-                                                    </h:selectOneMenu>
+                                                    <h:selectOneListbox id="selectOne" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter"
+                                                        class="form-control" style="height: 100px;">
+                                                        <f:selectItems var="listaServicioss" value="#{controllerServicios.servicios}" itemLabel="#{listaServicioss.descripcion}" itemValue="#{listaServicioss}" />
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                         </div>

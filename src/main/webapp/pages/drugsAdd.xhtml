@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta charset="utf-8" />
@@ -232,14 +233,17 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-last-name">Capsule</label>
-                                                    <p:inputText class="form-control" placeholder="Amount(Price)"/>
+                                                    <label class="form-control-label" for="input-last-name">Presentation</label>
+                                                    <h:selectOneListbox id="selectPresentation" value="#{controllerDrug.presentacionSeleccionada}" converter="presentacionConverter" 
+                                                        class="form-control" style="height: 100px;">
+                                                        <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Tablet</label>
-                                                    <p:inputText class="form-control" placeholder="Amount(Price)"/>
+                                                    <label class="form-control-label" for="input-first-name">Price</label>
+                                                    <p:inputText class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12" >
