@@ -5,8 +5,6 @@
  */
 package com.ulatina.proyecto.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author josepabloramirez

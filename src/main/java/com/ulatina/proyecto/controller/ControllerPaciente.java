@@ -8,7 +8,6 @@ package com.ulatina.proyecto.controller;
 import com.ulatina.proyecto.model.Paciente;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import java.io.Serializable;
-import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -62,6 +61,15 @@ public class ControllerPaciente implements Serializable {
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarPaciente(this.idPaciente, this.nombre, this.idSeguroSocial, this.direccion, this.telefono);
+    }
+
+    public String redireccionarModificar(Integer idPaciente, String nombre, Integer idSeguroSocial, String direccion, String telefono) {
+        this.idPaciente = idPaciente;
+        this.nombre = nombre;
+        this.idSeguroSocial = idSeguroSocial;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        return "patientsModify?faces-redirect=true&idPaciente= " + this.idPaciente;
     }
 
     public List<Paciente> getPacientes() {

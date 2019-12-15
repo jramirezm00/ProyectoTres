@@ -623,9 +623,10 @@ public class ControlProcAlmac implements Serializable {
         try {
             stmt = conn.prepareCall(SP_EDITAR_PACIENTE);
             stmt.setInt(1, id);
-            stmt.setInt(2, idSeguroSocial);
-            stmt.setString(3, direccion);
-            stmt.setString(4, telefono);
+            stmt.setString(2, nombre);
+            stmt.setInt(3, idSeguroSocial);
+            stmt.setString(4, direccion);
+            stmt.setString(5, telefono);
             stmt.execute();
         } catch (Exception e) {
             e.printStackTrace();

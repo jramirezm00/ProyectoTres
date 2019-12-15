@@ -179,23 +179,28 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="recipes" value="#{controllerReceta.recetas}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Drug">
-                                    <h:outputText value="#{recipes.medicamento}" />
-                                </p:column>
-                                <p:column headerText="Presentation">
-                                    <h:outputText value="#{recipes.presentacionFarmaco}" />
-                                </p:column>
-                                <p:column headerText="Quantity">
-                                    <h:outputText value="#{recipes.cantidad}" />
-                                </p:column>
-                                <p:column headerText="Date">
-                                    <h:outputText value="#{recipes.fechaReceta}" />
-                                </p:column>
-                                <p:column headerText="Doctor">
-                                    <h:outputText value="#{recipes.nombreDoctor}" />
-                                </p:column>
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="recipes" value="#{controllerReceta.recetas}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                    <p:column headerText="Drug">
+                                        <h:outputText value="#{recipes.medicamento}" />
+                                    </p:column>
+                                    <p:column headerText="Presentation">
+                                        <h:outputText value="#{recipes.presentacionFarmaco}" />
+                                    </p:column>
+                                    <p:column headerText="Quantity">
+                                        <h:outputText value="#{recipes.cantidad}" />
+                                    </p:column>
+                                    <p:column headerText="Date">
+                                        <h:outputText value="#{recipes.fechaReceta}" />
+                                    </p:column>
+                                    <p:column headerText="Doctor">
+                                        <h:outputText value="#{recipes.nombreDoctor}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerReceta.redireccionarModificar(recipes.idReceta)}" class="btn btn-primary my-2"></h:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>

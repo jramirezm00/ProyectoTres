@@ -11,12 +11,14 @@ import com.ulatina.proyecto.model.Servicio;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import java.io.Serializable;
-import java.sql.Date;
+import static java.lang.Integer.parseInt;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -65,8 +67,14 @@ public class ControllerIngreso implements Serializable {
     }
 
     public void editar() {
+        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarIngreso(this.idIngreso, this.fechaSalida);
+    }
+
+    public String redireccionarModificar(Integer idIngreso) {
+        this.idIngreso = idIngreso;
+        return "admissionsModify?faces-redirect=true&ingresoId= " + this.idIngreso;
     }
 
     public List<Ingreso> getIngresos() {

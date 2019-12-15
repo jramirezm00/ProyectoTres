@@ -178,19 +178,19 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <h:form>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Name</label>
-                                                    <p:inputText class="form-control"/>
+                                                    <p:inputText class="form-control" value="#{controllerPaciente.nombre}" placeholder="#{controllerPaciente.nombre}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Social Security Number</label>
-                                                    <p:inputText class="form-control"/>
+                                                    <p:inputText class="form-control" value="#{controllerPaciente.idSeguroSocial}" placeholder="#{controllerPaciente.idSeguroSocial}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -198,31 +198,23 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Address</label>
-                                                    <p:inputText class="form-control"/>
+                                                    <p:inputText class="form-control" value="#{controllerPaciente.direccion}" placeholder="#{controllerPaciente.direccion}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-last-name">Phone</label>
-                                                    <p:inputText class="form-control"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Birthday</label>
-                                                    <input type="date" id="input-direction" class="form-control form-control-alternative"/>
+                                                    <p:inputText class="form-control" value="#{controllerPaciente.telefono}" placeholder="#{controllerPaciente.telefono}"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12" >
-                                                <button type="button" class="btn btn-success" style="float: right;">Update</button>
+                                                <h:commandButton class="btn btn-success" style="float: right;" value="Update" action="#{controllerPaciente.editar()}"></h:commandButton>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </h:form>
                             </div>
                         </div>
                     </div>

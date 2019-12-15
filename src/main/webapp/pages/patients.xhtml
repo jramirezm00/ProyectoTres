@@ -179,23 +179,28 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="pacients" value="#{controllerPaciente.pacientes}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Name">
-                                    <p:outputLabel value="#{pacients.nombre}"/>
-                                </p:column>
-                                <p:column headerText="Social Security Number">
-                                    <p:outputLabel value="#{pacients.idSeguroSocial}"/>
-                                </p:column>
-                                <p:column headerText="Address">
-                                    <h:outputText value="#{pacients.direccion}" />
-                                </p:column>
-                                <p:column headerText="Phone">
-                                    <h:outputText value="#{pacients.telefono}" />
-                                </p:column>
-                                <p:column headerText="Birthday">
-                                    <h:outputText value="#{pacients.fechaNacimiento}" />
-                                </p:column>
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="pacients" value="#{controllerPaciente.pacientes}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                    <p:column headerText="Name">
+                                        <p:outputLabel value="#{pacients.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Social Security Number">
+                                        <p:outputLabel value="#{pacients.idSeguroSocial}"/>
+                                    </p:column>
+                                    <p:column headerText="Address">
+                                        <h:outputText value="#{pacients.direccion}" />
+                                    </p:column>
+                                    <p:column headerText="Phone">
+                                        <h:outputText value="#{pacients.telefono}" />
+                                    </p:column>
+                                    <p:column headerText="Birthday">
+                                        <h:outputText value="#{pacients.fechaNacimiento}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerPaciente.redireccionarModificar(pacients.idPaciente,pacients.nombre,pacients.idSeguroSocial,pacients.direccion,pacients.telefono)}" class="btn btn-primary my-2"></h:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>

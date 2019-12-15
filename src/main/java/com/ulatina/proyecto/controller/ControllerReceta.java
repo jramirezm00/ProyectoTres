@@ -24,30 +24,30 @@ import javax.annotation.PostConstruct;
  */
 @ManagedBean(name = "controllerReceta")
 @SessionScoped
-public class ControllerReceta implements Serializable{
+public class ControllerReceta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private List<Receta> recetas = new ArrayList<Receta>();
-    
+
     private Farmaco farmacoSeleccionado;
-    
+
     private String fechaReceta;
-    
+
     private Integer cantidad;
-    
+
     private Presentacion presentacionSeleccionada;
-    
+
     private Usuario doctorSeleccionado;
-    
+
     private Integer idReceta;
 
     public ControllerReceta() {
 
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         listar();
     }
 
@@ -62,8 +62,14 @@ public class ControllerReceta implements Serializable{
     }
 
     public void editar() {
+        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarReceta(this.idReceta, this.cantidad);
+    }
+
+    public String redireccionarModificar(Integer idReceta) {
+        this.idReceta = idReceta;
+        return "recipesModify?faces-redirect=true&idReceta= " + this.idReceta;
     }
 
     public List<Receta> getRecetas() {

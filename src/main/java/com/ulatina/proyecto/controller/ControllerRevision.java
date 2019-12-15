@@ -64,6 +64,11 @@ public class ControllerRevision implements Serializable {
         usu.editarRevision(this.idRevision, this.informe);
     }
 
+    public String redireccionarModificar(Integer idRevision) {
+        this.idRevision = idRevision;
+        return "revisionsModify?faces-redirect=true&idRevision= " + this.idRevision;
+    }
+
     public List<Revision> getRevisiones() {
         return revisiones;
     }

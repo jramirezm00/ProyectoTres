@@ -166,7 +166,7 @@
             </div>
 
             <div class="container-fluid mt--7">
-                
+
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
@@ -179,23 +179,25 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="revisions" value="#{controllerRevision.revisiones}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Doctor">
-                                    <p:outputLabel value="#{revisions.nombreDoctor}" />
-                                </p:column>
-
-                                <p:column headerText="Patient">
-                                    <p:outputLabel value="#{revisions.nombrePaciente}" />
-                                </p:column>
-
-                                <p:column headerText="Revision Date">
-                                    <p:outputLabel value="#{revisions.fechaRevision}" />
-                                </p:column>
-
-                                <p:column headerText="Report">
-                                    <p:outputLabel value="#{revisions.informe}" />
-                                </p:column>
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="revisions" value="#{controllerRevision.revisiones}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                    <p:column headerText="Doctor">
+                                        <p:outputLabel value="#{revisions.nombreDoctor}" />
+                                    </p:column>
+                                    <p:column headerText="Patient">
+                                        <p:outputLabel value="#{revisions.nombrePaciente}" />
+                                    </p:column>
+                                    <p:column headerText="Revision Date">
+                                        <p:outputLabel value="#{revisions.fechaRevision}" />
+                                    </p:column>
+                                    <p:column headerText="Report">
+                                        <p:outputLabel value="#{revisions.informe}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerRevision.redireccionarModificar(revisions.idRevision)}" class="btn btn-primary my-2"></h:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>

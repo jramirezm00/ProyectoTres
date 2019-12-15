@@ -188,7 +188,7 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">Doctor</label>
                                                     <h:selectOneMenu value="#{controllerRevision.doctorSeleccionado}" converter="usuarioConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <!-- <f:selectItem itemLabel="" itemValue= "#{null}"/> -->
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
                                                     </h:selectOneMenu>
                                                 </div>
@@ -197,7 +197,7 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">Admission</label>
                                                     <h:selectOneMenu value="#{controllerRevision.ingresoSeleccionado}" converter="ingresoConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <!-- <f:selectItem itemLabel="" itemValue= "#{null}"/> -->
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerIngreso.ingresos}" var="listaIngresos" itemLabel="#{listaIngresos.nombrePaciente}" itemValue="#{listaIngresos}" />
                                                     </h:selectOneMenu>
                                                 </div>
@@ -207,7 +207,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Revision Date</label>
-                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerRevision.fechaRevision}"/>
+                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerRevision.fechaRevision}" placeholder="XX-XX-XXXX"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
