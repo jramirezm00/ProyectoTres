@@ -177,33 +177,27 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Drugs" value="">
+                            <p:dataTable var="drugs" value="#{controllerFarmacoPresentacion.farmacosPresentaciones}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Clinic Name">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{drugs.nombreComercial}" />
                                 </p:column>
-
                                 <p:column headerText="Commercial Name">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{drugs.nombreComercial}" />
                                 </p:column>
-
                                 <p:column headerText="Contains">
-                                    <h:outputText value="" />
-                                </p:column>
-
-                                <p:column headerText="Descriptions">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{drugs.compuestoQuimico}" />
                                 </p:column>
                                 <p:column headerText="Supplied By">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{drugs.codigoProveedor}" />
                                 </p:column>
                                 <p:column headerText="Location">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{drugs.ubicacion}" />
                                 </p:column>
                                 <p:column headerText="Presentation">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{drugs.nombrePresentacion}" />
                                 </p:column>
                                 <p:column headerText="Sale price">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{drugs.precio}" />
                                 </p:column>
                             </p:dataTable>
                         </div>

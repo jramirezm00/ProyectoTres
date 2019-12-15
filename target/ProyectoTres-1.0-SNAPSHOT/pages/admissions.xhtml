@@ -178,24 +178,21 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="admission" value="">
+                            <p:dataTable var="admission" value="#{controllerIngreso.ingresos}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Patient">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{admission.nombrePaciente}" />
                                 </p:column>
 
                                 <p:column headerText="Service">
-                                    <h:outputText value="" />
-                                </p:column>
-
-                                <p:column headerText="Diagnost">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{admission.nombreServicio}" />
                                 </p:column>
 
                                 <p:column headerText="Admission Date">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{admission.fechaIngreso}" />
                                 </p:column>
+                                
                                 <p:column headerText="Egress Date">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{admission.fechaSalida}" />
                                 </p:column>
                             </p:dataTable>
                         </div>

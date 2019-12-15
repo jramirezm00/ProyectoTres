@@ -15,9 +15,9 @@ public class Ingreso {
 
     private Integer idIngreso;
 
-    private Date fechaIngreso;
+    private String fechaIngreso;
 
-    private Date fechaSalida;
+    private String fechaSalida;
 
     private Integer idPaciente;
 
@@ -31,7 +31,7 @@ public class Ingreso {
 
     }
 
-    public Ingreso(Date fechaIngreso, Date fechaSalida, Integer idPaciente, Integer idServicio) {
+    public Ingreso(String fechaIngreso, String fechaSalida, Integer idPaciente, Integer idServicio) {
         this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;
         this.idPaciente = idPaciente;
@@ -46,19 +46,19 @@ public class Ingreso {
         this.idIngreso = idIngreso;
     }
 
-    public Date getFechaIngreso() {
+    public String getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 

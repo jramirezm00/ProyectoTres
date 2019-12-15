@@ -7,13 +7,12 @@ package com.ulatina.proyecto.controller;
 
 import com.ulatina.proyecto.model.Servicio;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -21,15 +20,23 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerServicios")
 @SessionScoped
-public class ControllerServicios {
+public class ControllerServicios implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     private List<Servicio> servicios = new ArrayList<>();
+
     private String nombre;
-    private int id;
+
+    private Integer id;
 
     public ControllerServicios() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
     }
 
     public void listar() {
@@ -68,11 +75,11 @@ public class ControllerServicios {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

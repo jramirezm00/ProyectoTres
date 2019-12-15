@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Revision {
 
-    private Integer id;
+    private Integer idRevision;
 
     private Integer idDoctor;
 
@@ -23,7 +23,7 @@ public class Revision {
 
     private String nombrePaciente;
 
-    private Date fechaRevision;
+    private String fechaRevision;
 
     private String informe;
 
@@ -31,8 +31,8 @@ public class Revision {
 
     }
 
-    public Revision(Integer id, Integer idDoctor, String nombreDoctor, Integer idIngreso, String nombrePaciente, Date fechaRevision, String informe) {
-        this.id = id;
+    public Revision(Integer id, Integer idDoctor, String nombreDoctor, Integer idIngreso, String nombrePaciente, String fechaRevision, String informe) {
+        this.idRevision = id;
         this.idDoctor = idDoctor;
         this.nombreDoctor = nombreDoctor;
         this.idIngreso = idIngreso;
@@ -41,19 +41,19 @@ public class Revision {
         this.informe = informe;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdRevision() {
+        return idRevision;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdRevision(Integer idRevision) {
+        this.idRevision = idRevision;
     }
 
-    public Date getFechaRevision() {
+    public String getFechaRevision() {
         return fechaRevision;
     }
 
-    public void setFechaRevision(Date fechaRevision) {
+    public void setFechaRevision(String fechaRevision) {
         this.fechaRevision = fechaRevision;
     }
 

@@ -8,15 +8,15 @@ package com.ulatina.proyecto.controller;
 import com.ulatina.proyecto.model.Ingreso;
 import com.ulatina.proyecto.model.Paciente;
 import com.ulatina.proyecto.model.Servicio;
+import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -24,18 +24,31 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerIngreso")
 @SessionScoped
-public class ControllerIngreso {
+public class ControllerIngreso implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private List<Ingreso> ingresos = new ArrayList<>();
-    private Paciente idPaciente;
-    private Servicio idServicio;
-    private Date fechaIngreso;
-    private Date fechaSalida;
-    private int idIngreso;
+
+    private Paciente pacienteSeleccionado;
+
+    private Servicio servicioSeleccionado;
+
+    private Usuario doctorSeleccionado;
+
+    private String fechaIngreso;
+
+    private String fechaSalida;
+
+    private Integer idIngreso;
 
     public ControllerIngreso() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
     }
 
     public void listar() {
@@ -45,7 +58,10 @@ public class ControllerIngreso {
 
     public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearIngreso(this.idPaciente.getIdPaciente(), this.idServicio.getIdServicio(), this.fechaIngreso, this.fechaSalida);
+        System.out.println("ME ESTAN LLAMANDO!!!");
+        System.out.println(this.pacienteSeleccionado.getNombre());
+        System.out.println(this.servicioSeleccionado.getDescripcion());
+        usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);
     }
 
     public void editar() {
@@ -61,44 +77,52 @@ public class ControllerIngreso {
         this.ingresos = ingresos;
     }
 
-    public Paciente getIdPaciente() {
-        return idPaciente;
+    public Paciente getPacienteSeleccionado() {
+        return pacienteSeleccionado;
     }
 
-    public void setIdPaciente(Paciente idPaciente) {
-        this.idPaciente = idPaciente;
+    public void setPacienteSeleccionado(Paciente pacienteSeleccionado) {
+        this.pacienteSeleccionado = pacienteSeleccionado;
     }
 
-    public Servicio getIdServicio() {
-        return idServicio;
+    public Servicio getServicioSeleccionado() {
+        return servicioSeleccionado;
     }
 
-    public void setIdServicio(Servicio idServicio) {
-        this.idServicio = idServicio;
+    public void setServicioSeleccionado(Servicio servicioSeleccionado) {
+        this.servicioSeleccionado = servicioSeleccionado;
     }
 
-    public Date getFechaIngreso() {
+    public String getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public int getIdIngreso() {
+    public Integer getIdIngreso() {
         return idIngreso;
     }
 
-    public void setIdIngreso(int idIngreso) {
+    public void setIdIngreso(Integer idIngreso) {
         this.idIngreso = idIngreso;
+    }
+
+    public Usuario getDoctorSeleccionado() {
+        return doctorSeleccionado;
+    }
+
+    public void setDoctorSeleccionado(Usuario doctorSeleccionado) {
+        this.doctorSeleccionado = doctorSeleccionado;
     }
 
 }

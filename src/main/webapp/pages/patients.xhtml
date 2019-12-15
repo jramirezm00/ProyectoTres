@@ -156,7 +156,7 @@
                 <div class="container-fluid">
                     <div class="header-body" >
                         <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;z-index: 2;
-                            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
+                              text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
                             Patients
                         </span>
                     </div>
@@ -164,7 +164,7 @@
             </div>
 
             <div class="container-fluid mt--7">
-                
+
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
@@ -177,31 +177,25 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Pacients" value="">
-                            <p:column headerText="Id">
-                                <h:outputText value="" />
-                            </p:column>
-
-                            <p:column headerText="Name">
-                                <h:outputText value="" />
-                            </p:column>
-
-                            <p:column headerText="Social Security Number">
-                                <h:outputText value="" />
-                            </p:column>
-
-                            <p:column headerText="Address">
-                                <h:outputText value="" />
-                            </p:column>
-                            <p:column headerText="Phone">
-                                <h:outputText value="" />
-                            </p:column>
-                            <p:column headerText="Birthday">
-                                <h:outputText value="" />
-                            </p:column>
-                        </p:dataTable>
+                            <p:dataTable var="pacients" value="#{controllerPaciente.pacientes}" emptyMessage="We couldn't find any information">
+                                <p:column headerText="Name">
+                                    <p:outputLabel value="#{pacients.nombre}"/>
+                                </p:column>
+                                <p:column headerText="Social Security Number">
+                                    <p:outputLabel value="#{pacients.idSeguroSocial}"/>
+                                </p:column>
+                                <p:column headerText="Address">
+                                    <h:outputText value="#{pacients.direccion}" />
+                                </p:column>
+                                <p:column headerText="Phone">
+                                    <h:outputText value="#{pacients.telefono}" />
+                                </p:column>
+                                <p:column headerText="Birthday">
+                                    <h:outputText value="#{pacients.fechaNacimiento}" />
+                                </p:column>
+                            </p:dataTable>
                         </div>
-                    </div>
+                        </div>
                 </div>
 
                 <!-- Footer -->

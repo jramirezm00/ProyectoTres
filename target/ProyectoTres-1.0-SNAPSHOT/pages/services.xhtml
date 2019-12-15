@@ -156,7 +156,7 @@
                 <div class="container-fluid">
                     <div class="header-body" >
                         <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;z-index: 2;
-                            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
+                              text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
                             Services
                         </span>
                     </div>
@@ -164,7 +164,7 @@
             </div>
 
             <div class="container-fluid mt--7">
-                
+
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
@@ -177,15 +177,13 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Services" value="">
+                            <p:dataTable var="services" value="#{controllerServicios.servicios}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Id">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{services.idServicio}" />
                                 </p:column>
-
                                 <p:column headerText="Description">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{services.descripcion}" />
                                 </p:column>
-
                             </p:dataTable>
                         </div>
                     </div>

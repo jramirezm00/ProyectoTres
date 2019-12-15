@@ -10,10 +10,7 @@ import com.ulatina.proyecto.model.Ingreso;
 import com.ulatina.proyecto.model.Receta;
 import com.ulatina.proyecto.model.Revision;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerDetalleIngresoRevisionReceta")
 @SessionScoped
-public class ControllerDetalleIngresoRevisionReceta {
+public class ControllerDetalleIngresoRevisionReceta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,7 +42,7 @@ public class ControllerDetalleIngresoRevisionReceta {
 
     public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getId(), this.idReceta.getIdReceta());
+        usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getIdRevision(), this.idReceta.getIdReceta());
     }
 
     public List<DetalleIngresosRevisionReceta> getDetalles() {

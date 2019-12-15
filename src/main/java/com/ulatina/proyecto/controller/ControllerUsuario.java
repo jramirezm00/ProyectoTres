@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -44,11 +45,20 @@ public class ControllerUsuario implements Serializable {
 
     private String tipoUsuario;
 
-    private List<Usuario> usuarios = new ArrayList<>();
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     private Usuario usuarioConect;
 
+    private List<Usuario> doctores = new ArrayList<Usuario>();
+
     public ControllerUsuario() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
+        listarDoctores();
     }
 
     public void listar() {
@@ -63,15 +73,12 @@ public class ControllerUsuario implements Serializable {
 
     public void editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        System.out.println(this.usuarioConect.getId());
-        System.out.println(this.nombre);
-        System.out.println(this.direccion);
-        System.out.println(this.telefono);
         usu.editarUsuario(this.usuarioConect.getId(), this.nombre, this.direccion, this.telefono);
     }
 
     public void crear_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
+        System.out.println(this.tipoUsuario);
         if (this.servicio == null) {
             usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, 0);
         } else {
@@ -97,14 +104,15 @@ public class ControllerUsuario implements Serializable {
         return null;
     }
 
-    public void logout() {
+    public String logout() {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
                     .invalidateSession();
-
+            return "index.xhtml?faces-redirect=true";
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void redirect(String url) {
@@ -119,6 +127,11 @@ public class ControllerUsuario implements Serializable {
                             + "faces/pages/" + url);
         } catch (IOException e) {
         }
+    }
+
+    public void listarDoctores() {
+        ControlProcAlmac usu = new ControlProcAlmac();
+        this.doctores = usu.listarDoctores();
     }
 
     public String getUsuario() {
@@ -200,4 +213,13 @@ public class ControllerUsuario implements Serializable {
     public void setUsuarioConect(Usuario usuarioConect) {
         this.usuarioConect = usuarioConect;
     }
+
+    public List<Usuario> getDoctores() {
+        return doctores;
+    }
+
+    public void setDoctores(List<Usuario> doctores) {
+        this.doctores = doctores;
+    }
+
 }

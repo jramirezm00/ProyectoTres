@@ -6,18 +6,16 @@
 package com.ulatina.proyecto.controller;
 
 import com.ulatina.proyecto.model.Ingreso;
-import com.ulatina.proyecto.model.Receta;
 import com.ulatina.proyecto.model.Revision;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -25,19 +23,29 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerRevision")
 @SessionScoped
-public class ControllerRevision {
+public class ControllerRevision implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private List<Revision> revisiones = new ArrayList<>();
-    private int id;
-    private Ingreso idIngreso;
-    private Receta idReceta;
-    private Usuario idDoctor;
-    private Date fechaRevision;
+    private List<Revision> revisiones = new ArrayList<Revision>();
+
+    private Integer idRevision;
+
+    private Ingreso ingresoSeleccionado;
+
+    private Usuario doctorSeleccionado;
+
+    private String fechaRevision;
+
     private String informe;
 
     public ControllerRevision() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
     }
 
     public void listar() {
@@ -46,13 +54,14 @@ public class ControllerRevision {
     }
 
     public void agregar() {
+        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevision(this.idDoctor.getId(), this.idIngreso.getIdIngreso(), this.fechaRevision, this.informe);
+        usu.crearRevision(this.doctorSeleccionado.getId(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
     }
 
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarRevision(this.id, this.informe);
+        usu.editarRevision(this.idRevision, this.informe);
     }
 
     public List<Revision> getRevisiones() {
@@ -63,43 +72,35 @@ public class ControllerRevision {
         this.revisiones = revisiones;
     }
 
-    public int getId() {
-        return id;
+    public Integer getIdRevision() {
+        return idRevision;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdRevision(Integer idRevision) {
+        this.idRevision = idRevision;
     }
 
-    public Ingreso getIdIngreso() {
-        return idIngreso;
+    public Ingreso getIngresoSeleccionado() {
+        return ingresoSeleccionado;
     }
 
-    public void setIdIngreso(Ingreso idIngreso) {
-        this.idIngreso = idIngreso;
+    public void setIngresoSeleccionado(Ingreso ingresoSeleccionado) {
+        this.ingresoSeleccionado = ingresoSeleccionado;
     }
 
-    public Receta getIdReceta() {
-        return idReceta;
+    public Usuario getDoctorSeleccionado() {
+        return doctorSeleccionado;
     }
 
-    public void setIdReceta(Receta idReceta) {
-        this.idReceta = idReceta;
+    public void setDoctorSeleccionado(Usuario doctorSeleccionado) {
+        this.doctorSeleccionado = doctorSeleccionado;
     }
 
-    public Usuario getIdDoctor() {
-        return idDoctor;
-    }
-
-    public void setIdDoctor(Usuario idDoctor) {
-        this.idDoctor = idDoctor;
-    }
-
-    public Date getFechaRevision() {
+    public String getFechaRevision() {
         return fechaRevision;
     }
 
-    public void setFechaRevision(Date fechaRevision) {
+    public void setFechaRevision(String fechaRevision) {
         this.fechaRevision = fechaRevision;
     }
 

@@ -10,14 +10,13 @@ import com.ulatina.proyecto.model.Presentacion;
 import com.ulatina.proyecto.model.Receta;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -25,20 +24,31 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerReceta")
 @SessionScoped
-public class ControllerReceta {
+public class ControllerReceta implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    private List<Receta> recetas = new ArrayList<>();
-    private Farmaco idFarmaco;
-    private Date fechaReceta;
-    private int cantidad;
-    private Presentacion idPresentacion;
-    private Usuario idDoctor;
-    private int idReceta;
+    private List<Receta> recetas = new ArrayList<Receta>();
+    
+    private Farmaco farmacoSeleccionado;
+    
+    private String fechaReceta;
+    
+    private Integer cantidad;
+    
+    private Presentacion presentacionSeleccionada;
+    
+    private Usuario doctorSeleccionado;
+    
+    private Integer idReceta;
 
     public ControllerReceta() {
 
+    }
+    
+    @PostConstruct
+    public void init(){
+        listar();
     }
 
     public void listar() {
@@ -48,7 +58,7 @@ public class ControllerReceta {
 
     public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearReceta(this.idFarmaco.getIdFarmaco(), this.fechaReceta, this.cantidad, this.idPresentacion.getIdPresentacion(), this.idDoctor.getId());
+        usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getId());
     }
 
     public void editar() {
@@ -64,51 +74,51 @@ public class ControllerReceta {
         this.recetas = recetas;
     }
 
-    public Farmaco getIdFarmaco() {
-        return idFarmaco;
+    public Farmaco getFarmacoSeleccionado() {
+        return farmacoSeleccionado;
     }
 
-    public void setIdFarmaco(Farmaco idFarmaco) {
-        this.idFarmaco = idFarmaco;
+    public void setFarmacoSeleccionado(Farmaco farmacoSeleccionado) {
+        this.farmacoSeleccionado = farmacoSeleccionado;
     }
 
-    public Date getFechaReceta() {
+    public String getFechaReceta() {
         return fechaReceta;
     }
 
-    public void setFechaReceta(Date fechaReceta) {
+    public void setFechaReceta(String fechaReceta) {
         this.fechaReceta = fechaReceta;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public Presentacion getIdPresentacion() {
-        return idPresentacion;
+    public Presentacion getPresentacionSeleccionada() {
+        return presentacionSeleccionada;
     }
 
-    public void setIdPresentacion(Presentacion idPresentacion) {
-        this.idPresentacion = idPresentacion;
+    public void setPresentacionSeleccionada(Presentacion presentacionSeleccionada) {
+        this.presentacionSeleccionada = presentacionSeleccionada;
     }
 
-    public Usuario getIdDoctor() {
-        return idDoctor;
+    public Usuario getDoctorSeleccionado() {
+        return doctorSeleccionado;
     }
 
-    public void setIdDoctor(Usuario idDoctor) {
-        this.idDoctor = idDoctor;
+    public void setDoctorSeleccionado(Usuario doctorSeleccionado) {
+        this.doctorSeleccionado = doctorSeleccionado;
     }
 
-    public int getIdReceta() {
+    public Integer getIdReceta() {
         return idReceta;
     }
 
-    public void setIdReceta(int idReceta) {
+    public void setIdReceta(Integer idReceta) {
         this.idReceta = idReceta;
     }
 

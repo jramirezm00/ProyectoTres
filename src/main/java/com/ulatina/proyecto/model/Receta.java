@@ -15,7 +15,7 @@ public class Receta {
 
     private Integer idReceta;
 
-    private Date fechaReceta;
+    private String fechaReceta;
 
     private Integer cantidad;
 
@@ -35,7 +35,7 @@ public class Receta {
 
     }
 
-    public Receta(Date fechaReceta, Integer cantidad, Integer idFarmaco, Integer idPresentacion, Integer idDoctor) {
+    public Receta(String fechaReceta, Integer cantidad, Integer idFarmaco, Integer idPresentacion, Integer idDoctor) {
         this.fechaReceta = fechaReceta;
         this.cantidad = cantidad;
         this.idFarmaco = idFarmaco;
@@ -51,11 +51,11 @@ public class Receta {
         this.idReceta = idReceta;
     }
 
-    public Date getFechaReceta() {
+    public String getFechaReceta() {
         return fechaReceta;
     }
 
-    public void setFechaReceta(Date fechaReceta) {
+    public void setFechaReceta(String fechaReceta) {
         this.fechaReceta = fechaReceta;
     }
 

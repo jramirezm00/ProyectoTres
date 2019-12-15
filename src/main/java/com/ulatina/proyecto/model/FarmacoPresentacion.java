@@ -21,6 +21,14 @@ public class FarmacoPresentacion {
 
     private String nombrePresentacion;
 
+    private String compuestoQuimico;
+
+    private String nombrClinico;
+
+    private String ubicacion;
+
+    private String codigoProveedor;
+
     public FarmacoPresentacion() {
 
     }
@@ -69,6 +77,38 @@ public class FarmacoPresentacion {
 
     public void setNombrePresentacion(String nombrePresentacion) {
         this.nombrePresentacion = nombrePresentacion;
+    }
+
+    public String getCompuestoQuimico() {
+        return compuestoQuimico;
+    }
+
+    public void setCompuestoQuimico(String compuestoQuimico) {
+        this.compuestoQuimico = compuestoQuimico;
+    }
+
+    public String getNombrClinico() {
+        return nombrClinico;
+    }
+
+    public void setNombrClinico(String nombrClinico) {
+        this.nombrClinico = nombrClinico;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getCodigoProveedor() {
+        return codigoProveedor;
+    }
+
+    public void setCodigoProveedor(String codigoProveedor) {
+        this.codigoProveedor = codigoProveedor;
     }
 
 }

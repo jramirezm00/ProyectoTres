@@ -156,7 +156,7 @@
                 <div class="container-fluid">
                     <div class="header-body" >
                         <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;z-index: 2;
-                            text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
+                              text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">
                             Recipes
                         </span>
                     </div>
@@ -164,7 +164,7 @@
             </div>
 
             <div class="container-fluid mt--7">
-                
+
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
@@ -177,24 +177,21 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Recipes" value="">
-                                <p:column headerText="Id">
-                                    <h:outputText value="" />
-                                </p:column>
-
-                                <p:column headerText="Patient">
-                                    <h:outputText value="" />
-                                </p:column>
-
+                            <p:dataTable var="recipes" value="#{controllerReceta.recetas}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Drug">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{recipes.medicamento}" />
                                 </p:column>
-
+                                <p:column headerText="Presentation">
+                                    <h:outputText value="#{recipes.presentacionFarmaco}" />
+                                </p:column>
                                 <p:column headerText="Quantity">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{recipes.cantidad}" />
                                 </p:column>
                                 <p:column headerText="Date">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{recipes.fechaReceta}" />
+                                </p:column>
+                                <p:column headerText="Doctor">
+                                    <h:outputText value="#{recipes.nombreDoctor}" />
                                 </p:column>
                             </p:dataTable>
                         </div>

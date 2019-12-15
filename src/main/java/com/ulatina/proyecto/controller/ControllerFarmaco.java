@@ -7,14 +7,12 @@ package com.ulatina.proyecto.controller;
 
 import com.ulatina.proyecto.model.Farmaco;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -22,19 +20,31 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerFarmaco")
 @SessionScoped
-public class ControllerFarmaco {
+public class ControllerFarmaco implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     private List<Farmaco> farmacos = new ArrayList<>();
+    
     private String nombreComercial;
+    
     private String nombreClinico;
+    
     private String compuestoQuimico;
+    
     private String ubicacion;
+    
     private String codigoProveedor;
-    private int idRegistro;
+    
+    private Integer idRegistro;
 
     public ControllerFarmaco() {
+        
+    }
+    
+    @PostConstruct
+    public void init(){
+        listar();
     }
 
     public void listar() {
@@ -105,11 +115,11 @@ public class ControllerFarmaco {
         this.codigoProveedor = codigoProveedor;
     }
 
-    public int getIdRegistro() {
+    public Integer getIdRegistro() {
         return idRegistro;
     }
 
-    public void setIdRegistro(int idRegistro) {
+    public void setIdRegistro(Integer idRegistro) {
         this.idRegistro = idRegistro;
     }
     

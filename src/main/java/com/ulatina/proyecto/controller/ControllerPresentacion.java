@@ -7,14 +7,12 @@ package com.ulatina.proyecto.controller;
 
 import com.ulatina.proyecto.model.Presentacion;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -22,13 +20,24 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerPresentacion")
 @SessionScoped
-public class ControllerPresentacion {
+public class ControllerPresentacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private List<Presentacion> presentaciones = new ArrayList<>();
+    private List<Presentacion> presentaciones = new ArrayList<Presentacion>();
+
     private String nombrePresentacion;
-    private int id;
+
+    private Integer idPresentacion;
+
+    public ControllerPresentacion() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
+    }
 
     public void listar() {
         ControlProcAlmac usu = new ControlProcAlmac();
@@ -42,12 +51,12 @@ public class ControllerPresentacion {
 
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarPresentacion(this.id, this.nombrePresentacion);
+        usu.editarPresentacion(this.idPresentacion, this.nombrePresentacion);
     }
 
     public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarPresentacion(this.id);
+        usu.eliminarPresentacion(this.idPresentacion);
     }
 
     public List<Presentacion> getPresentaciones() {
@@ -66,11 +75,11 @@ public class ControllerPresentacion {
         this.nombrePresentacion = nombrePresentacion;
     }
 
-    public int getId() {
-        return id;
+    public Integer getId() {
+        return idPresentacion;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(Integer idPresentacion) {
+        this.idPresentacion = idPresentacion;
     }
 }

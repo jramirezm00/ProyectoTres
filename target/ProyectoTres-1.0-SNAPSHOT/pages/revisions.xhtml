@@ -177,25 +177,21 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Revisions" value="">
-                                <p:column headerText="Id">
-                                    <h:outputText value="" />
-                                </p:column>
-
+                            <p:dataTable var="revisions" value="#{controllerRevision.revisiones}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Doctor">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{revisions.nombreDoctor}" />
                                 </p:column>
 
                                 <p:column headerText="Patient">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{revisions.nombrePaciente}" />
                                 </p:column>
 
                                 <p:column headerText="Revision Date">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{revisions.fechaRevision}" />
                                 </p:column>
 
                                 <p:column headerText="Report">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{revisions.informe}" />
                                 </p:column>
                             </p:dataTable>
                         </div>

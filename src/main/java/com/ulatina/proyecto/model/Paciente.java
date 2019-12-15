@@ -23,13 +23,13 @@ public class Paciente {
 
     private Integer telefono;
 
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     public Paciente() {
 
     }
 
-    public Paciente(Integer idPaciente, String nombre, Integer idSeguroSocial, String direccion, Integer telefono, Date fechaNacimiento) {
+    public Paciente(Integer idPaciente, String nombre, Integer idSeguroSocial, String direccion, Integer telefono, String fechaNacimiento) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.idSeguroSocial = idSeguroSocial;
@@ -78,11 +78,11 @@ public class Paciente {
         this.telefono = telefono;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

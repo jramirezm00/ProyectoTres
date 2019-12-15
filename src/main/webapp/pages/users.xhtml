@@ -178,24 +178,24 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="Users" value="">
+                            <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information">
                                 <p:column headerText="Identification">
-                                    <h:outputText value="" />
+                                    <p:outputLabel value="#{users.id}" />
                                 </p:column>
 
                                 <p:column headerText="Name">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{users.nombre}" />
                                 </p:column>
 
                                 <p:column headerText="Direction">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{users.direccion}" />
                                 </p:column>
 
                                 <p:column headerText="Phone">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{users.telefono}" />
                                 </p:column>
                                 <p:column headerText="Service">
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{users.nombreServicio}" />
                                 </p:column>
 
                             </p:dataTable>

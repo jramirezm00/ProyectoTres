@@ -7,14 +7,13 @@ package com.ulatina.proyecto.controller;
 
 import com.ulatina.proyecto.model.Paciente;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -22,17 +21,32 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerPaciente")
 @SessionScoped
-public class ControllerPaciente {
+public class ControllerPaciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private List<Paciente> pacientes = new ArrayList<>();
+
     private String nombre;
-    private int idSeguroSocial;
+
+    private Integer idSeguroSocial;
+
     private String direccion;
+
     private String telefono;
-    private Date fechaNacimiento;
-    private int idPaciente;
+
+    private String fechaNacimiento;
+
+    private Integer idPaciente;
+
+    public ControllerPaciente() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
+    }
 
     public void listar() {
         ControlProcAlmac usu = new ControlProcAlmac();
@@ -40,6 +54,7 @@ public class ControllerPaciente {
     }
 
     public void agregar() {
+        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.crearPaciente(this.nombre, this.idSeguroSocial, this.direccion, this.telefono, this.fechaNacimiento);
     }
@@ -65,11 +80,11 @@ public class ControllerPaciente {
         this.nombre = nombre;
     }
 
-    public int getIdSeguroSocial() {
+    public Integer getIdSeguroSocial() {
         return idSeguroSocial;
     }
 
-    public void setIdSeguroSocial(int idSeguroSocial) {
+    public void setIdSeguroSocial(Integer idSeguroSocial) {
         this.idSeguroSocial = idSeguroSocial;
     }
 
@@ -89,11 +104,11 @@ public class ControllerPaciente {
         this.telefono = telefono;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -101,7 +116,7 @@ public class ControllerPaciente {
         return idPaciente;
     }
 
-    public void setIdPaciente(int idPaciente) {
+    public void setIdPaciente(Integer idPaciente) {
         this.idPaciente = idPaciente;
     }
 

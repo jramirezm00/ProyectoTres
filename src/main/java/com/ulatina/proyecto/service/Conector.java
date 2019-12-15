@@ -11,11 +11,11 @@ public class Conector implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private final String DB_URL = "jdbc:mysql://localhost:3306/proyectotresdemo?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/ProyectoTresDemo?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&useSSL=false";
 
     //Database credentials
     private final String USER = "root";
-    private final String PASS = "12345";
+    private final String PASS = "101000aj";
 
     private static Conector conector;
 
@@ -33,7 +33,7 @@ public class Conector implements Serializable {
 
         Connection conn = null;
         try {
-            String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+            String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException ex) {

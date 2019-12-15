@@ -9,14 +9,12 @@ import com.ulatina.proyecto.model.Farmaco;
 import com.ulatina.proyecto.model.FarmacoPresentacion;
 import com.ulatina.proyecto.model.Presentacion;
 import com.ulatina.proyecto.service.ControlProcAlmac;
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -24,15 +22,28 @@ import java.util.List;
  */
 @ManagedBean(name = "controllerFarmacoPresentacion")
 @SessionScoped
-public class ControllerFarmacoPresentacion {
+public class ControllerFarmacoPresentacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private List<FarmacoPresentacion> farmacosPresentaciones = new ArrayList<>();
-    private Farmaco idFarmaco;
-    private Presentacion idPresentacion;
-    private int monto;
-    private int idFarmacoPresentacion;
+
+    private Farmaco farmacoSeleccionado;
+
+    private Presentacion presentacionSeleccionada;
+
+    private Integer monto;
+
+    private Integer idFarmacoPresentacion;
+
+    public ControllerFarmacoPresentacion() {
+
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
+    }
 
     public void listar() {
         ControlProcAlmac usu = new ControlProcAlmac();
@@ -41,17 +52,17 @@ public class ControllerFarmacoPresentacion {
 
     public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearFarmacoPresentacion(this.idFarmaco.getIdFarmaco(), this.idPresentacion.getIdPresentacion(), this.monto);
+        usu.crearFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion(), this.monto);
     }
 
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarFarmacoPresentacion(this.idFarmaco.getIdFarmaco(), this.idFarmacoPresentacion, this.monto);
+        usu.editarFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.idFarmacoPresentacion, this.monto);
     }
 
     public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarFarmacoPresentacion(this.idFarmaco.getIdFarmaco(), this.idPresentacion.getIdPresentacion());
+        usu.eliminarFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion());
     }
 
     public List<FarmacoPresentacion> getFarmacosPresentaciones() {
@@ -62,35 +73,35 @@ public class ControllerFarmacoPresentacion {
         this.farmacosPresentaciones = farmacosPresentaciones;
     }
 
-    public Farmaco getIdFarmaco() {
-        return idFarmaco;
+    public Farmaco getFarmacoSeleccionado() {
+        return farmacoSeleccionado;
     }
 
-    public void setIdFarmaco(Farmaco idFarmaco) {
-        this.idFarmaco = idFarmaco;
+    public void setFarmacoSeleccionado(Farmaco farmacoSeleccionado) {
+        this.farmacoSeleccionado = farmacoSeleccionado;
     }
 
-    public Presentacion getIdPresentacion() {
-        return idPresentacion;
+    public Presentacion getPresentacionSeleccionada() {
+        return presentacionSeleccionada;
     }
 
-    public void setIdPresentacion(Presentacion idPresentacion) {
-        this.idPresentacion = idPresentacion;
+    public void setPresentacionSeleccionada(Presentacion presentacionSeleccionada) {
+        this.presentacionSeleccionada = presentacionSeleccionada;
     }
 
-    public int getMonto() {
+    public Integer getMonto() {
         return monto;
     }
 
-    public void setMonto(int monto) {
+    public void setMonto(Integer monto) {
         this.monto = monto;
     }
 
-    public int getId() {
+    public Integer getId() {
         return idFarmacoPresentacion;
     }
 
-    public void setId(int idFarmacoPresentacion) {
+    public void setId(Integer idFarmacoPresentacion) {
         this.idFarmacoPresentacion = idFarmacoPresentacion;
     }
 

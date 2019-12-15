@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta charset="utf-8" />
@@ -176,44 +177,61 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <h:form>
                                     <h6 class="heading-small text-muted mb-4">Recipe information</h6>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Pacient</label>
-                                                    <p:inputText class="form-control" />
+                                                    <label class="form-control-label">Drug</label>
+                                                    <h:selectOneMenu value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                        <f:selectItems value="#{controllerFarmaco.farmacos}" var="listaFarmacos" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-email">Drug</label>
-                                                    <p:inputText class="form-control" />
+                                                    <label class="form-control-label">Presentation</label>
+                                                    <h:selectOneMenu value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                        <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Quantity</label>
-                                                    <p:inputText class="form-control" />
+                                                    <label class="form-control-label">Quantity</label>
+                                                    <p:inputText styleClass="form-control" value="#{controllerReceta.cantidad}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-last-name">Date</label>
-                                                    <input type="date" id="input-telephone" class="form-control form-control-alternative"/>
+                                                    <label class="form-control-label">Date</label>
+                                                    <p:inputText styleClass="form-control form-control-alternative" placeholder="XX-XX-XXXX" value="#{controllerReceta.fechaReceta}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Doctor</label>
+                                                    <h:selectOneMenu value="#{controllerReceta.doctorSeleccionado}" converter="usuarioConverter" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                        <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <button type="button" class="btn btn-success" style="float: right;">Create</button>
+                                                <h:commandButton class="btn btn-success" style="float: right;" action="#{controllerReceta.agregar()}" value="Create"></h:commandButton>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </h:form>
                             </div>
                         </div>
                     </div>
