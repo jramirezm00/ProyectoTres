@@ -59,7 +59,7 @@ public class ControllerPaciente implements Serializable {
                 || telefono == null || fechaNacimiento == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPaciente(this.nombre, this.idSeguroSocial, this.direccion, this.telefono, this.fechaNacimiento);

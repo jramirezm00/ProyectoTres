@@ -58,7 +58,7 @@ public class ControllerRevision implements Serializable {
         if (doctorSeleccionado == null || ingresoSeleccionado == null || fechaRevision == null || informe == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);

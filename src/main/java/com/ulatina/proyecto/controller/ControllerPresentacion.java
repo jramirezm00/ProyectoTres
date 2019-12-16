@@ -50,7 +50,7 @@ public class ControllerPresentacion implements Serializable {
         if (nombrePresentacion == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPresentacion(this.nombrePresentacion);

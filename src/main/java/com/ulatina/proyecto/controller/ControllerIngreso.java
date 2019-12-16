@@ -61,7 +61,7 @@ public class ControllerIngreso implements Serializable {
         if (pacienteSeleccionado == null || servicioSeleccionado == null || fechaIngreso == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);

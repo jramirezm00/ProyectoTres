@@ -59,7 +59,7 @@ public class ControllerFarmaco implements Serializable {
                 || ubicacion == null || codigoProveedor == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearFarmaco(this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);

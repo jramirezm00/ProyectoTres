@@ -62,7 +62,7 @@ public class ControllerReceta implements Serializable {
             doctorSeleccionado == null || cantidad == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
-            return null;
+            return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
