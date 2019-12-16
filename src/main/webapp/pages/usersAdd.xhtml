@@ -187,19 +187,20 @@
                             <div class="card-body">
                                 <h6 class="heading-small text-muted mb-4">User information</h6>
                                 <h:form>
+                                    <p:growl severity="info,warn" id="growl" life="3000" showDetail="false"/>
+                                    <p:messages id="messages" showDetail="false" closable="true"></p:messages>
                                     <div class="pl-lg-4">
-                                        <p:growl severity="info,warn" id="growl" life="3000" showDetail="true" for="somekey"/>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Name</label>
-                                                    <p:inputText class="form-control" value="#{controllerUsuario.nombre}" />
+                                                    <p:inputText class="form-control" value="#{controllerUsuario.nombre}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Password</label>
-                                                    <p:password class="form-control" value="#{controllerUsuario.contrasena}"/>
+                                                    <p:password class="form-control" value="#{controllerUsuario.contrasena}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,13 +208,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Email address</label>
-                                                    <p:inputText class="form-control" value="#{controllerUsuario.usuario}"/>
+                                                    <p:inputText class="form-control" value="#{controllerUsuario.usuario}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-last-name">Telephone</label>
-                                                    <p:inputText class="form-control" value="#{controllerUsuario.telefono}"/>
+                                                    <p:inputText class="form-control" value="#{controllerUsuario.telefono}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -221,13 +222,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Direction</label>
-                                                    <p:inputText class="form-control" value="#{controllerUsuario.direccion}"/>
+                                                    <p:inputText class="form-control" value="#{controllerUsuario.direccion}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Role</label>
-                                                    <h:selectOneMenu id="selectOne" value="#{controllerUsuario.tipoUsuario}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
+                                                    <h:selectOneMenu id="selectOne" value="#{controllerUsuario.tipoUsuario}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important" required="true" requiredMessage="Por favor rellene los espacios requeridos">
                                                         <f:selectItem itemLabel="Select One" itemValue="" />
                                                         <f:selectItem itemLabel="Administrator" itemValue="admin" />
                                                         <f:selectItem itemLabel="Secretary" itemValue="secretary" />

@@ -101,7 +101,7 @@ public class ControllerUsuario implements Serializable {
     public String crear_usuario() {
         if (nombre == null || usuario == null || contrasena == null || direccion == null || telefono == null || tipoUsuario == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("somekey", new FacesMessage("Error!", "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();

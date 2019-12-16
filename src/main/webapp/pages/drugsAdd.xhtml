@@ -189,17 +189,19 @@
                                 <h6 class="heading-small text-muted mb-4">Main information</h6>
                                 <div class="pl-lg-4">
                                     <h:form id="formFarmaco">
+                                        <p:growl severity="info,warn" id="growl" life="3000" showDetail="false"/>
+                                        <p:messages id="messages" showDetail="false" closable="true"></p:messages>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Clinic Name</label>
-                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreClinico}"/>
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreClinico}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Commercial Name</label>
-                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreComercial}"/>
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreComercial}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,13 +209,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Supplied By</label>
-                                                    <p:inputText class="form-control" value="#{controllerFarmaco.codigoProveedor}"/>
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.codigoProveedor}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Location</label>
-                                                    <p:inputText class="form-control" value="#{controllerFarmaco.ubicacion}"/>
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.ubicacion}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -221,7 +223,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-last-name">The drug contains</label>
-                                                    <p:inputText class="form-control" value="#{controllerFarmaco.compuestoQuimico}"/>
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.compuestoQuimico}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>

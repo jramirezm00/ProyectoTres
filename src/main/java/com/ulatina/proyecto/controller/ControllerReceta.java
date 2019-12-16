@@ -58,8 +58,8 @@ public class ControllerReceta implements Serializable {
     }
 
     public String agregar() {
-        if (farmacoSeleccionado.getIdFarmaco() == null || fechaReceta == null || presentacionSeleccionada.getIdPresentacion() == null
-                || doctorSeleccionado.getIdUsuario() == null || cantidad == null) {
+        if (farmacoSeleccionado == null || fechaReceta == null || presentacionSeleccionada == null || 
+            doctorSeleccionado == null || cantidad == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;

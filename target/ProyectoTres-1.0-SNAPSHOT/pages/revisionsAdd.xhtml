@@ -190,12 +190,14 @@
                                 <h6 class="heading-small text-muted mb-4">Revision information</h6>
                                 <div class="pl-lg-4">
                                     <h:form id="formRevision">
+                                    <p:growl severity="info,warn" id="growl" life="3000" showDetail="false"/>
+                                    <p:messages id="messages" showDetail="false" closable="true"></p:messages>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Doctor</label>
                                                     <h:selectOneMenu id="selectDoctor" value="#{controllerIngreso.doctorSeleccionado}" converter="usuarioConverter" 
-                                                                     class="form-control" style="height: 45px;">
+                                                                     class="form-control" style="height: 45px;" required="true" requiredMessage="Por favor rellene los espacios requeridos">
                                                         <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
                                                     </h:selectOneMenu>
@@ -205,7 +207,7 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">Admission</label>
                                                     <h:selectOneMenu id="selectAdmission" value="#{controllerRevision.ingresoSeleccionado}" converter="ingresoConverter"
-                                                                     class="form-control" style="height: 45px;">
+                                                                     class="form-control" style="height: 45px;" required="true" requiredMessage="Por favor rellene los espacios requeridos">
                                                         <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerIngreso.ingresos}" var="listaIngresos" itemLabel="#{listaIngresos.nombrePaciente}" itemValue="#{listaIngresos}" />
                                                     </h:selectOneMenu>
@@ -216,13 +218,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Revision Date</label>
-                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerRevision.fechaRevision}" placeholder="XX-XX-XXXX"/>
+                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerRevision.fechaRevision}" placeholder="XX-XX-XXXX" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Report</label>
-                                                    <p:inputText class="form-control" value="#{controllerRevision.informe}"/>
+                                                    <p:inputText class="form-control" value="#{controllerRevision.informe}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>

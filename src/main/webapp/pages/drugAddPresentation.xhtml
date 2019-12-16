@@ -109,14 +109,14 @@
                                 <i class="ni ni-circle-08 text-info"></i> Users
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="./services.xhtml">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./services.xhtml">
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
                         </li>
-                        <li class="nav-item">                      
+                        <li class="nav-item active">                      
                             <div class="dropdown">
-                                <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link active" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="ni ni-tag text-green"></i> Drugs
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: 20px;">
@@ -186,12 +186,14 @@
                             </div>
                             <div class="card-body">
                                 <h:form rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
+                                    <p:growl severity="info,warn" id="growl" life="3000" showDetail="false"/>
+                                    <p:messages id="messages" showDetail="false" closable="true"></p:messages>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Description</label>
-                                                    <p:inputText class="form-control" value="#{controllerPresentacion.nombrePresentacion}"/>
+                                                    <p:inputText class="form-control" value="#{controllerPresentacion.nombrePresentacion}" required="true" requiredMessage="Por favor rellene los espacios requeridos"/>
                                                 </div>
                                             </div>
                                         </div>

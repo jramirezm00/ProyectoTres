@@ -55,8 +55,7 @@ public class ControllerRevision implements Serializable {
     }
 
     public String agregar() {
-        if (doctorSeleccionado.getIdUsuario() == null || ingresoSeleccionado.getIdIngreso() == null || fechaRevision == null
-                || informe == null) {
+        if (doctorSeleccionado == null || ingresoSeleccionado == null || fechaRevision == null || informe == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
