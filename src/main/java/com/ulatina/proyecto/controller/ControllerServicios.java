@@ -47,27 +47,34 @@ public class ControllerServicios implements Serializable {
     }
 
     public String agregar() {
-        if(nombre == null){
+        if (nombre == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearServicio(this.nombre);
+            listar();
             return "services?faces-redirect=true";
         }
     }
- 
-    public void editar() {
+
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarServicio(this.id, this.nombre);
+        listar();
+        this.nombre = null;
+        this.id = null;
+        return "services?faces-redirect=true";
     }
 
-    public void eliminar(Integer id) {
+    public String eliminar(Integer id) {
         this.id = id;
-        System.out.println(this.id);
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarServicio(this.id);
+        listar();
+        this.id = null;
+        return "services?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idServicio) {

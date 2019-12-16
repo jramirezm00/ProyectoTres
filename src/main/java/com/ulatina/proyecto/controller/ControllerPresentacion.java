@@ -47,25 +47,30 @@ public class ControllerPresentacion implements Serializable {
     }
 
     public String agregar() {
-        if(nombrePresentacion == null ){
+        if (nombrePresentacion == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPresentacion(this.nombrePresentacion);
+            listar();
             return "drugs?faces-redirect=true";
         }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarPresentacion(this.idPresentacion, this.nombrePresentacion);
+        listar();
+        return "drugs?faces-redirect=true";
     }
 
-    public void eliminar() {
+    public String eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarPresentacion(this.idPresentacion);
+        listar();
+        return "drugs?faces-redirect=true";
     }
 
     public List<Presentacion> getPresentaciones() {

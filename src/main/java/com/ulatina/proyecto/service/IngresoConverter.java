@@ -19,7 +19,7 @@ import javax.faces.convert.FacesConverter;
  * @author josepabloramirez
  */
 @FacesConverter(value = "ingresoConverter")
-public class IngresoConverter implements Converter, Serializable {
+public class IngresoConverter implements Converter {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,9 +33,12 @@ public class IngresoConverter implements Converter, Serializable {
     public Object getAsObject(FacesContext fc, UIComponent uic, String submittedValue) {
         if (submittedValue != null && submittedValue.trim().length() > 0) {
             try {
-
-                return control.findByPkIngreso(new Integer(submittedValue));
+                System.out.println("INGRESO SELECCIONADO " +submittedValue);
+                Ingreso ingreso = control.findByPkIngreso(new Integer(submittedValue));
+                System.out.println(ingreso.getIdIngreso());
+                return ingreso;
             } catch (Exception exception) {
+                exception.printStackTrace();
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "No es un Tipo válido."));
             }
         } else {

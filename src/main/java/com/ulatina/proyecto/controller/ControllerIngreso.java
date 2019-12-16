@@ -44,7 +44,7 @@ public class ControllerIngreso implements Serializable {
     private Integer idIngreso;
 
     public ControllerIngreso() {
-        
+
     }
 
     @PostConstruct
@@ -58,22 +58,29 @@ public class ControllerIngreso implements Serializable {
     }
 
     public String agregar() {
-        if(pacienteSeleccionado == null || 
-           servicioSeleccionado == null ||
-           fechaIngreso == null){
+        if (pacienteSeleccionado == null || servicioSeleccionado == null || fechaIngreso == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);
+            listar();
             return "admissions.xhtml?faces-redirect=true";
-        }   
+        }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarIngreso(this.idIngreso, this.fechaSalida);
+        if (this.fechaSalida == null) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
+            return null;
+        } else {
+            usu.editarIngreso(this.idIngreso, this.fechaSalida);
+            listar();
+            return "admissions.xhtml?faces-redirect=true";
+        }
     }
 
     public String redireccionarModificar(Integer idIngreso) {

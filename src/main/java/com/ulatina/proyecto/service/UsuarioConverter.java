@@ -32,9 +32,12 @@ public class UsuarioConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String submittedValue) {
         if (submittedValue != null && submittedValue.trim().length() > 0) {
             try {
-
-                return control.findByPkUsuario(new Integer(submittedValue));
+                System.out.println("USUARIO SELECCIONADO " + submittedValue);
+                Usuario user = control.findByPkUsuario(new Integer(submittedValue));
+                System.out.println(user.getNombre());
+                return user;
             } catch (Exception exception) {
+                exception.printStackTrace();
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "No es un Tipo válido."));
             }
         } else {

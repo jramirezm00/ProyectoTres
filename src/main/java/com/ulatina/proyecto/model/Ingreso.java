@@ -96,14 +96,14 @@ public class Ingreso {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idIngreso);
-        hash = 97 * hash + Objects.hashCode(this.fechaIngreso);
-        hash = 97 * hash + Objects.hashCode(this.fechaSalida);
-        hash = 97 * hash + Objects.hashCode(this.idPaciente);
-        hash = 97 * hash + Objects.hashCode(this.idServicio);
-        hash = 97 * hash + Objects.hashCode(this.nombrePaciente);
-        hash = 97 * hash + Objects.hashCode(this.nombreServicio);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.idIngreso);
+        hash = 37 * hash + Objects.hashCode(this.fechaIngreso);
+        hash = 37 * hash + Objects.hashCode(this.fechaSalida);
+        hash = 37 * hash + Objects.hashCode(this.idPaciente);
+        hash = 37 * hash + Objects.hashCode(this.idServicio);
+        hash = 37 * hash + Objects.hashCode(this.nombrePaciente);
+        hash = 37 * hash + Objects.hashCode(this.nombreServicio);
         return hash;
     }
 

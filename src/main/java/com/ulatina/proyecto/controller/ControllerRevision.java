@@ -10,7 +10,6 @@ import com.ulatina.proyecto.model.Revision;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import java.io.Serializable;
-import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -56,26 +55,37 @@ public class ControllerRevision implements Serializable {
     }
 
     public String agregar() {
-        if(doctorSeleccionado.getIdUsuario() == null || ingresoSeleccionado.getIdIngreso() == null || fechaRevision == null ||
-            informe == null){
+        if (doctorSeleccionado.getIdUsuario() == null || ingresoSeleccionado.getIdIngreso() == null || fechaRevision == null
+                || informe == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
+            listar();
             return "revisions?faces-redirect=true";
         }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarRevision(this.idRevision, this.informe);
+        listar();
+        return "revisions?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idRevision) {
         this.idRevision = idRevision;
         return "revisionsModify?faces-redirect=true&idRevision= " + this.idRevision;
+    }
+
+    public void limpiarVariables() {
+        this.doctorSeleccionado = null;
+        this.ingresoSeleccionado = null;
+        this.fechaRevision = null;
+        this.informe = null;
+        this.idRevision = null;
     }
 
     public List<Revision> getRevisiones() {

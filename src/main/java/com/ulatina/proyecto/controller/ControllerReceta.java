@@ -11,7 +11,6 @@ import com.ulatina.proyecto.model.Receta;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import java.io.Serializable;
-import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -59,26 +58,40 @@ public class ControllerReceta implements Serializable {
     }
 
     public String agregar() {
-        if(farmacoSeleccionado.getIdFarmaco() == null || fechaReceta == null || presentacionSeleccionada.getIdPresentacion() == null ||
-            doctorSeleccionado.getIdUsuario() == null || cantidad == null){
+        if (farmacoSeleccionado.getIdFarmaco() == null || fechaReceta == null || presentacionSeleccionada.getIdPresentacion() == null
+                || doctorSeleccionado.getIdUsuario() == null || cantidad == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
+            listar();
+            limpiarVariables();
             return "recipes?faces-redirect=true";
-        } 
+        }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarReceta(this.idReceta, this.cantidad);
+        limpiarVariables();
+        listar();
+        return "recipes?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idReceta) {
         this.idReceta = idReceta;
         return "recipesModify?faces-redirect=true&idReceta= " + this.idReceta;
+    }
+
+    public void limpiarVariables() {
+        this.cantidad = null;
+        this.doctorSeleccionado = null;
+        this.farmacoSeleccionado = null;
+        this.fechaReceta = null;
+        this.idReceta = null;
+        this.presentacionSeleccionada = null;
     }
 
     public List<Receta> getRecetas() {

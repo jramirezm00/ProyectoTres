@@ -22,30 +22,30 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name = "controllerFarmaco")
 @SessionScoped
-public class ControllerFarmaco implements Serializable{
+public class ControllerFarmaco implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private List<Farmaco> farmacos = new ArrayList<>();
-    
+
     private String nombreComercial;
-    
+
     private String nombreClinico;
-    
+
     private String compuestoQuimico;
-    
+
     private String ubicacion;
-    
+
     private String codigoProveedor;
-    
+
     private Integer idRegistro;
 
     public ControllerFarmaco() {
-        
+
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         listar();
     }
 
@@ -55,26 +55,41 @@ public class ControllerFarmaco implements Serializable{
     }
 
     public String agregar() {
-        if(nombreComercial == null || nombreClinico == null || compuestoQuimico == null ||
-            ubicacion == null || codigoProveedor == null){
+        if (nombreComercial == null || nombreClinico == null || compuestoQuimico == null
+                || ubicacion == null || codigoProveedor == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearFarmaco(this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
+            listar();
+            limpiarVariables();
             return "drugs.xhtml?faces-redirect=true";
         }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarFarmaco(this.idRegistro, this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
+        listar();
+        return "drugs.xhtml?faces-redirect=true";
     }
 
-    public void eliminar() {
+    public String eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarFarmaco(this.idRegistro);
+        listar();
+        return "drugs.xhtml?faces-redirect=true";
+    }
+
+    public void limpiarVariables() {
+        this.idRegistro = null;
+        this.nombreClinico = null;
+        this.nombreComercial = null;
+        this.compuestoQuimico = null;
+        this.ubicacion = null;
+        this.codigoProveedor = null;
     }
 
     public List<Farmaco> getFarmacos() {
@@ -132,5 +147,5 @@ public class ControllerFarmaco implements Serializable{
     public void setIdRegistro(Integer idRegistro) {
         this.idRegistro = idRegistro;
     }
-    
+
 }

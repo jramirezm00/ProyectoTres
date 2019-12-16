@@ -212,9 +212,9 @@
                                     <p:column headerText="Update" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
                                         <h:commandButton value="Update" action="#{controllerFarmacoPresentacion.redireccionarModificar(drugs.idFarmaco,drugs.idPresentacion,drugs.nombreComercial,drugs.nombrePresentacion)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
-                                    <p:column headerText="Delete" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
+                                    <!-- <p:column headerText="Delete" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
                                         <h:commandButton value="Delete" action="#{controllerFarmacoPresentacion.eliminar(drugs.idFarmaco,drugs.idPresentacion)}" class="btn btn-danger my-0"></h:commandButton>
-                                    </p:column>
+                                    </p:column> -->
                                 </p:dataTable>
                             </h:form>
                         </div>

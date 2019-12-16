@@ -55,21 +55,26 @@ public class ControllerPaciente implements Serializable {
     }
 
     public String agregar() {
-        if(nombre == null || idSeguroSocial == null || direccion == null ||
-           telefono == null || fechaNacimiento == null){
+        if (nombre == null || idSeguroSocial == null || direccion == null
+                || telefono == null || fechaNacimiento == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPaciente(this.nombre, this.idSeguroSocial, this.direccion, this.telefono, this.fechaNacimiento);
-            return "pacient?faces-redirect=true";
+            listar();
+            limpiarVariables();
+            return "patients?faces-redirect=true";
         }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarPaciente(this.idPaciente, this.nombre, this.idSeguroSocial, this.direccion, this.telefono);
+        listar();
+        limpiarVariables();
+        return "patients?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idPaciente, String nombre, Integer idSeguroSocial, String direccion, String telefono) {
@@ -79,6 +84,15 @@ public class ControllerPaciente implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         return "patientsModify?faces-redirect=true&idPaciente= " + this.idPaciente;
+    }
+
+    public void limpiarVariables() {
+        this.nombre = null;
+        this.idSeguroSocial = null;
+        this.direccion = null;
+        this.telefono = null;
+        this.fechaNacimiento = null;
+        this.idPaciente = null;
     }
 
     public List<Paciente> getPacientes() {

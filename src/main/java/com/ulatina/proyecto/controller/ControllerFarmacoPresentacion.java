@@ -61,27 +61,32 @@ public class ControllerFarmacoPresentacion implements Serializable {
     }
 
     public String agregar() {
-        if(farmacoSeleccionado.getIdFarmaco() == null || 
-           presentacionSeleccionada.getIdPresentacion() == null ||
-           monto == null){
+        if (farmacoSeleccionado.getIdFarmaco() == null
+                || presentacionSeleccionada.getIdPresentacion() == null
+                || monto == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion(), this.monto);
+            listar();
             return "drugs.xhtml?faces-redirect=true";
         }
     }
 
-    public void editar() {
+    public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarFarmacoPresentacion(this.idFarmaco, this.idPresentacion, this.monto);
+        listar();
+        return "drugs.xhtml?faces-redirect=true";
     }
 
-    public void eliminar(Integer idFarmaco, Integer idPresentacion) {
+    public String eliminar(Integer idFarmaco, Integer idPresentacion) {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarFarmacoPresentacion(idFarmaco, idPresentacion);
+        listar();
+        return "drugs.xhtml?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idFarmaco, Integer idPresentacion, String farmaco, String presentacion) {

@@ -66,11 +66,13 @@ public class ControllerUsuario implements Serializable {
         this.usuarios = usu.listarUsuarios();
     }
 
-    public void eliminarUsuario(Integer id) {
+    public String eliminarUsuario(Integer id) {
         this.idUsuario = id;
         System.out.println(this.idUsuario);
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarUsuario(this.idUsuario);
+        listar();
+        return "users?faces-redirect=true";
     }
 
     public String editar_usuario() {
@@ -80,29 +82,35 @@ public class ControllerUsuario implements Serializable {
             System.out.println("soy doctor");
             System.out.println(this.servicio.getIdServicio());
             usu.agregarServicioDoctor(this.idUsuario, this.servicio.getIdServicio());
+            listar();
+            return "users?faces-redirect=true";
         }
         if (this.usuarioConect.getIdUsuario() != this.idUsuario) {
             System.out.println("modificando usuario en la lista");
             System.out.println(this.idUsuario);
             usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
+            listar();
+            return "users?faces-redirect=true";
         } else {
             usu.editarUsuario(this.usuarioConect.getIdUsuario(), this.nombre, this.direccion, this.telefono);
+            listar();
+            return "users?faces-redirect=true";
         }
-        return "users?faces-redirect=true";
     }
 
     public String crear_usuario() {
-        if(nombre == null || usuario == null || contrasena == null || direccion == null || telefono == null || tipoUsuario == null){
+        if (nombre == null || usuario == null || contrasena == null || direccion == null || telefono == null || tipoUsuario == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("somekey", new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage("somekey", new FacesMessage("Error!", "Please enter all required spaces."));
             return null;
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             if (this.servicio == null) {
                 usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, 0);
             } else {
                 usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, this.servicio.getIdServicio());
             }
+            listar();
             return "users?faces-redirect=true";
         }
     }

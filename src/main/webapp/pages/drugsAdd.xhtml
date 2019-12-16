@@ -186,21 +186,20 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h:form>
-                                    <p:growl severity="info,warn" id="growl" life="3000" showDetail="true"/>
-                                    <h6 class="heading-small text-muted mb-4">Main information</h6>
-                                    <div class="pl-lg-4">
+                                <h6 class="heading-small text-muted mb-4">Main information</h6>
+                                <div class="pl-lg-4">
+                                    <h:form id="formFarmaco">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Clinic Name</label>
-                                                    <p:inputText class="form-control" />
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreClinico}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Commercial Name</label>
-                                                    <p:inputText class="form-control" />
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.nombreComercial}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -208,37 +207,31 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Supplied By</label>
-                                                    <p:inputText class="form-control" />
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.codigoProveedor}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-email">Location</label>
-                                                    <p:inputText class="form-control" />
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.ubicacion}"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Description</label>
-                                                    <p:inputText class="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
                                                     <label class="form-control-label" for="input-last-name">The drug contains</label>
-                                                    <p:inputText class="form-control" />
+                                                    <p:inputText class="form-control" value="#{controllerFarmaco.compuestoQuimico}"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12" >
-                                                <button type="button" class="btn btn-success" style="float: right;">Create</button>
+                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerFarmaco.agregar()}"></h:commandButton>
                                             </div>
                                         </div>
-                                    </div>
-                                </h:form>
+                                    </h:form>
+                                </div>
                             </div>
                         </div>
                     </div>

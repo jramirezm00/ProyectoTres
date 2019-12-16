@@ -435,7 +435,7 @@ public class ControlProcAlmac implements Serializable {
         ResultSet rs = null;
         try {
             stmt = conn.prepareCall(SP_CREAR_RECETA);
-            stmt.setInt(1, idDoctor);
+            stmt.setInt(1, idFarmaco);
             stmt.setString(2, fechReceta);
             stmt.setInt(3, cantidad);
             stmt.setInt(4, idPresentacion);
