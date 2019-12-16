@@ -54,7 +54,9 @@ public class ControllerServicios implements Serializable {
         usu.editarServicio(this.id, this.nombre);
     }
 
-    public void eliminar() {
+    public void eliminar(Integer id) {
+        this.id = id;
+        System.out.println(this.id);
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarServicio(this.id);
     }

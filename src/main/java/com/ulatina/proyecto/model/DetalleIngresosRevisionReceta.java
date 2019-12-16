@@ -5,6 +5,8 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
@@ -89,6 +91,55 @@ public class DetalleIngresosRevisionReceta {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.idIngreso);
+        hash = 59 * hash + Objects.hashCode(this.idRevision);
+        hash = 59 * hash + Objects.hashCode(this.idReceta);
+        hash = 59 * hash + Objects.hashCode(this.nombrePaciente);
+        hash = 59 * hash + Objects.hashCode(this.nombreDoctor);
+        hash = 59 * hash + Objects.hashCode(this.receta);
+        hash = 59 * hash + Objects.hashCode(this.cantidad);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetalleIngresosRevisionReceta other = (DetalleIngresosRevisionReceta) obj;
+        if (!Objects.equals(this.nombrePaciente, other.nombrePaciente)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreDoctor, other.nombreDoctor)) {
+            return false;
+        }
+        if (!Objects.equals(this.receta, other.receta)) {
+            return false;
+        }
+        if (!Objects.equals(this.idIngreso, other.idIngreso)) {
+            return false;
+        }
+        if (!Objects.equals(this.idRevision, other.idRevision)) {
+            return false;
+        }
+        if (!Objects.equals(this.idReceta, other.idReceta)) {
+            return false;
+        }
+        if (!Objects.equals(this.cantidad, other.cantidad)) {
+            return false;
+        }
+        return true;
     }
 
 }

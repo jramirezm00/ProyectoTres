@@ -5,7 +5,7 @@
  */
 package com.ulatina.proyecto.model;
 
-import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -95,6 +95,55 @@ public class Revision {
 
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.idRevision);
+        hash = 37 * hash + Objects.hashCode(this.idDoctor);
+        hash = 37 * hash + Objects.hashCode(this.nombreDoctor);
+        hash = 37 * hash + Objects.hashCode(this.idIngreso);
+        hash = 37 * hash + Objects.hashCode(this.nombrePaciente);
+        hash = 37 * hash + Objects.hashCode(this.fechaRevision);
+        hash = 37 * hash + Objects.hashCode(this.informe);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Revision other = (Revision) obj;
+        if (!Objects.equals(this.nombreDoctor, other.nombreDoctor)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombrePaciente, other.nombrePaciente)) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaRevision, other.fechaRevision)) {
+            return false;
+        }
+        if (!Objects.equals(this.informe, other.informe)) {
+            return false;
+        }
+        if (!Objects.equals(this.idRevision, other.idRevision)) {
+            return false;
+        }
+        if (!Objects.equals(this.idDoctor, other.idDoctor)) {
+            return false;
+        }
+        if (!Objects.equals(this.idIngreso, other.idIngreso)) {
+            return false;
+        }
+        return true;
     }
 
 }

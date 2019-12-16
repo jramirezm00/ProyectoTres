@@ -11,14 +11,11 @@ import com.ulatina.proyecto.model.Servicio;
 import com.ulatina.proyecto.model.Usuario;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import java.io.Serializable;
-import static java.lang.Integer.parseInt;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -32,9 +29,9 @@ public class ControllerIngreso implements Serializable {
 
     private List<Ingreso> ingresos = new ArrayList<>();
 
-    private Paciente pacienteSeleccionado;
+    private Paciente pacienteSeleccionado = new Paciente();
 
-    private Servicio servicioSeleccionado;
+    private Servicio servicioSeleccionado = new Servicio();
 
     private Usuario doctorSeleccionado;
 

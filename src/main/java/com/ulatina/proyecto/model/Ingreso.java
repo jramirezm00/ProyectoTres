@@ -5,6 +5,8 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
@@ -90,6 +92,55 @@ public class Ingreso {
 
     public void setNombreServicio(String nombreServicio) {
         this.nombreServicio = nombreServicio;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.idIngreso);
+        hash = 97 * hash + Objects.hashCode(this.fechaIngreso);
+        hash = 97 * hash + Objects.hashCode(this.fechaSalida);
+        hash = 97 * hash + Objects.hashCode(this.idPaciente);
+        hash = 97 * hash + Objects.hashCode(this.idServicio);
+        hash = 97 * hash + Objects.hashCode(this.nombrePaciente);
+        hash = 97 * hash + Objects.hashCode(this.nombreServicio);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ingreso other = (Ingreso) obj;
+        if (!Objects.equals(this.fechaIngreso, other.fechaIngreso)) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaSalida, other.fechaSalida)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombrePaciente, other.nombrePaciente)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreServicio, other.nombreServicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.idIngreso, other.idIngreso)) {
+            return false;
+        }
+        if (!Objects.equals(this.idPaciente, other.idPaciente)) {
+            return false;
+        }
+        if (!Objects.equals(this.idServicio, other.idServicio)) {
+            return false;
+        }
+        return true;
     }
 
 }

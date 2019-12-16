@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <!-- Form -->
-                    <form class="mt-4 mb-3 d-md-none">
+                    <form class="mt-4 mb-3 d-md-none" id="base">
                         <div class="input-group input-group-rounded input-group-merge">
                             <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search"/>
                             <div class="input-group-prepend">
@@ -125,7 +125,7 @@
                     <hr class="my-3"/>
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <h:form>
+                            <h:form id="ingresoLogOut">
                                 <p:commandLink action="#{controllerUsuario.logout}" class="nav-link" ajax="false">
                                     <i class="ni ni-curved-next"></i> Log Out
                                 </p:commandLink>
@@ -179,24 +179,24 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h:form>
+                                <h:form id="formIngresos">
                                     <h6 class="heading-small text-muted mb-4">User information</h6>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <label class="form-control-label">Patient</label><br/>
-                                                <h:selectOneListbox id="selectOnee" value="#{controllerIngreso.pacienteSeleccionado}" converter="pacienteConverter" 
-                                                    class="form-control" style="height: 100px;">
+                                                <h:selectOneMenu id="selectOnee" value="#{controllerIngreso.pacienteSeleccionado}" converter="pacienteConverter" class="form-control">
+                                                    <f:selectItem></f:selectItem>
                                                     <f:selectItems var="listaPacientess" value="#{controllerPaciente.pacientes}" itemLabel="#{listaPacientess.nombre}" itemValue="#{listaPacientess}" />
-                                                </h:selectOneListbox>
+                                                </h:selectOneMenu>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Service</label><br/> 
-                                                    <h:selectOneListbox id="selectOne" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter"
-                                                        class="form-control" style="height: 100px;">
+                                                    <h:selectOneMenu id="selectOne" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter" class="form-control">
+                                                        <f:selectItem></f:selectItem>
                                                         <f:selectItems var="listaServicioss" value="#{controllerServicios.servicios}" itemLabel="#{listaServicioss.descripcion}" itemValue="#{listaServicioss}" />
-                                                    </h:selectOneListbox>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>

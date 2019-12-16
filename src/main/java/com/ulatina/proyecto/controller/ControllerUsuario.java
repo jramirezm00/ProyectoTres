@@ -8,7 +8,6 @@ package com.ulatina.proyecto.controller;
 import com.ulatina.proyecto.model.Servicio;
 import com.ulatina.proyecto.service.ControlProcAlmac;
 import com.ulatina.proyecto.model.Usuario;
-import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,7 +16,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -66,21 +65,23 @@ public class ControllerUsuario implements Serializable {
         this.usuarios = usu.listarUsuarios();
     }
 
-    public void eliminarUsuario() {
+    public void eliminarUsuario(Integer id) {
+        this.idUsuario = id;
+        System.out.println(this.idUsuario);
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarUsuario(this.idUsuario);
     }
 
-    public void editar_usuario() {
+    public String editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        if(this.usuarioConect.getId() != this.idUsuario){
+        if (this.usuarioConect.getIdUsuario() != this.idUsuario) {
             System.out.println("modificando usuario en la lista");
             System.out.println(this.idUsuario);
             usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
         } else {
-             usu.editarUsuario(this.usuarioConect.getId(), this.nombre, this.direccion, this.telefono);
+            usu.editarUsuario(this.usuarioConect.getIdUsuario(), this.nombre, this.direccion, this.telefono);
         }
-        
+        return "users?faces-redirect=true";
     }
 
     public void crear_usuario() {
@@ -102,9 +103,9 @@ public class ControllerUsuario implements Serializable {
         this.direccion = this.usuarioConect.getDireccion();
         this.telefono = this.usuarioConect.getTelefono();
         if (this.usuarioConect != null) {
-            System.out.println(this.usuarioConect.getId());
+            System.out.println(this.usuarioConect.getIdUsuario());
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", this.usuarioConect.getNombre());
-            return "userProfile.xhtml?faces-redirect=true";
+            return "userProfile?faces-redirect=true";
         } else {
             msg = new FacesMessage("Datos incorrectos,volver a ingresar los datos");
         }
@@ -115,7 +116,7 @@ public class ControllerUsuario implements Serializable {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
                     .invalidateSession();
-            return "index.xhtml?faces-redirect=true";
+            return "index?faces-redirect=true";
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,7 +128,7 @@ public class ControllerUsuario implements Serializable {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        return "drugsModify?faces-redirect=true&idUsuario= " + this.idUsuario;
+        return "usersModify?faces-redirect=true&idUsuario= " + this.idUsuario;
     }
 
     public void listarDoctores() {

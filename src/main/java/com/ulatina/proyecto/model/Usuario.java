@@ -5,13 +5,15 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
  */
 public class Usuario {
 
-    private Integer id;
+    private Integer idUsuario;
 
     private String nombre;
 
@@ -36,7 +38,7 @@ public class Usuario {
     }
 
     public Usuario(Integer id, String nombre, String correo, String contrasena, String direccion, String telefono, String tipo, Servicio servicio) {
-        this.id = id;
+        this.idUsuario = id;
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
@@ -50,12 +52,12 @@ public class Usuario {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -128,6 +130,67 @@ public class Usuario {
 
     public void setNombreServicio(String nombreServicio) {
         this.nombreServicio = nombreServicio;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.idUsuario);
+        hash = 79 * hash + Objects.hashCode(this.nombre);
+        hash = 79 * hash + Objects.hashCode(this.correo);
+        hash = 79 * hash + Objects.hashCode(this.contrasena);
+        hash = 79 * hash + Objects.hashCode(this.direccion);
+        hash = 79 * hash + Objects.hashCode(this.telefono);
+        hash = 79 * hash + Objects.hashCode(this.tipo);
+        hash = 79 * hash + Objects.hashCode(this.servicio);
+        hash = 79 * hash + Objects.hashCode(this.idServicio);
+        hash = 79 * hash + Objects.hashCode(this.nombreServicio);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.correo, other.correo)) {
+            return false;
+        }
+        if (!Objects.equals(this.contrasena, other.contrasena)) {
+            return false;
+        }
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreServicio, other.nombreServicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.servicio, other.servicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.idServicio, other.idServicio)) {
+            return false;
+        }
+        return true;
     }
 
 }

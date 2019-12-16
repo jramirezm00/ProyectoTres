@@ -180,10 +180,10 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <h:form>
+                            <h:form id="formUsers">
                                 <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information" style="text-align: center;">
                                     <p:column headerText="Identification">
-                                        <p:outputLabel value="#{users.id}" />
+                                        <p:outputLabel value="#{users.idUsuario}" />
                                     </p:column>
                                     <p:column headerText="Name">
                                         <h:outputText value="#{users.nombre}" />
@@ -197,8 +197,14 @@
                                     <p:column headerText="Service">
                                         <h:outputText value="#{users.nombreServicio}" />
                                     </p:column>
+                                    <p:column headerText="Type">
+                                        <h:outputText value="#{users.tipo}" />
+                                    </p:column>
                                     <p:column headerText="Update">
-                                        <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.id,users.nombre,users.direccion,users.telefono)}" class="btn btn-primary my-0"></h:commandButton>
+                                        <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.idUsuario,users.nombre,users.direccion,users.telefono)}" class="btn btn-primary my-0"></h:commandButton>
+                                    </p:column>
+                                    <p:column headerText="Delete">
+                                        <h:commandButton value="Delete" action="#{controllerUsuario.eliminarUsuario(users.idUsuario)}" class="btn btn-danger my-0"></h:commandButton>
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

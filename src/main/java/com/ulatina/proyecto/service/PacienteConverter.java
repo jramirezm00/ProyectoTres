@@ -19,7 +19,7 @@ import javax.faces.convert.FacesConverter;
  * @author josepabloramirez
  */
 @FacesConverter(value = "pacienteConverter")
-public class PacienteConverter implements Converter, Serializable {
+public class PacienteConverter implements Converter {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,9 +33,10 @@ public class PacienteConverter implements Converter, Serializable {
     public Object getAsObject(FacesContext fc, UIComponent uic, String submittedValue) {
         if (submittedValue != null && submittedValue.trim().length() > 0) {
             try {
-
-                return control.findByPkPaciente(new Integer(submittedValue));
+                Paciente paciente = control.findByPkPaciente(new Integer(submittedValue));
+                return paciente;
             } catch (Exception exception) {
+                exception.printStackTrace();
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "No es un Tipo válido."));
             }
         } else {

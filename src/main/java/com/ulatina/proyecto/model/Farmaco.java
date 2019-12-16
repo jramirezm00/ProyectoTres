@@ -5,6 +5,8 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
@@ -82,6 +84,51 @@ public class Farmaco {
 
     public void setCodigoProveedor(String codigoProveedor) {
         this.codigoProveedor = codigoProveedor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.idFarmaco);
+        hash = 37 * hash + Objects.hashCode(this.nombreComercial);
+        hash = 37 * hash + Objects.hashCode(this.nombreClinico);
+        hash = 37 * hash + Objects.hashCode(this.compuestoClinico);
+        hash = 37 * hash + Objects.hashCode(this.ubicacion);
+        hash = 37 * hash + Objects.hashCode(this.codigoProveedor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Farmaco other = (Farmaco) obj;
+        if (!Objects.equals(this.nombreComercial, other.nombreComercial)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreClinico, other.nombreClinico)) {
+            return false;
+        }
+        if (!Objects.equals(this.compuestoClinico, other.compuestoClinico)) {
+            return false;
+        }
+        if (!Objects.equals(this.ubicacion, other.ubicacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoProveedor, other.codigoProveedor)) {
+            return false;
+        }
+        if (!Objects.equals(this.idFarmaco, other.idFarmaco)) {
+            return false;
+        }
+        return true;
     }
 
 }

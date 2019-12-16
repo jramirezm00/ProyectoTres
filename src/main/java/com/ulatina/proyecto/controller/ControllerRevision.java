@@ -56,7 +56,7 @@ public class ControllerRevision implements Serializable {
     public void agregar() {
         System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevision(this.doctorSeleccionado.getId(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
+        usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
     }
 
     public void editar() {

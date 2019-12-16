@@ -5,6 +5,8 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
@@ -38,6 +40,35 @@ public class Presentacion {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.idPresentacion);
+        hash = 41 * hash + Objects.hashCode(this.descripcion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Presentacion other = (Presentacion) obj;
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.idPresentacion, other.idPresentacion)) {
+            return false;
+        }
+        return true;
     }
 
 }

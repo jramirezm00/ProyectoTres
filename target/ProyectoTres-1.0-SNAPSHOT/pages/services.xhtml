@@ -191,6 +191,9 @@
                                     <p:column headerText="Update">
                                         <h:commandButton value="Update" action="#{controllerServicios.redireccionarModificar(services.idServicio)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
+                                    <p:column headerText="Delete">
+                                        <h:commandButton value="Delete" action="#{controllerServicios.eliminar(services.idServicio)}" class="btn btn-danger my-0"></h:commandButton>
+                                    </p:column>
                                 </p:dataTable>
                             </h:form>
                         </div>

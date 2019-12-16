@@ -58,7 +58,7 @@ public class ControllerReceta implements Serializable {
 
     public void agregar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getId());
+        usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
     }
 
     public void editar() {

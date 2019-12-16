@@ -47,7 +47,7 @@ public class UsuarioConverter implements Converter {
         if (value == null || value.equals("")) {
             return "";
         } else {
-            return String.valueOf(((Usuario) value).getId());
+            return String.valueOf(((Usuario) value).getIdUsuario());
         }
     }
 

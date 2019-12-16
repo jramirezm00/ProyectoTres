@@ -5,7 +5,7 @@
  */
 package com.ulatina.proyecto.model;
 
-import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -113,6 +113,63 @@ public class Receta {
 
     public void setNombreDoctor(String nombreDoctor) {
         this.nombreDoctor = nombreDoctor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.idReceta);
+        hash = 13 * hash + Objects.hashCode(this.fechaReceta);
+        hash = 13 * hash + Objects.hashCode(this.cantidad);
+        hash = 13 * hash + Objects.hashCode(this.idFarmaco);
+        hash = 13 * hash + Objects.hashCode(this.idPresentacion);
+        hash = 13 * hash + Objects.hashCode(this.idDoctor);
+        hash = 13 * hash + Objects.hashCode(this.medicamento);
+        hash = 13 * hash + Objects.hashCode(this.presentacionFarmaco);
+        hash = 13 * hash + Objects.hashCode(this.nombreDoctor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Receta other = (Receta) obj;
+        if (!Objects.equals(this.fechaReceta, other.fechaReceta)) {
+            return false;
+        }
+        if (!Objects.equals(this.medicamento, other.medicamento)) {
+            return false;
+        }
+        if (!Objects.equals(this.presentacionFarmaco, other.presentacionFarmaco)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreDoctor, other.nombreDoctor)) {
+            return false;
+        }
+        if (!Objects.equals(this.idReceta, other.idReceta)) {
+            return false;
+        }
+        if (!Objects.equals(this.cantidad, other.cantidad)) {
+            return false;
+        }
+        if (!Objects.equals(this.idFarmaco, other.idFarmaco)) {
+            return false;
+        }
+        if (!Objects.equals(this.idPresentacion, other.idPresentacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.idDoctor, other.idDoctor)) {
+            return false;
+        }
+        return true;
     }
 
 }

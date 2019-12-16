@@ -5,6 +5,8 @@
  */
 package com.ulatina.proyecto.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author josepabloramirez
@@ -109,6 +111,63 @@ public class FarmacoPresentacion {
 
     public void setCodigoProveedor(String codigoProveedor) {
         this.codigoProveedor = codigoProveedor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.idFarmaco);
+        hash = 67 * hash + Objects.hashCode(this.idPresentacion);
+        hash = 67 * hash + Objects.hashCode(this.precio);
+        hash = 67 * hash + Objects.hashCode(this.nombreComercial);
+        hash = 67 * hash + Objects.hashCode(this.nombrePresentacion);
+        hash = 67 * hash + Objects.hashCode(this.compuestoQuimico);
+        hash = 67 * hash + Objects.hashCode(this.nombrClinico);
+        hash = 67 * hash + Objects.hashCode(this.ubicacion);
+        hash = 67 * hash + Objects.hashCode(this.codigoProveedor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FarmacoPresentacion other = (FarmacoPresentacion) obj;
+        if (!Objects.equals(this.nombreComercial, other.nombreComercial)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombrePresentacion, other.nombrePresentacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.compuestoQuimico, other.compuestoQuimico)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombrClinico, other.nombrClinico)) {
+            return false;
+        }
+        if (!Objects.equals(this.ubicacion, other.ubicacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoProveedor, other.codigoProveedor)) {
+            return false;
+        }
+        if (!Objects.equals(this.idFarmaco, other.idFarmaco)) {
+            return false;
+        }
+        if (!Objects.equals(this.idPresentacion, other.idPresentacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.precio, other.precio)) {
+            return false;
+        }
+        return true;
     }
 
 }

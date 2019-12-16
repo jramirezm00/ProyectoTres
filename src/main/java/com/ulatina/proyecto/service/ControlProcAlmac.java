@@ -31,7 +31,7 @@ public class ControlProcAlmac implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Conector conectorJDBC = Conector.getConector();
 
-    private final static String SP_LISTAR_USUARIO = "{ CALL ProyectoTresDemo.listar_usuario() }";
+    private final static String SP_LISTAR_USUARIOS = "{ CALL ProyectoTresDemo.listar_usuario() }";
     private final static String SP_LISTAR_SERVICIOS = "{ CALL ProyectoTresDemo.listar_servicios() }";
     private final static String SP_LISTAR_REVISIONES = "{ CALL ProyectoTresDemo.listar_revision() }";
     private final static String SP_LISTAR_RECETAS = "{ CALL ProyectoTresDemo.listar_recetas() }";
@@ -81,19 +81,19 @@ public class ControlProcAlmac implements Serializable {
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Usuario usuario = null;
         try {
-            stmt = conn.prepareCall(SP_LISTAR_USUARIO);
+            stmt = conn.prepareCall(SP_LISTAR_USUARIOS);
             stmt.execute();
             rs = (ResultSet) stmt.getResultSet();
             while (rs.next()) {
                 usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
+                usuario.setIdUsuario(rs.getInt("ID_USUARIO"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipo(rs.getString("tipo"));
-                usuario.setId(rs.getInt("idServicio"));
+                usuario.setIdServicio(rs.getInt("idServicio"));
                 usuario.setNombreServicio(rs.getString("SERVICIO"));
                 usuarios.add(usuario);
             }
@@ -777,7 +777,7 @@ public class ControlProcAlmac implements Serializable {
             rs = (ResultSet) stmt.getResultSet();
             while (rs.next()) {
                 usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
+                usuario.setIdUsuario(rs.getInt("id"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
@@ -833,14 +833,14 @@ public class ControlProcAlmac implements Serializable {
             rs = (ResultSet) stmt.getResultSet();
             while (rs.next()) {
                 usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
+                usuario.setIdUsuario(rs.getInt("id"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipo(rs.getString("tipo"));
-                usuario.setId(rs.getInt("idServicio"));
+                usuario.setIdUsuario(rs.getInt("idServicio"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -862,14 +862,14 @@ public class ControlProcAlmac implements Serializable {
             rs = (ResultSet) stmt.getResultSet();
             while (rs.next()) {
                 usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
+                usuario.setIdUsuario(rs.getInt("id"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipo(rs.getString("tipo"));
-                usuario.setId(rs.getInt("idServicio"));
+                usuario.setIdUsuario(rs.getInt("idServicio"));
                 usuarios.add(usuario);
             }
         } catch (Exception e) {
