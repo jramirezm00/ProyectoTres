@@ -13,6 +13,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -44,9 +46,16 @@ public class ControllerPresentacion implements Serializable {
         this.presentaciones = usu.listarPresentacion();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearPresentacion(this.nombrePresentacion);
+    public String agregar() {
+        if(nombrePresentacion == null ){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearPresentacion(this.nombrePresentacion);
+            return "drugs?faces-redirect=true";
+        }
     }
 
     public void editar() {

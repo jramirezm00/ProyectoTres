@@ -15,6 +15,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -40,9 +42,16 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
         this.detalles = usu.listarDetalleIngresosRevisionRecetas();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getIdRevision(), this.idReceta.getIdReceta());
+    public String agregar() {
+        if(idIngreso.getIdIngreso() == null || idRevision.getIdRevision() == null || idReceta.getIdReceta() == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getIdRevision(), this.idReceta.getIdReceta());
+            return "userProfile.xhtml?faces-redirect=true";
+        }
     }
 
     public List<DetalleIngresosRevisionReceta> getDetalles() {

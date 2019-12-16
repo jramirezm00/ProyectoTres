@@ -17,6 +17,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -56,13 +58,20 @@ public class ControllerReceta implements Serializable {
         this.recetas = usu.listarRecetas();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
+    public String agregar() {
+        if(farmacoSeleccionado.getIdFarmaco() == null || fechaReceta == null || presentacionSeleccionada.getIdPresentacion() == null ||
+            doctorSeleccionado.getIdUsuario() == null || cantidad == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
+            return "recipes?faces-redirect=true";
+        } 
     }
 
     public void editar() {
-        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarReceta(this.idReceta, this.cantidad);
     }

@@ -174,7 +174,6 @@
             </div>
 
             <div class="container-fluid mt--7" style="padding-top: 110px;">
-
                 <div class="row">
                     <div class="col">
                         <div class="card bg-secondary shadow">
@@ -186,10 +185,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-
                                 <h6 class="heading-small text-muted mb-4">User information</h6>
-                                <div class="pl-lg-4">
-                                    <h:form>
+                                <h:form>
+                                    <div class="pl-lg-4">
+                                        <p:growl severity="info,warn" id="growl" life="3000" showDetail="true" for="somekey"/>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -242,35 +241,33 @@
                                                 <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerUsuario.crear_usuario()}"></h:commandButton>
                                             </div>
                                         </div>
-                                    </h:form> 
-                                </div>
+                                </h:form> 
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-
-                <!-- Footer -->
-                <footer class="footer">
-                    <div class="row align-items-center justify-content-xl-between">
-                        <div class="col-xl-6">
-                            <div class="copyright text-center text-xl-left text-muted">
-                                &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                                <li class="nav-item">
-                                    <span class="nav-link">Proyecto III</span>
-                                </li>
-                                <li class="nav-item">
-                                    <span class="nav-link">Universidad Latina de Costa Rica</span>
-                                </li>
-                            </ul>
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="row align-items-center justify-content-xl-between">
+                    <div class="col-xl-6">
+                        <div class="copyright text-center text-xl-left text-muted">
+                            &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
                         </div>
                     </div>
-                </footer>
-            </div>
+                    <div class="col-xl-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                            <li class="nav-item">
+                                <span class="nav-link">Proyecto III</span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link">Universidad Latina de Costa Rica</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <script src="/ProyectoTres/assets/js/plugins/jquery/dist/jquery.min.js"></script>

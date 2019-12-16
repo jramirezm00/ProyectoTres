@@ -13,6 +13,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -44,11 +46,18 @@ public class ControllerServicios implements Serializable {
         this.servicios = usu.listarServicios();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearServicio(this.nombre);
+    public String agregar() {
+        if(nombre == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearServicio(this.nombre);
+            return "services?faces-redirect=true";
+        }
     }
-
+ 
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarServicio(this.id, this.nombre);
