@@ -190,14 +190,14 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-email">Description</label>
-                                                    <p:inputText class="form-control" value=""/>
+                                                    <label class="form-control-label">Description</label>
+                                                    <p:inputText class="form-control" value="#{controllerPresentacion.nombrePresentacion}"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerServicios.agregar()}"></h:commandButton>
+                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerPresentacion.agregar()}"></h:commandButton>
                                             </div>
                                         </div>
                                     </div>

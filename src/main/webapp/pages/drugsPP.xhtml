@@ -186,42 +186,43 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <h:form>
                                     <h6 class="heading-small text-muted mb-4">Main information</h6>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Drug</label>
-                                                    <h:selectOneListbox id="selectDrug" value="#{controllerDrug.farmacoSeleccionado}" converter="farmacoConverter" 
-                                                        class="form-control" style="height: 100px;">
+                                                    <h:selectOneMenu id="selectDrug" value="#{controllerFarmacoPresentacion.farmacoSeleccionado}" converter="farmacoConverter" class="form-control" style="height: 45px;">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems var="listaFarmacos" value="#{controllerFarmaco.farmacos}" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
-                                                    </h:selectOneListbox>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-last-name">Presentation</label>
-                                                    <h:selectOneMenu id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
-                                                        class="form-control" style="height: 45px;">
+                                                    <label class="form-control-label" >Presentation</label>
+                                                    <h:selectOneMenu id="selectPresentation" value="#{controllerFarmacoPresentacion.presentacionSeleccionada}" converter="presentacionConverter" 
+                                                                     class="form-control" style="height: 45px;">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
                                                     </h:selectOneMenu>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Price</label>
-                                                    <p:inputText class="form-control"/>
+                                                    <label class="form-control-label">Price</label>
+                                                    <p:inputText class="form-control" value="#{controllerFarmacoPresentacion.monto}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12" >
-                                                <button type="button" class="btn btn-success" style="float: right;">Create</button>
+                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerFarmacoPresentacion.agregar()}"></h:commandButton>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </h:form>
                             </div>
                         </div>
                     </div>

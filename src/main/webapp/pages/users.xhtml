@@ -178,8 +178,10 @@
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
-                            <h:button value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
-                                      outcome="usersAdd.xhtml"></h:button>
+                            <h:form id="formRedireccionarNuevoUsuario">
+                                <h:commandButton value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
+                                                 action="#{controllerUsuario.redireccionarCrearUsuario()}"></h:commandButton>
+                            </h:form>
                         </div>
                     </div>
                 </div>

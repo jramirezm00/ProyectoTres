@@ -16,7 +16,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -129,6 +128,15 @@ public class ControllerUsuario implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         return "usersModify?faces-redirect=true&idUsuario= " + this.idUsuario;
+    }
+
+    public String redireccionarCrearUsuario() {
+        this.nombre = null;
+        this.contrasena = null;
+        this.usuario = null;
+        this.telefono = null;
+        this.direccion = null;
+        return "usersAdd";
     }
 
     public void listarDoctores() {

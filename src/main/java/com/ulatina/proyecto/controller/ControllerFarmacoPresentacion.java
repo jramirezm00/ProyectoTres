@@ -68,9 +68,9 @@ public class ControllerFarmacoPresentacion implements Serializable {
         usu.editarFarmacoPresentacion(this.idFarmaco, this.idPresentacion, this.monto);
     }
 
-    public void eliminar() {
+    public void eliminar(Integer idFarmaco, Integer idPresentacion) {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.eliminarFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion());
+        usu.eliminarFarmacoPresentacion(idFarmaco, idPresentacion);
     }
 
     public String redireccionarModificar(Integer idFarmaco, Integer idPresentacion, String farmaco, String presentacion) {
