@@ -49,6 +49,8 @@ public class ControllerUsuario implements Serializable {
 
     private List<Usuario> doctores = new ArrayList<Usuario>();
 
+    private String nombreServicio;
+
     public ControllerUsuario() {
 
     }
@@ -73,6 +75,12 @@ public class ControllerUsuario implements Serializable {
 
     public String editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
+        System.out.println(this.tipoUsuario);
+        if (this.tipoUsuario.equals("doctor")) {
+            System.out.println("soy doctor");
+            System.out.println(this.servicio.getIdServicio());
+            usu.agregarServicioDoctor(this.idUsuario, this.servicio.getIdServicio());
+        }
         if (this.usuarioConect.getIdUsuario() != this.idUsuario) {
             System.out.println("modificando usuario en la lista");
             System.out.println(this.idUsuario);
@@ -122,11 +130,13 @@ public class ControllerUsuario implements Serializable {
         return null;
     }
 
-    public String redireccionarModificar(Integer idUsuario, String nombre, String direccion, String telefono) {
+    public String redireccionarModificar(Integer idUsuario, String nombre, String direccion, String telefono, String tipo, String servicio) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.tipoUsuario = tipo;
+        this.nombreServicio = servicio;
         return "usersModify?faces-redirect=true&idUsuario= " + this.idUsuario;
     }
 
@@ -136,7 +146,7 @@ public class ControllerUsuario implements Serializable {
         this.usuario = null;
         this.telefono = null;
         this.direccion = null;
-        return "usersAdd";
+        return "usersAdd?faces-redirect=true";
     }
 
     public void listarDoctores() {
@@ -230,6 +240,14 @@ public class ControllerUsuario implements Serializable {
 
     public void setDoctores(List<Usuario> doctores) {
         this.doctores = doctores;
+    }
+
+    public String getNombreServicio() {
+        return nombreServicio;
+    }
+
+    public void setNombreServicio(String nombreServicio) {
+        this.nombreServicio = nombreServicio;
     }
 
 }

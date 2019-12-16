@@ -73,6 +73,7 @@ public class ControlProcAlmac implements Serializable {
     private final static String SP_FIND_BY_PK_FARMACO = "{ CALL ProyectoTresDemo.farmacoFindByPk(?) }";
     private final static String SP_FIND_BY_PK_PRESENTACION = "{ CALL ProyectoTresDemo.presentacionFindByPk(?) }";
     private final static String SP_FIND_BY_PK_INGRESO = "{ CALL ProyectoTresDemo.ingresoFindByPk(?) }";
+    private final static String SP_AGREGAR_SERVICIO_DOCTOR = "{ CALL ProyectoTresDemo.agregarServicioDoctor(?,?) }";
 
     public List<Usuario> listarUsuarios() {
         Connection conn = conectorJDBC.conectar();
@@ -977,6 +978,22 @@ public class ControlProcAlmac implements Serializable {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
         return ingreso;
+    }
+
+    public void agregarServicioDoctor(Integer idDoctor, Integer idServicio) {
+        Connection conn = conectorJDBC.conectar();
+        CallableStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.prepareCall(SP_AGREGAR_SERVICIO_DOCTOR);
+            stmt.setInt(1, idDoctor);
+            stmt.setInt(2, idServicio);
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conectorJDBC.cerrarConexion(conn, stmt, rs);
+        }
     }
 
 }

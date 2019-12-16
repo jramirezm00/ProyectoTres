@@ -237,51 +237,40 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="row">
-                                             <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Service</label>
-                                                    <h:selectOneMenu id="selecttwo" value="#{controllerUsuario.servicio}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                        <f:selectItems value="#{controllerServicios.servicios}" var="servicio" itemLabel="#{servicio.descripcion}" itemValue="#{servicio}"></f:selectItems>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                            </div> -->
+                                        <div class="row">
+                                            <div class="col-lg-12" >
+                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerUsuario.crear_usuario()}"></h:commandButton>
+                                            </div>
+                                        </div>
+                                    </h:form> 
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12" >
-                                        <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerUsuario.crear_usuario()}"></h:commandButton>
-                                    </div>
-                                </div>
-                                </h:form> 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="row align-items-center justify-content-xl-between">
-                    <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="row align-items-center justify-content-xl-between">
+                        <div class="col-xl-6">
+                            <div class="copyright text-center text-xl-left text-muted">
+                                &copy; 2019<span class="font-weight-bold ml-1">- Sagrado Parrales</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                                <li class="nav-item">
+                                    <span class="nav-link">Proyecto III</span>
+                                </li>
+                                <li class="nav-item">
+                                    <span class="nav-link">Universidad Latina de Costa Rica</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
-                                <span class="nav-link">Proyecto III</span>
-                            </li>
-                            <li class="nav-item">
-                                <span class="nav-link">Universidad Latina de Costa Rica</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-        </div>
+                </footer>
+            </div>
         </div>
 
         <script src="/ProyectoTres/assets/js/plugins/jquery/dist/jquery.min.js"></script>

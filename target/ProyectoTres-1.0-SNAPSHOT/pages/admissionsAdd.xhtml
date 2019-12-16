@@ -193,7 +193,7 @@
                                             <div class="col-lg-6">
                                                 <label class="form-control-label">Patient</label><br/>
                                                 <h:selectOneMenu id="selectOnee" value="#{controllerIngreso.pacienteSeleccionado}" converter="pacienteConverter" class="form-control">
-                                                    <f:selectItem></f:selectItem>
+                                                    <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                     <f:selectItems var="listaPacientess" value="#{controllerPaciente.pacientes}" itemLabel="#{listaPacientess.nombre}" itemValue="#{listaPacientess}" />
                                                 </h:selectOneMenu>
                                             </div>
@@ -201,7 +201,7 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">Service</label><br/> 
                                                     <h:selectOneMenu id="selectOne" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter" class="form-control">
-                                                        <f:selectItem></f:selectItem>
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems var="listaServicioss" value="#{controllerServicios.servicios}" itemLabel="#{listaServicioss.descripcion}" itemValue="#{listaServicioss}" />
                                                     </h:selectOneMenu>
                                                 </div>

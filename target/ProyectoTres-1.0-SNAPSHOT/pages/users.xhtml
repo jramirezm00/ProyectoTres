@@ -180,7 +180,7 @@
                         <div width="100%">
                             <h:form id="formRedireccionarNuevoUsuario">
                                 <h:commandButton value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
-                                                 action="#{controllerUsuario.redireccionarCrearUsuario()}"></h:commandButton>
+                                                 action="#{controllerUsuario.redireccionarCrearUsuario()}" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}"></h:commandButton>
                             </h:form>
                         </div>
                     </div>
@@ -209,10 +209,10 @@
                                     <p:column headerText="Type">
                                         <h:outputText value="#{users.tipo}" />
                                     </p:column>
-                                    <p:column headerText="Update">
-                                        <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.idUsuario,users.nombre,users.direccion,users.telefono)}" class="btn btn-primary my-0"></h:commandButton>
+                                    <p:column headerText="Update" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
+                                        <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.idUsuario,users.nombre,users.direccion,users.telefono,users.tipo,users.tipo)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
-                                    <p:column headerText="Delete">
+                                    <p:column headerText="Delete" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
                                         <h:commandButton value="Delete" action="#{controllerUsuario.eliminarUsuario(users.idUsuario)}" class="btn btn-danger my-0"></h:commandButton>
                                     </p:column>
                                 </p:dataTable>

@@ -179,7 +179,7 @@
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
                             <h:button value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
-                                      outcome="servicesAdd.xhtml"></h:button>
+                                      outcome="servicesAdd.xhtml" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}"></h:button>
                         </div>
                     </div>
                 </div>
@@ -195,10 +195,10 @@
                                     <p:column headerText="Description">
                                         <p:outputLabel value="#{services.descripcion}" />
                                     </p:column>
-                                    <p:column headerText="Update">
+                                    <p:column headerText="Update" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
                                         <h:commandButton value="Update" action="#{controllerServicios.redireccionarModificar(services.idServicio)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
-                                    <p:column headerText="Delete">
+                                    <p:column headerText="Delete" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
                                         <h:commandButton value="Delete" action="#{controllerServicios.eliminar(services.idServicio)}" class="btn btn-danger my-0"></h:commandButton>
                                     </p:column>
                                 </p:dataTable>

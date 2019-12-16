@@ -191,13 +191,13 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Name</label>
+                                                    <label class="form-control-label">Name</label>
                                                     <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.nombre}" placeholder="#{controllerUsuario.nombre}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Direction</label>
+                                                    <label class="form-control-label">Direction</label>
                                                     <p:inputText class="form-control" value="#{controllerUsuario.direccion}" placeholder="#{controllerUsuario.direccion}"/>
                                                 </div>
                                             </div>
@@ -205,8 +205,18 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-last-name">Telephone</label>
+                                                    <label class="form-control-label">Telephone</label>
                                                     <p:inputText class="form-control" value="#{controllerUsuario.telefono}" placeholder="#{controllerUsuario.telefono}"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <h:outputLabel class="form-control-label" rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor') and controllerUsuario.nombreServicio == null) ? true : false }">Service</h:outputLabel>
+                                                    <h:selectOneMenu id="servicioModify" value="#{controllerUsuario.servicio}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important" 
+                                                                     rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor') and controllerUsuario.nombreServicio == null) ? true : false }" converter="servicioConverter">
+                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                        <f:selectItems value="#{controllerServicios.servicios}" var="servicio" itemLabel="#{servicio.descripcion}" itemValue="#{servicio}"></f:selectItems>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>
