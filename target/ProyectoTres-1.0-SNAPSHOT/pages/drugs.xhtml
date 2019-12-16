@@ -179,29 +179,34 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="drugs" value="#{controllerFarmacoPresentacion.farmacosPresentaciones}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Clinic Name">
-                                    <p:outputLabel value="#{drugs.nombreComercial}" />
-                                </p:column>
-                                <p:column headerText="Commercial Name">
-                                    <p:outputLabel value="#{drugs.nombreComercial}" />
-                                </p:column>
-                                <p:column headerText="Contains">
-                                    <p:outputLabel value="#{drugs.compuestoQuimico}" />
-                                </p:column>
-                                <p:column headerText="Supplied By">
-                                    <h:outputText value="#{drugs.codigoProveedor}" />
-                                </p:column>
-                                <p:column headerText="Location">
-                                    <h:outputText value="#{drugs.ubicacion}" />
-                                </p:column>
-                                <p:column headerText="Presentation">
-                                    <h:outputText value="#{drugs.nombrePresentacion}" />
-                                </p:column>
-                                <p:column headerText="Sale price">
-                                    <h:outputText value="#{drugs.precio}" />
-                                </p:column>
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="drugs" value="#{controllerFarmacoPresentacion.farmacosPresentaciones}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                    <p:column headerText="Clinic Name">
+                                        <p:outputLabel value="#{drugs.nombreComercial}" />
+                                    </p:column>
+                                    <p:column headerText="Commercial Name">
+                                        <p:outputLabel value="#{drugs.nombreComercial}" />
+                                    </p:column>
+                                    <p:column headerText="Contains">
+                                        <p:outputLabel value="#{drugs.compuestoQuimico}" />
+                                    </p:column>
+                                    <p:column headerText="Supplied By">
+                                        <h:outputText value="#{drugs.codigoProveedor}" />
+                                    </p:column>
+                                    <p:column headerText="Location">
+                                        <h:outputText value="#{drugs.ubicacion}" />
+                                    </p:column>
+                                    <p:column headerText="Presentation">
+                                        <h:outputText value="#{drugs.nombrePresentacion}" />
+                                    </p:column>
+                                    <p:column headerText="Sale price">
+                                        <h:outputText value="#{drugs.precio}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerFarmacoPresentacion.redireccionarModificar(drugs.idFarmaco,drugs.idPresentacion,drugs.nombreComercial,drugs.nombrePresentacion)}" class="btn btn-primary my-0"></h:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>

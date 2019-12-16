@@ -36,6 +36,14 @@ public class ControllerFarmacoPresentacion implements Serializable {
 
     private Integer idFarmacoPresentacion;
 
+    private Integer idFarmaco;
+
+    private Integer idPresentacion;
+
+    private String dscFarmaco;
+
+    private String dscPresentacion;
+
     public ControllerFarmacoPresentacion() {
 
     }
@@ -57,12 +65,20 @@ public class ControllerFarmacoPresentacion implements Serializable {
 
     public void editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.idFarmacoPresentacion, this.monto);
+        usu.editarFarmacoPresentacion(this.idFarmaco, this.idPresentacion, this.monto);
     }
 
     public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion());
+    }
+
+    public String redireccionarModificar(Integer idFarmaco, Integer idPresentacion, String farmaco, String presentacion) {
+        this.idFarmaco = idFarmaco;
+        this.idPresentacion = idPresentacion;
+        this.dscFarmaco = farmaco;
+        this.dscPresentacion = presentacion;
+        return "drugsModify?faces-redirect=true&idFarmaco= " + this.idFarmaco + "&idPresentacion= " + this.idPresentacion;
     }
 
     public List<FarmacoPresentacion> getFarmacosPresentaciones() {
@@ -103,6 +119,46 @@ public class ControllerFarmacoPresentacion implements Serializable {
 
     public void setId(Integer idFarmacoPresentacion) {
         this.idFarmacoPresentacion = idFarmacoPresentacion;
+    }
+
+    public Integer getIdFarmacoPresentacion() {
+        return idFarmacoPresentacion;
+    }
+
+    public void setIdFarmacoPresentacion(Integer idFarmacoPresentacion) {
+        this.idFarmacoPresentacion = idFarmacoPresentacion;
+    }
+
+    public Integer getIdFarmaco() {
+        return idFarmaco;
+    }
+
+    public void setIdFarmaco(Integer idFarmaco) {
+        this.idFarmaco = idFarmaco;
+    }
+
+    public Integer getIdPresentacion() {
+        return idPresentacion;
+    }
+
+    public void setIdPresentacion(Integer idPresentacion) {
+        this.idPresentacion = idPresentacion;
+    }
+
+    public String getDscFarmaco() {
+        return dscFarmaco;
+    }
+
+    public void setDscFarmaco(String dscFarmaco) {
+        this.dscFarmaco = dscFarmaco;
+    }
+
+    public String getDscPresentacion() {
+        return dscPresentacion;
+    }
+
+    public void setDscPresentacion(String dscPresentacion) {
+        this.dscPresentacion = dscPresentacion;
     }
 
 }

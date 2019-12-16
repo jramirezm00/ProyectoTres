@@ -181,7 +181,7 @@
                     <div class="col">
                         <div width="100%">
                             <h:form>
-                                <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information">
+                                <p:dataTable var="users" value="#{controllerUsuario.usuarios}" emptyMessage="We couldn't find any information" style="text-align: center;">
                                     <p:column headerText="Identification">
                                         <p:outputLabel value="#{users.id}" />
                                     </p:column>
@@ -196,6 +196,9 @@
                                     </p:column>
                                     <p:column headerText="Service">
                                         <h:outputText value="#{users.nombreServicio}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.id,users.nombre,users.direccion,users.telefono)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

@@ -180,14 +180,19 @@
                 <div class="row">
                     <div class="col">
                         <div width="100%">
-                            <p:dataTable var="services" value="#{controllerServicios.servicios}" emptyMessage="We couldn't find any information">
-                                <p:column headerText="Id">
-                                    <p:outputLabel value="#{services.idServicio}" />
-                                </p:column>
-                                <p:column headerText="Description">
-                                    <p:outputLabel value="#{services.descripcion}" />
-                                </p:column>
-                            </p:dataTable>
+                            <h:form>
+                                <p:dataTable var="services" value="#{controllerServicios.servicios}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                    <p:column headerText="Id">
+                                        <p:outputLabel value="#{services.idServicio}" />
+                                    </p:column>
+                                    <p:column headerText="Description">
+                                        <p:outputLabel value="#{services.descripcion}" />
+                                    </p:column>
+                                    <p:column headerText="Update">
+                                        <h:commandButton value="Update" action="#{controllerServicios.redireccionarModificar(services.idServicio)}" class="btn btn-primary my-0"></h:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>

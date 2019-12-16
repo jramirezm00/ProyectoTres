@@ -73,7 +73,14 @@ public class ControllerUsuario implements Serializable {
 
     public void editar_usuario() {
         ControlProcAlmac usu = new ControlProcAlmac();
-        usu.editarUsuario(this.usuarioConect.getId(), this.nombre, this.direccion, this.telefono);
+        if(this.usuarioConect.getId() != this.idUsuario){
+            System.out.println("modificando usuario en la lista");
+            System.out.println(this.idUsuario);
+            usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
+        } else {
+             usu.editarUsuario(this.usuarioConect.getId(), this.nombre, this.direccion, this.telefono);
+        }
+        
     }
 
     public void crear_usuario() {
@@ -115,18 +122,12 @@ public class ControllerUsuario implements Serializable {
         return null;
     }
 
-    public void redirect(String url) {
-        try {
-            HttpServletRequest request = (HttpServletRequest) FacesContext
-                    .getCurrentInstance().getExternalContext().getRequest();
-            FacesContext
-                    .getCurrentInstance()
-                    .getExternalContext()
-                    .redirect(
-                            request.getContextPath()
-                            + "faces/pages/" + url);
-        } catch (IOException e) {
-        }
+    public String redireccionarModificar(Integer idUsuario, String nombre, String direccion, String telefono) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        return "drugsModify?faces-redirect=true&idUsuario= " + this.idUsuario;
     }
 
     public void listarDoctores() {

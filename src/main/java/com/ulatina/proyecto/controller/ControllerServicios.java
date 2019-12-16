@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
  */
 @ManagedBean(name = "controllerServicios")
 @SessionScoped
-public class ControllerServicios implements Serializable{
+public class ControllerServicios implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,6 +57,11 @@ public class ControllerServicios implements Serializable{
     public void eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarServicio(this.id);
+    }
+
+    public String redireccionarModificar(Integer idServicio) {
+        this.id = idServicio;
+        return "servicesModify?faces-redirect=true&idServicio= " + this.id;
     }
 
     public List<Servicio> getServicios() {
