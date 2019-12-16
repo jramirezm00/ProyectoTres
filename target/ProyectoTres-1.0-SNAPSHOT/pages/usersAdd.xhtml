@@ -174,7 +174,6 @@
             </div>
 
             <div class="container-fluid mt--7" style="padding-top: 110px;">
-
                 <div class="row">
                     <div class="col">
                         <div class="card bg-secondary shadow">
@@ -186,10 +185,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-
                                 <h6 class="heading-small text-muted mb-4">User information</h6>
-                                <div class="pl-lg-4">
-                                    <h:form>
+                                <h:form>
+                                    <div class="pl-lg-4">
+                                        <p:growl severity="info,warn" id="growl" life="3000" showDetail="true" for="somekey"/>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -237,29 +236,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="row">
-                                             <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-first-name">Service</label>
-                                                    <h:selectOneMenu id="selecttwo" value="#{controllerUsuario.servicio}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important">
-                                                        <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                        <f:selectItems value="#{controllerServicios.servicios}" var="servicio" itemLabel="#{servicio.descripcion}" itemValue="#{servicio}"></f:selectItems>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                            </div> -->
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12" >
-                                        <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerUsuario.crear_usuario()}"></h:commandButton>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-12" >
+                                            <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerUsuario.crear_usuario()}"></h:commandButton>
+                                        </div>
+                                    </div>
                                 </h:form> 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <!-- Footer -->
             <footer class="footer">
@@ -281,7 +269,6 @@
                     </div>
                 </div>
             </footer>
-        </div>
         </div>
 
         <script src="/ProyectoTres/assets/js/plugins/jquery/dist/jquery.min.js"></script>

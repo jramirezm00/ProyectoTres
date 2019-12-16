@@ -16,6 +16,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -53,10 +55,17 @@ public class ControllerRevision implements Serializable {
         this.revisiones = usu.listarRevisiones();
     }
 
-    public void agregar() {
-        System.out.println("me llamaron");
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
+    public String agregar() {
+        if(doctorSeleccionado.getIdUsuario() == null || ingresoSeleccionado.getIdIngreso() == null || fechaRevision == null ||
+            informe == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
+            return "revisions?faces-redirect=true";
+        }
     }
 
     public void editar() {

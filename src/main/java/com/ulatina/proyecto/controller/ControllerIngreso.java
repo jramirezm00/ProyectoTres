@@ -16,6 +16,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -42,7 +44,7 @@ public class ControllerIngreso implements Serializable {
     private Integer idIngreso;
 
     public ControllerIngreso() {
-
+        
     }
 
     @PostConstruct
@@ -55,16 +57,21 @@ public class ControllerIngreso implements Serializable {
         this.ingresos = usu.listarIngresos();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        System.out.println("ME ESTAN LLAMANDO!!!");
-        System.out.println(this.pacienteSeleccionado.getNombre());
-        System.out.println(this.servicioSeleccionado.getDescripcion());
-        usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);
+    public String agregar() {
+        if(pacienteSeleccionado == null || 
+           servicioSeleccionado == null ||
+           fechaIngreso == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);
+            return "admissions.xhtml?faces-redirect=true";
+        }   
     }
 
     public void editar() {
-        System.out.println("me llamaron");
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarIngreso(this.idIngreso, this.fechaSalida);
     }

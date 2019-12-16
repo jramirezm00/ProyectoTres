@@ -15,6 +15,8 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -58,9 +60,18 @@ public class ControllerFarmacoPresentacion implements Serializable {
         this.farmacosPresentaciones = usu.listarFarmacoPresentacion();
     }
 
-    public void agregar() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        usu.crearFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion(), this.monto);
+    public String agregar() {
+        if(farmacoSeleccionado.getIdFarmaco() == null || 
+           presentacionSeleccionada.getIdPresentacion() == null ||
+           monto == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            usu.crearFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion(), this.monto);
+            return "drugs.xhtml?faces-redirect=true";
+        }
     }
 
     public void editar() {

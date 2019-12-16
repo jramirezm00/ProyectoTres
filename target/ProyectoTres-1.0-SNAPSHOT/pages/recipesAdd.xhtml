@@ -187,6 +187,7 @@
                             </div>
                             <div class="card-body">
                                 <h:form>
+                                    <p:growl severity="info,warn" id="growl" life="3000" showDetail="true"/>
                                     <h6 class="heading-small text-muted mb-4">Recipe information</h6>
                                     <div class="pl-lg-4">
                                         <div class="row">
@@ -195,6 +196,7 @@
                                                     <label class="form-control-label">Drug</label>
                                                     <h:selectOneMenu id="selectDrug" value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" 
                                                         class="form-control" style="height: 45px;">
+                                                        <f:selectItem></f:selectItem>
                                                         <f:selectItems var="listaFarmacos" value="#{controllerFarmaco.farmacos}" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
                                                     </h:selectOneMenu>
                                                 </div>
@@ -204,6 +206,7 @@
                                                     <label class="form-control-label">Presentation</label>
                                                     <h:selectOneMenu id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
                                                         class="form-control" style="height: 45px;">
+                                                        <f:selectItem></f:selectItem>
                                                         <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
                                                     </h:selectOneMenu>
                                                 </div>
@@ -227,10 +230,11 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Doctor</label>
-                                                    <h:selectOneListbox id="selectDoctor" value="#{controllerReceta.doctorSeleccionado}" converter="usuarioConverter" 
-                                                        class="form-control" style="height: 100px;">
+                                                    <h:selectOneMenu id="selectDoctor" value="#{controllerReceta.doctorSeleccionado}" converter="usuarioConverter" 
+                                                        class="form-control" style="height: 45px;">
+                                                        <f:selectItem></f:selectItem>
                                                         <f:selectItems value="#{controllerUsuario.doctores}" var="listaDoctores" itemLabel="#{listaDoctores.nombre}" itemValue="#{listaDoctores}" />
-                                                    </h:selectOneListbox>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>

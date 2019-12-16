@@ -83,15 +83,20 @@ public class ControllerUsuario implements Serializable {
         return "users?faces-redirect=true";
     }
 
-    public void crear_usuario() {
-        ControlProcAlmac usu = new ControlProcAlmac();
-        System.out.println(this.tipoUsuario);
-        if (this.servicio == null) {
-            usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, 0);
-        } else {
-            usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, this.servicio.getIdServicio());
+    public String crear_usuario() {
+        if(nombre == null || usuario == null || contrasena == null || direccion == null || telefono == null || tipoUsuario == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("somekey", new FacesMessage("Error!",  "Please enter all required spaces."));
+            return null;
+        }else{
+            ControlProcAlmac usu = new ControlProcAlmac();
+            if (this.servicio == null) {
+                usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, 0);
+            } else {
+                usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, this.servicio.getIdServicio());
+            }
+            return "users?faces-redirect=true";
         }
-
     }
 
     public String login() {
