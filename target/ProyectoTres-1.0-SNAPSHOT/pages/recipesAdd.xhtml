@@ -111,14 +111,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./drugs.xhtml">
-                                <i class="ni ni-tag text-green"></i> Drugs
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="./services.xhtml">
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
+                        </li>
+                        <li class="nav-item">                      
+                            <div class="dropdown">
+                                <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ni ni-tag text-green"></i> Drugs
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: 20px;">
+                                    <a class="dropdown-item" href="./drugs.xhtml">Drug</a>
+                                    <a class="dropdown-item" href="./drugsPP.xhtml">Price and Presentation</a>
+                                    <a class="dropdown-item" href="./drugAddPresentation.xhtml">Add Presentation</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                     <!-- Divider -->
@@ -186,19 +193,19 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Drug</label>
-                                                    <h:selectOneListbox id="selectDrug" value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" 
-                                                        class="form-control" style="height: 100px;">
+                                                    <h:selectOneMenu id="selectDrug" value="#{controllerReceta.farmacoSeleccionado}" converter="farmacoConverter" 
+                                                        class="form-control" style="height: 45px;">
                                                         <f:selectItems var="listaFarmacos" value="#{controllerFarmaco.farmacos}" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
-                                                    </h:selectOneListbox>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Presentation</label>
-                                                    <h:selectOneListbox id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
-                                                        class="form-control" style="height: 100px;">
+                                                    <h:selectOneMenu id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
+                                                        class="form-control" style="height: 45px;">
                                                         <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
-                                                    </h:selectOneListbox>
+                                                    </h:selectOneMenu>
                                                 </div>
                                             </div>
                                         </div>

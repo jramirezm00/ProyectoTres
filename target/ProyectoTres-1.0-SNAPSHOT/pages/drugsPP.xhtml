@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta charset="utf-8" />
@@ -85,7 +86,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./admissions.xhtml">
+                            <a class="nav-link" href="./admissions.xhtml">
                                 <i class="ni ni-badge text-blue "></i> Admissions
                             </a>
                         </li>
@@ -109,14 +110,14 @@
                                 <i class="ni ni-circle-08 text-info"></i> Users
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="./services.xhtml">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./services.xhtml">
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
                         </li>
-                        <li class="nav-item">                      
+                        <li class="nav-item active">                      
                             <div class="dropdown">
-                                <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link active" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="ni ni-tag text-green"></i> Drugs
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: 20px;">
@@ -165,7 +166,7 @@
                     <div class="container-fluid">
                         <div class="header-body">
                             <span style="color: #F9C02F;font-size: 72px;text-align: right;font-weight: 1000;text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;background: transparent;">
-                                Add Service
+                                Drug - Presentation and price
                             </span>
                         </div>
                     </div>
@@ -180,29 +181,47 @@
                             <div class="card-header bg-white border-0">
                                 <div class="row align-items-center">
                                     <div class="col-8">
-                                        <h3 class="mb-0">Add new service</h3>
+                                        <h3 class="mb-0">Add presentation and price</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h:form>
-                                    <h6 class="heading-small text-muted mb-4">Service Information</h6>
+                                <form>
+                                    <h6 class="heading-small text-muted mb-4">Main information</h6>
                                     <div class="pl-lg-4">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="form-control-label" for="input-email">Description</label>
-                                                    <p:inputText class="form-control" value="#{controllerServicios.nombre}"/>
+                                                    <label class="form-control-label">Drug</label>
+                                                    <h:selectOneListbox id="selectDrug" value="#{controllerDrug.farmacoSeleccionado}" converter="farmacoConverter" 
+                                                        class="form-control" style="height: 100px;">
+                                                        <f:selectItems var="listaFarmacos" value="#{controllerFarmaco.farmacos}" itemLabel="#{listaFarmacos.nombreClinico}" itemValue="#{listaFarmacos}" />
+                                                    </h:selectOneListbox>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-12">
-                                                <h:commandButton class="btn btn-success" style="float: right;" value="Create" action="#{controllerServicios.agregar()}"></h:commandButton>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-last-name">Presentation</label>
+                                                    <h:selectOneMenu id="selectPresentation" value="#{controllerReceta.presentacionSeleccionada}" converter="presentacionConverter" 
+                                                        class="form-control" style="height: 45px;">
+                                                        <f:selectItems value="#{controllerPresentacion.presentaciones}" var="listaPresentaciones" itemLabel="#{listaPresentaciones.descripcion}" itemValue="#{listaPresentaciones}" />
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-first-name">Price</label>
+                                                    <p:inputText class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" >
+                                                <button type="button" class="btn btn-success" style="float: right;">Create</button>
                                             </div>
                                         </div>
                                     </div>
-                                </h:form>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -110,15 +110,22 @@
                                 <i class="ni ni-circle-08 text-info"></i> Users
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="./drugs.xhtml">
-                                <i class="ni ni-tag text-green"></i> Drugs
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./services.xhtml">
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
+                        </li>
+                        <li class="nav-item active">                      
+                            <div class="dropdown">
+                                <a class="nav-link active" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ni ni-tag text-green"></i> Drugs
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: 20px;">
+                                    <a class="dropdown-item" href="./drugs.xhtml">Drug</a>
+                                    <a class="dropdown-item" href="./drugsPP.xhtml">Price and Presentation</a>
+                                    <a class="dropdown-item" href="./drugAddPresentation.xhtml">Add Presentation</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                     <!-- Divider -->
