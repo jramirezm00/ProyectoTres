@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -29,13 +30,22 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private List<DetalleIngresosRevisionReceta> detalles = new ArrayList<>();
-    private Ingreso idIngreso;
-    private Revision idRevision;
-    private Receta idReceta;
+
+    private Ingreso ingresoSeleccionado;
+
+    private Revision revisionSeleccionado;
+
+    private Receta recetaSeleccionado;
+
     private int id;
 
     public ControllerDetalleIngresoRevisionReceta() {
 
+    }
+
+    @PostConstruct
+    public void init() {
+        listar();
     }
 
     public void listar() {
@@ -44,13 +54,13 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
     }
 
     public String agregar() {
-        if (idIngreso.getIdIngreso() == null || idRevision.getIdRevision() == null || idReceta.getIdReceta() == null) {
+        if (ingresoSeleccionado == null || revisionSeleccionado == null || recetaSeleccionado == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
-            usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getIdRevision(), this.idReceta.getIdReceta());
+            usu.crearRevisionReceta(this.ingresoSeleccionado.getIdIngreso(), this.revisionSeleccionado.getIdRevision(), this.recetaSeleccionado.getIdReceta());
             limpiarVariables();
             listar();
             return "userProfile.xhtml?faces-redirect=true";
@@ -58,9 +68,9 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
     }
 
     public void limpiarVariables() {
-        this.idIngreso = null;
-        this.idReceta = null;
-        this.idRevision = null;
+        this.ingresoSeleccionado = null;
+        this.recetaSeleccionado = null;
+        this.revisionSeleccionado = null;
     }
 
     public List<DetalleIngresosRevisionReceta> getDetalles() {
@@ -71,28 +81,28 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
         this.detalles = detalles;
     }
 
-    public Ingreso getIdIngreso() {
-        return idIngreso;
+    public Ingreso getIngresoSeleccionado() {
+        return ingresoSeleccionado;
     }
 
-    public void setIdIngreso(Ingreso idIngreso) {
-        this.idIngreso = idIngreso;
+    public void setIngresoSeleccionado(Ingreso ingresoSeleccionado) {
+        this.ingresoSeleccionado = ingresoSeleccionado;
     }
 
-    public Revision getIdRevision() {
-        return idRevision;
+    public Revision getRevisionSeleccionado() {
+        return revisionSeleccionado;
     }
 
-    public void setIdRevision(Revision idRevision) {
-        this.idRevision = idRevision;
+    public void setRevisionSeleccionado(Revision revisionSeleccionado) {
+        this.revisionSeleccionado = revisionSeleccionado;
     }
 
-    public Receta getIdReceta() {
-        return idReceta;
+    public Receta getRecetaSeleccionado() {
+        return recetaSeleccionado;
     }
 
-    public void setIdReceta(Receta idReceta) {
-        this.idReceta = idReceta;
+    public void setRecetaSeleccionado(Receta recetaSeleccionado) {
+        this.recetaSeleccionado = recetaSeleccionado;
     }
 
     public int getId() {

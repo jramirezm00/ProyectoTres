@@ -115,6 +115,11 @@
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./DIRR.xhtml">
+                                <i class="ni ni-ambulance text-default"></i> D.I.R.R.
+                            </a>
+                        </li>
                         <li class="nav-item">                      
                             <div class="dropdown">
                                 <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -178,8 +183,8 @@
                 <div class="row">
                     <div class="col" style="padding-top: 110px;">
                         <div width="100%">
-                            <h:commandButton value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
-                                action=""    ></h:commandButton>
+                            <h:button value="Add" class="btn btn-info" style="margin:5px 0px;float:right;background: #F9BF2E;border: 1px solid white;"
+                                      outcome="DIRRAdd.xhtml" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}"></h:button>
                         </div>
                     </div>
                 </div>
@@ -188,21 +193,21 @@
                     <div class="col">
                         <div width="100%">
                             <h:form>
-                                <p:dataTable var="admission" value="#{controllerIngreso.ingresos}" emptyMessage="We couldn't find any information" style="text-align: center;">
+                                <p:dataTable var="dirr" value="#{controllerDetalleIngresoRevisionReceta.detalles}" emptyMessage="We couldn't find any information" style="text-align: center;">
                                     <p:column headerText="Patient">
-                                        <p:outputLabel value="#{admission.nombrePaciente}" />
+                                        <p:outputLabel value="#{dirr.nombrePaciente}" />
                                     </p:column>
 
-                                    <p:column headerText="Service">
-                                        <p:outputLabel value="#{admission.nombreServicio}" />
+                                    <p:column headerText="Doctor">
+                                        <p:outputLabel value="#{dirr.nombreDoctor}" />
                                     </p:column>
 
-                                    <p:column headerText="Admission Date">
-                                        <p:outputLabel value="#{admission.fechaIngreso}" />
+                                    <p:column headerText="Recipe">
+                                        <p:outputLabel value="#{dirr.receta}" />
                                     </p:column>
 
-                                    <p:column headerText="Egress Date">
-                                        <p:outputLabel value="#{admission.fechaSalida}" />
+                                    <p:column headerText="Cantidad">
+                                        <p:outputLabel value="#{dirr.cantidad}" />
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

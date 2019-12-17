@@ -115,6 +115,11 @@
                                 <i class="ni ni-ambulance text-default"></i> Services
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./DIRR.xhtml">
+                                <i class="ni ni-ambulance text-default"></i> D.I.R.R.
+                            </a>
+                        </li>
                         <li class="nav-item">                      
                             <div class="dropdown">
                                 <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,7 +191,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h:form id="formIngresos">
+                                <h:form id="formDIRR">
 
                                     <p:growl severity="info,warn" id="growl" life="3000" showDetail="true"/>
                                     <p:messages id="messages" showDetail="true" closable="true"></p:messages>
@@ -196,19 +201,19 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <label class="form-control-label">Admission</label><br/>
-                                                <h:selectOneMenu id="selectAdmission" value="#{controllerRevision.ingresoSeleccionado}" converter="ingresoConverter"
-                                                                class="form-control" style="height: 45px;" required="true" requiredMessage="Por favor rellene los espacios requeridos">
-                                                   <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                   <f:selectItems value="#{controllerIngreso.ingresos}" var="listaIngresos" itemLabel="#{listaIngresos.nombrePaciente}" itemValue="#{listaIngresos}" />
+                                                <h:selectOneMenu id="selectAdmission" value="#{controllerDetalleIngresoRevisionReceta.ingresoSeleccionado}" converter="ingresoConverter"
+                                                                 class="form-control" style="height: 45px;" required="true" requiredMessage="Por favor rellene los espacios requeridos">
+                                                    <f:selectItem itemLabel="" itemValue= "#{null}"/>
+                                                    <f:selectItems value="#{controllerIngreso.ingresos}" var="listaIngresos" itemLabel="#{listaIngresos.nombrePaciente}" itemValue="#{listaIngresos}" />
                                                 </h:selectOneMenu>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Revision</label><br/> 
-                                                    <h:selectOneMenu id="selectOne" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter" 
+                                                    <h:selectOneMenu id="selectOne" value="#{controllerDetalleIngresoRevisionReceta.revisionSeleccionado}" converter="revisionConverter" 
                                                                      class="form-control" style="height: 45px">
                                                         <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                        <f:selectItems var="listaServicioss" value="#{controllerServicios.servicios}" itemLabel="#{listaServicioss.descripcion}" itemValue="#{listaServicioss}" />
+                                                        <f:selectItems var="listaRevison" value="#{controllerRevision.revisiones}" itemLabel="#{listaRevison.informe}" itemValue="#{listaRevison}" />
                                                     </h:selectOneMenu>
                                                 </div>
                                             </div>
@@ -217,10 +222,10 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Recipe</label>
-                                                    <h:selectOneMenu id="selectOneee" value="#{controllerIngreso.servicioSeleccionado}" converter="servicioConverter" 
+                                                    <h:selectOneMenu id="selectOneee" value="#{controllerDetalleIngresoRevisionReceta.recetaSeleccionado}" converter="recetaConverter" 
                                                                      class="form-control" style="height: 45px">
                                                         <f:selectItem itemLabel="" itemValue= "#{null}"/>
-                                                        <f:selectItems var="listaServicioss" value="#{controllerServicios.servicios}" itemLabel="#{listaServicioss.descripcion}" itemValue="#{listaServicioss}" />
+                                                        <f:selectItems var="listaReceta" value="#{controllerReceta.recetas}" itemLabel="#{listaReceta.medicamento}" itemValue="#{listaReceta}" />
                                                     </h:selectOneMenu>
                                                 </div>
                                             </div>

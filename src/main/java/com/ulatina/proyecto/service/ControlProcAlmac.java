@@ -74,6 +74,8 @@ public class ControlProcAlmac implements Serializable {
     private final static String SP_FIND_BY_PK_PRESENTACION = "{ CALL ProyectoTresDemo.presentacionFindByPk(?) }";
     private final static String SP_FIND_BY_PK_INGRESO = "{ CALL ProyectoTresDemo.ingresoFindByPk(?) }";
     private final static String SP_AGREGAR_SERVICIO_DOCTOR = "{ CALL ProyectoTresDemo.agregarServicioDoctor(?,?) }";
+    private final static String SP_FIND_BY_PK_REVISION = "{ CALL ProyectoTresDemo.revisionFindByPk(?) }";
+    private final static String SP_FIND_BY_PK_RECETA = "{ CALL ProyectoTresDemo.recetaFindByPk(?) }";
 
     public List<Usuario> listarUsuarios() {
         Connection conn = conectorJDBC.conectar();
@@ -346,7 +348,8 @@ public class ControlProcAlmac implements Serializable {
                 detalleIngresosRevisionReceta.setNombrePaciente(rs.getString("PACIENTE"));
                 detalleIngresosRevisionReceta.setIdRevision(rs.getInt("idRevision"));
                 detalleIngresosRevisionReceta.setNombreDoctor(rs.getString("DOCTOR"));
-                detalleIngresosRevisionReceta.setIdReceta(rs.getInt("RECETA"));
+                detalleIngresosRevisionReceta.setIdReceta(rs.getInt("idReceta"));
+                detalleIngresosRevisionReceta.setReceta(rs.getString("RECETA"));
                 detalleIngresosRevisionReceta.setCantidad(rs.getInt("CANTIDAD"));
                 detalleIngresosRevisionRecetas.add(detalleIngresosRevisionReceta);
             }
@@ -994,6 +997,59 @@ public class ControlProcAlmac implements Serializable {
         } finally {
             conectorJDBC.cerrarConexion(conn, stmt, rs);
         }
+    }
+
+    public Revision findByPkRevision(Integer id) {
+        Connection conn = conectorJDBC.conectar();
+        CallableStatement stmt = null;
+        ResultSet rs = null;
+        Revision revision = null;
+        try {
+            stmt = conn.prepareCall(SP_FIND_BY_PK_REVISION);
+            stmt.setInt(1, id);
+            stmt.execute();
+            rs = (ResultSet) stmt.getResultSet();
+            while (rs.next()) {
+                revision = new Revision();
+                revision.setIdRevision(rs.getInt("idRevision"));
+                revision.setIdDoctor(rs.getInt("idDoctor"));
+                revision.setIdIngreso(rs.getInt("idIngreso"));
+                revision.setFechaRevision(rs.getString("fechaRevision"));
+                revision.setInforme(rs.getString("informe"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conectorJDBC.cerrarConexion(conn, stmt, rs);
+        }
+        return revision;
+    }
+
+    public Receta findByPkReceta(Integer id) {
+        Connection conn = conectorJDBC.conectar();
+        CallableStatement stmt = null;
+        ResultSet rs = null;
+        Receta receta = null;
+        try {
+            stmt = conn.prepareCall(SP_FIND_BY_PK_RECETA);
+            stmt.setInt(1, id);
+            stmt.execute();
+            rs = (ResultSet) stmt.getResultSet();
+            while (rs.next()) {
+                receta = new Receta();
+                receta.setIdReceta(rs.getInt("idRecetas"));
+                receta.setIdFarmaco(rs.getInt("idFarmaco"));
+                receta.setFechaReceta(rs.getString("fechaReceta"));
+                receta.setCantidad(rs.getInt("cantidad"));
+                receta.setIdPresentacion(rs.getInt("idPresentacion"));
+                receta.setIdDoctor(rs.getInt("idFacultivo"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conectorJDBC.cerrarConexion(conn, stmt, rs);
+        }
+        return receta;
     }
 
 }
