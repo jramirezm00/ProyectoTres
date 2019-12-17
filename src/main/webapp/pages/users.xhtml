@@ -214,7 +214,7 @@
                                     <p:column headerText="Type">
                                         <h:outputText value="#{users.tipo}" />
                                     </p:column>
-                                    <p:column headerText="Update" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">
+                                    <p:column headerText="Update" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') or controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('doctor') ? true : false}">
                                         <h:commandButton value="Update" action="#{controllerUsuario.redireccionarModificar(users.idUsuario,users.nombre,users.direccion,users.telefono,users.tipo,users.tipo)}" class="btn btn-primary my-0"></h:commandButton>
                                     </p:column>
                                     <p:column headerText="Delete" rendered="#{controllerUsuario.usuarioConect.tipo.equalsIgnoreCase('admin') ? true : false}">

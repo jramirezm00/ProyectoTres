@@ -216,9 +216,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <h:outputLabel class="form-control-label" rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor') and controllerUsuario.nombreServicio == null) ? true : false }">Service</h:outputLabel>
+                                                    <h:outputLabel class="form-control-label" rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor')) ? true : false }">Service</h:outputLabel>
                                                     <h:selectOneMenu id="servicioModify" value="#{controllerUsuario.servicio}" class="form-control form-control-alternative" style="height: calc(2.75rem + 2px) !important" 
-                                                                     rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor') and controllerUsuario.nombreServicio == null) ? true : false }" converter="servicioConverter">
+                                                                     rendered="#{(controllerUsuario.tipoUsuario.equalsIgnoreCase('doctor')) ? true : false }" converter="servicioConverter">
                                                         <f:selectItem itemLabel="" itemValue= "#{null}"/>
                                                         <f:selectItems value="#{controllerServicios.servicios}" var="servicio" itemLabel="#{servicio.descripcion}" itemValue="#{servicio}"></f:selectItems>
                                                     </h:selectOneMenu>
