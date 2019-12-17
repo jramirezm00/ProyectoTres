@@ -6,6 +6,7 @@
 package com.ulatina.proyecto.service;
 
 import com.ulatina.proyecto.model.Usuario;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -18,7 +19,7 @@ import javax.faces.convert.FacesConverter;
  * @author josepabloramirez
  */
 @FacesConverter(value = "usuarioConverter")
-public class UsuarioConverter implements Converter {
+public class UsuarioConverter implements Converter, Serializable {
 
     private static final long serialVersionUID = 1L;
 

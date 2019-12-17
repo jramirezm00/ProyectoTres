@@ -19,7 +19,7 @@ import javax.faces.convert.FacesConverter;
  * @author josepabloramirez
  */
 @FacesConverter(value = "ingresoConverter")
-public class IngresoConverter implements Converter {
+public class IngresoConverter implements Converter, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class IngresoConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String submittedValue) {
         if (submittedValue != null && submittedValue.trim().length() > 0) {
             try {
-                System.out.println("INGRESO SELECCIONADO " +submittedValue);
+                System.out.println("INGRESO SELECCIONADO " + submittedValue);
                 Ingreso ingreso = control.findByPkIngreso(new Integer(submittedValue));
                 System.out.println(ingreso.getIdIngreso());
                 return ingreso;

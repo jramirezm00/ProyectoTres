@@ -97,13 +97,13 @@ public class Ingreso {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.idIngreso);
-        hash = 37 * hash + Objects.hashCode(this.fechaIngreso);
-        hash = 37 * hash + Objects.hashCode(this.fechaSalida);
-        hash = 37 * hash + Objects.hashCode(this.idPaciente);
-        hash = 37 * hash + Objects.hashCode(this.idServicio);
-        hash = 37 * hash + Objects.hashCode(this.nombrePaciente);
-        hash = 37 * hash + Objects.hashCode(this.nombreServicio);
+        hash = 29 * hash + Objects.hashCode(this.idIngreso);
+        hash = 29 * hash + Objects.hashCode(this.fechaIngreso);
+        hash = 29 * hash + Objects.hashCode(this.fechaSalida);
+        hash = 29 * hash + Objects.hashCode(this.idPaciente);
+        hash = 29 * hash + Objects.hashCode(this.idServicio);
+        hash = 29 * hash + Objects.hashCode(this.nombrePaciente);
+        hash = 29 * hash + Objects.hashCode(this.nombreServicio);
         return hash;
     }
 
@@ -142,5 +142,7 @@ public class Ingreso {
         }
         return true;
     }
+
+    
 
 }

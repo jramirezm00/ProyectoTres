@@ -32,13 +32,13 @@ public class ControllerRevision implements Serializable {
 
     private Integer idRevision;
 
-    private Ingreso ingresoSeleccionado;
-
-    private Usuario doctorSeleccionado;
-
     private String fechaRevision;
 
     private String informe;
+
+    private Usuario selectedDoctor = new Usuario();
+
+    private Ingreso selectedIngreso = new Ingreso();
 
     public ControllerRevision() {
 
@@ -55,16 +55,24 @@ public class ControllerRevision implements Serializable {
     }
 
     public String agregar() {
-        if (doctorSeleccionado == null || ingresoSeleccionado == null || fechaRevision == null || informe == null) {
+        System.out.println("AQUI ESTOUDDJAJKKJAHDFJKAHDK");
+        if (selectedDoctor == null || selectedIngreso == null || fechaRevision == null || informe == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
-            usu.crearRevision(this.doctorSeleccionado.getIdUsuario(), this.ingresoSeleccionado.getIdIngreso(), this.fechaRevision, this.informe);
+            usu.crearRevision(this.selectedDoctor.getIdUsuario(), this.selectedIngreso.getIdIngreso(), this.fechaRevision, this.informe);
             listar();
             return "revisions?faces-redirect=true";
         }
+    }
+
+    public String add() {
+        ControlProcAlmac usu = new ControlProcAlmac();
+        usu.crearRevision(this.selectedDoctor.getIdUsuario(), this.selectedIngreso.getIdIngreso(), this.fechaRevision, this.informe);
+        listar();
+        return "revisions?faces-redirect=true";
     }
 
     public String editar() {
@@ -80,8 +88,8 @@ public class ControllerRevision implements Serializable {
     }
 
     public void limpiarVariables() {
-        this.doctorSeleccionado = null;
-        this.ingresoSeleccionado = null;
+        this.selectedDoctor = null;
+        this.selectedIngreso = null;
         this.fechaRevision = null;
         this.informe = null;
         this.idRevision = null;
@@ -103,22 +111,6 @@ public class ControllerRevision implements Serializable {
         this.idRevision = idRevision;
     }
 
-    public Ingreso getIngresoSeleccionado() {
-        return ingresoSeleccionado;
-    }
-
-    public void setIngresoSeleccionado(Ingreso ingresoSeleccionado) {
-        this.ingresoSeleccionado = ingresoSeleccionado;
-    }
-
-    public Usuario getDoctorSeleccionado() {
-        return doctorSeleccionado;
-    }
-
-    public void setDoctorSeleccionado(Usuario doctorSeleccionado) {
-        this.doctorSeleccionado = doctorSeleccionado;
-    }
-
     public String getFechaRevision() {
         return fechaRevision;
     }
@@ -133,6 +125,22 @@ public class ControllerRevision implements Serializable {
 
     public void setInforme(String informe) {
         this.informe = informe;
+    }
+
+    public Usuario getSelectedDoctor() {
+        return selectedDoctor;
+    }
+
+    public void setSelectedDoctor(Usuario selectedDoctor) {
+        this.selectedDoctor = selectedDoctor;
+    }
+
+    public Ingreso getSelectedIngreso() {
+        return selectedIngreso;
+    }
+
+    public void setSelectedIngreso(Ingreso selectedIngreso) {
+        this.selectedIngreso = selectedIngreso;
     }
 
 }
