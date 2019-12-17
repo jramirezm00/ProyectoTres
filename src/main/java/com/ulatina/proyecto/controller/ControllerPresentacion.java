@@ -54,6 +54,7 @@ public class ControllerPresentacion implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPresentacion(this.nombrePresentacion);
+            limpiarVariables();
             listar();
             return "drugs?faces-redirect=true";
         }
@@ -62,6 +63,7 @@ public class ControllerPresentacion implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarPresentacion(this.idPresentacion, this.nombrePresentacion);
+        limpiarVariables();
         listar();
         return "drugs?faces-redirect=true";
     }
@@ -69,8 +71,14 @@ public class ControllerPresentacion implements Serializable {
     public String eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarPresentacion(this.idPresentacion);
+        limpiarVariables();
         listar();
         return "drugs?faces-redirect=true";
+    }
+
+    public void limpiarVariables() {
+        this.idPresentacion = null;
+        this.nombrePresentacion = null;
     }
 
     public List<Presentacion> getPresentaciones() {

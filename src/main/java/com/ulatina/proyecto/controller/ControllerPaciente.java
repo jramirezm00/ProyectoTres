@@ -63,8 +63,8 @@ public class ControllerPaciente implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearPaciente(this.nombre, this.idSeguroSocial, this.direccion, this.telefono, this.fechaNacimiento);
-            listar();
             limpiarVariables();
+            listar();
             return "patients?faces-redirect=true";
         }
     }
@@ -72,8 +72,8 @@ public class ControllerPaciente implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarPaciente(this.idPaciente, this.nombre, this.idSeguroSocial, this.direccion, this.telefono);
-        listar();
         limpiarVariables();
+        listar();
         return "patients?faces-redirect=true";
     }
 

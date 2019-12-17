@@ -35,6 +35,7 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
     private int id;
 
     public ControllerDetalleIngresoRevisionReceta() {
+
     }
 
     public void listar() {
@@ -43,15 +44,23 @@ public class ControllerDetalleIngresoRevisionReceta implements Serializable {
     }
 
     public String agregar() {
-        if(idIngreso.getIdIngreso() == null || idRevision.getIdRevision() == null || idReceta.getIdReceta() == null){
+        if (idIngreso.getIdIngreso() == null || idRevision.getIdRevision() == null || idReceta.getIdReceta() == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error!",  "Please enter all required spaces."));
+            context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return "error.xhtml?faces-redirect=true";
-        }else{
+        } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearRevisionReceta(this.idIngreso.getIdIngreso(), this.idRevision.getIdRevision(), this.idReceta.getIdReceta());
+            limpiarVariables();
+            listar();
             return "userProfile.xhtml?faces-redirect=true";
         }
+    }
+
+    public void limpiarVariables() {
+        this.idIngreso = null;
+        this.idReceta = null;
+        this.idRevision = null;
     }
 
     public List<DetalleIngresosRevisionReceta> getDetalles() {

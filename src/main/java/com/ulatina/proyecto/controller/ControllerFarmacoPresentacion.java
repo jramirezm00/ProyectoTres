@@ -70,6 +70,7 @@ public class ControllerFarmacoPresentacion implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearFarmacoPresentacion(this.farmacoSeleccionado.getIdFarmaco(), this.presentacionSeleccionada.getIdPresentacion(), this.monto);
+            limpiarVariables();
             listar();
             return "drugs.xhtml?faces-redirect=true";
         }
@@ -78,6 +79,7 @@ public class ControllerFarmacoPresentacion implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarFarmacoPresentacion(this.idFarmaco, this.idPresentacion, this.monto);
+        limpiarVariables();
         listar();
         return "drugs.xhtml?faces-redirect=true";
     }
@@ -85,6 +87,7 @@ public class ControllerFarmacoPresentacion implements Serializable {
     public String eliminar(Integer idFarmaco, Integer idPresentacion) {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarFarmacoPresentacion(idFarmaco, idPresentacion);
+        limpiarVariables();
         listar();
         return "drugs.xhtml?faces-redirect=true";
     }
@@ -95,6 +98,17 @@ public class ControllerFarmacoPresentacion implements Serializable {
         this.dscFarmaco = farmaco;
         this.dscPresentacion = presentacion;
         return "drugsModify?faces-redirect=true&idFarmaco= " + this.idFarmaco + "&idPresentacion= " + this.idPresentacion;
+    }
+
+    public void limpiarVariables() {
+        this.dscFarmaco = null;
+        this.dscPresentacion = null;
+        this.farmacoSeleccionado = null;
+        this.idFarmaco = null;
+        this.idFarmacoPresentacion = null;
+        this.idPresentacion = null;
+        this.monto = null;
+        this.presentacionSeleccionada = null;
     }
 
     public List<FarmacoPresentacion> getFarmacosPresentaciones() {

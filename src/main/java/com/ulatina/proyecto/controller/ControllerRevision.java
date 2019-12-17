@@ -63,6 +63,7 @@ public class ControllerRevision implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearRevision(this.selectedDoctor.getIdUsuario(), this.selectedIngreso.getIdIngreso(), this.fechaRevision, this.informe);
+            limpiarVariables();
             listar();
             return "revisions?faces-redirect=true";
         }
@@ -71,6 +72,7 @@ public class ControllerRevision implements Serializable {
     public String add() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.crearRevision(this.selectedDoctor.getIdUsuario(), this.selectedIngreso.getIdIngreso(), this.fechaRevision, this.informe);
+        limpiarVariables();
         listar();
         return "revisions?faces-redirect=true";
     }
@@ -78,6 +80,7 @@ public class ControllerRevision implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarRevision(this.idRevision, this.informe);
+        limpiarVariables();
         listar();
         return "revisions?faces-redirect=true";
     }

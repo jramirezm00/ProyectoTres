@@ -192,13 +192,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Name</label>
-                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.nombre}"/>
+                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.nombre}" disabled="true"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-first-name">Direction</label>
-                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.direccion}"/>
+                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.direccion}" disabled="true"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,13 +212,8 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-last-name">Telephone</label>
-                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.telefono}"/>
+                                                    <p:inputText class="form-control form-control-alternative" value="#{controllerUsuario.telefono}" disabled="true"/>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12" >
-                                                <h:commandButton  class="btn btn-success" style="float: right;" action="#{controllerUsuario.editar_usuario()}" value="Update"></h:commandButton>
                                             </div>
                                         </div>
                                     </div>

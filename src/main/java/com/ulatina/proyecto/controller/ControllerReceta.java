@@ -58,16 +58,16 @@ public class ControllerReceta implements Serializable {
     }
 
     public String agregar() {
-        if (farmacoSeleccionado == null || fechaReceta == null || presentacionSeleccionada == null || 
-            doctorSeleccionado == null || cantidad == null) {
+        if (farmacoSeleccionado == null || fechaReceta == null || presentacionSeleccionada == null
+                || doctorSeleccionado == null || cantidad == null) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Error!", "Please enter all required spaces."));
             return "error.xhtml?faces-redirect=true";
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearReceta(this.farmacoSeleccionado.getIdFarmaco(), this.fechaReceta, this.cantidad, this.presentacionSeleccionada.getIdPresentacion(), this.doctorSeleccionado.getIdUsuario());
-            listar();
             limpiarVariables();
+            listar();
             return "recipes?faces-redirect=true";
         }
     }

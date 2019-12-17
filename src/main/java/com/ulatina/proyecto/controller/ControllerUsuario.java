@@ -71,6 +71,7 @@ public class ControllerUsuario implements Serializable {
         System.out.println(this.idUsuario);
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarUsuario(this.idUsuario);
+        limpiarVariables();
         listar();
         return "users?faces-redirect=true";
     }
@@ -82,6 +83,7 @@ public class ControllerUsuario implements Serializable {
             System.out.println("soy doctor");
             System.out.println(this.servicio.getIdServicio());
             usu.agregarServicioDoctor(this.idUsuario, this.servicio.getIdServicio());
+            limpiarVariables();
             listar();
             return "users?faces-redirect=true";
         }
@@ -89,10 +91,12 @@ public class ControllerUsuario implements Serializable {
             System.out.println("modificando usuario en la lista");
             System.out.println(this.idUsuario);
             usu.editarUsuario(this.idUsuario, this.nombre, this.direccion, this.telefono);
+            limpiarVariables();
             listar();
             return "users?faces-redirect=true";
         } else {
             usu.editarUsuario(this.usuarioConect.getIdUsuario(), this.nombre, this.direccion, this.telefono);
+            limpiarVariables();
             listar();
             return "users?faces-redirect=true";
         }
@@ -110,6 +114,7 @@ public class ControllerUsuario implements Serializable {
             } else {
                 usu.crearUsuario(this.nombre, this.usuario, this.contrasena, this.direccion, this.telefono, this.tipoUsuario, this.servicio.getIdServicio());
             }
+            limpiarVariables();
             listar();
             return "users?faces-redirect=true";
         }
@@ -119,17 +124,16 @@ public class ControllerUsuario implements Serializable {
         FacesMessage msg = null;
         ControlProcAlmac usu = new ControlProcAlmac();
         this.usuarioConect = usu.login(this.usuario, this.contrasena);
-        this.nombre = this.usuarioConect.getNombre();
-        this.direccion = this.usuarioConect.getDireccion();
-        this.telefono = this.usuarioConect.getTelefono();
         if (this.usuarioConect != null) {
+            this.nombre = this.usuarioConect.getNombre();
+            this.direccion = this.usuarioConect.getDireccion();
+            this.telefono = this.usuarioConect.getTelefono();
             System.out.println(this.usuarioConect.getIdUsuario());
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", this.usuarioConect.getNombre());
             return "userProfile?faces-redirect=true";
         } else {
-            msg = new FacesMessage("Datos incorrectos,volver a ingresar los datos");
+            return "error?faces-redirect=true";
         }
-        return null;
     }
 
     public String logout() {
@@ -160,6 +164,14 @@ public class ControllerUsuario implements Serializable {
         this.telefono = null;
         this.direccion = null;
         return "usersAdd?faces-redirect=true";
+    }
+
+    public void limpiarVariables() {
+        this.nombre = null;
+        this.contrasena = null;
+        this.usuario = null;
+        this.telefono = null;
+        this.direccion = null;
     }
 
     public void listarDoctores() {

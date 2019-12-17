@@ -54,6 +54,7 @@ public class ControllerServicios implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearServicio(this.nombre);
+            limpiarVariables();
             listar();
             return "services?faces-redirect=true";
         }
@@ -62,9 +63,8 @@ public class ControllerServicios implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarServicio(this.id, this.nombre);
+        limpiarVariables();
         listar();
-        this.nombre = null;
-        this.id = null;
         return "services?faces-redirect=true";
     }
 
@@ -72,14 +72,19 @@ public class ControllerServicios implements Serializable {
         this.id = id;
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarServicio(this.id);
+        limpiarVariables();
         listar();
-        this.id = null;
         return "services?faces-redirect=true";
     }
 
     public String redireccionarModificar(Integer idServicio) {
         this.id = idServicio;
         return "servicesModify?faces-redirect=true&idServicio= " + this.id;
+    }
+
+    public void limpiarVariables() {
+        this.id = null;
+        this.nombre = null;
     }
 
     public List<Servicio> getServicios() {

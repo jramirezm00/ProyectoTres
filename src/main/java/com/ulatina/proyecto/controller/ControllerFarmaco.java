@@ -63,8 +63,8 @@ public class ControllerFarmaco implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearFarmaco(this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
-            listar();
             limpiarVariables();
+            listar();
             return "drugs.xhtml?faces-redirect=true";
         }
     }
@@ -72,6 +72,7 @@ public class ControllerFarmaco implements Serializable {
     public String editar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.editarFarmaco(this.idRegistro, this.nombreComercial, this.nombreClinico, this.compuestoQuimico, this.ubicacion, this.codigoProveedor);
+        limpiarVariables();
         listar();
         return "drugs.xhtml?faces-redirect=true";
     }
@@ -79,6 +80,7 @@ public class ControllerFarmaco implements Serializable {
     public String eliminar() {
         ControlProcAlmac usu = new ControlProcAlmac();
         usu.eliminarFarmaco(this.idRegistro);
+        limpiarVariables();
         listar();
         return "drugs.xhtml?faces-redirect=true";
     }

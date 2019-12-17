@@ -65,6 +65,7 @@ public class ControllerIngreso implements Serializable {
         } else {
             ControlProcAlmac usu = new ControlProcAlmac();
             usu.crearIngreso(this.pacienteSeleccionado.getIdPaciente(), this.servicioSeleccionado.getIdServicio(), this.fechaIngreso);
+            limpiarVariables();
             listar();
             return "admissions.xhtml?faces-redirect=true";
         }
@@ -78,9 +79,19 @@ public class ControllerIngreso implements Serializable {
             return null;
         } else {
             usu.editarIngreso(this.idIngreso, this.fechaSalida);
+            limpiarVariables();
             listar();
             return "admissions.xhtml?faces-redirect=true";
         }
+    }
+
+    public void limpiarVariables() {
+        this.doctorSeleccionado = null;
+        this.fechaIngreso = null;
+        this.fechaSalida = null;
+        this.idIngreso = null;
+        this.pacienteSeleccionado = null;
+        this.servicioSeleccionado = null;
     }
 
     public String redireccionarModificar(Integer idIngreso) {
